@@ -180,8 +180,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </div>
                                 <div class="panel-body">
                                     <div class="row">
-                                        <div class="col-lg-6">
-                                            <form role="form" id="add_new_records_form" method="post" action="<?php echo site_url(); ?>VehicleDetailsCon/setNewRecord">
+                                        <form role="form" id="add_new_records_form" method="post" action="<?php echo site_url(); ?>VehicleDetailsCon/setNewRecord">
+                                        <div class="col-lg-6">                                
                                                 <div class="form-group">
                                                     <label>Owner</label>
                                                     <input name="owner" class="form-control">
@@ -216,6 +216,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         <option value="18">Van</option>
                                                         <option value="19">Other vehicle</option>
                                                     </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Vehicle type</label>
+                                                    <input name="vehicle_type" class="form-control">
+                                                    <p class="help-block"></p>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Usage</label>
@@ -277,15 +282,81 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <div class="form-group">
                                                     <label>Other Details</label>
                                                     <textarea name="other_details" class="form-control" rows="3"></textarea>
-                                                </div>
-                                                <button type="submit" class="btn btn-default">Save</button>
-                                                <button type="reset" class="btn btn-default">Reset</button>
-                                            </form>
+                                                </div>                                                                                            
                                         </div>
                                         <!-- /.col-lg-6 (nested) -->
                                         <div class="col-lg-6">
-                                            
+                                            <div class="form-group">
+                                                <label>Officer Name</label>
+                                                <input name="officer_name" class="form-control">
+                                                <p class="help-block"></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Officer Designation</label>
+                                                <input name="designation" class="form-control">
+                                                <p class="help-block"></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Officer Work Place</label>
+                                                <input name="workplace" class="form-control">
+                                                <p class="help-block"></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Officer Grade</label>
+                                                <select name="grade" class="form-control">
+                                                    <option value="0">Please select Officer Grade</option>
+                                                    <option value="1">Special</option>
+                                                    <option value="3">Grade 1</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Status of Designation</label>
+                                                <select name="status_designation" class="form-control">
+                                                    <option value="0">Please select Status of Designation</option>
+                                                    <option value="1">Permanent</option>
+                                                    <option value="3">Acting</option>
+                                                    <option value="3">Performing Duties</option>
+                                                    <option value="3">Duty Cover</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Monthly Fuel Allowance</label>
+                                                <select name="monthly_fuel_allowance" class="form-control">
+                                                    <option value="0">Please select Monthly Fuel Allowance</option>
+                                                    <option value="1">Yes</option>
+                                                    <option value="3">No</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Monthly Fuel Intake</label>
+                                                <input name="monthly_fuel_intake" class="form-control">
+                                                <p class="help-block"></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Other Note</label>
+                                                <textarea name="other_note" class="form-control" rows="3"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>File Number</label>
+                                                <input name="file_number" class="form-control">
+                                                <p class="help-block"></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Director Division</label>
+                                                <input name="director_division" class="form-control">
+                                                <p class="help-block"></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Sub Division</label>
+                                                <input name="sub_division" class="form-control">
+                                                <p class="help-block"></p>
+                                            </div>
                                         </div>
+                                        <div class="col-lg-12">
+                                        <button type="submit" class="btn btn-default">Save</button>
+                                                <button type="reset" class="btn btn-default">Reset</button>
+                                        </div>
+                                        </form>
                                         <!-- /.col-lg-6 (nested) -->
                                     </div>
                                     <!-- /.row (nested) -->
