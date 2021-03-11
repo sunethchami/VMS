@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Startmin - Bootstrap Admin Theme</title>
+        <title>Vehicle Management System</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="<?php echo base_url() ?>assets/css/bootstrap.min.css" rel="stylesheet">
@@ -103,7 +103,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <a href="<?php echo site_url(); ?>VehicleDetailsCon/showAddNewRecordPage">Add New Record</a>
                                     </li>
                                     <li>
-                                        <a href="morris.html">View All Records</a>
+                                        <a href="<?php echo site_url(); ?>VehicleDetailsCon/showAllRecordsPage">View All Records</a>
                                     </li>
                                 </ul>
                                 <!-- /.nav-second-level -->

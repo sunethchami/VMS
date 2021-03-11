@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Startmin - Bootstrap Admin Theme</title>
+        <title>Vehicle Management System</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="<?php echo base_url() ?>assets/css/bootstrap.min.css" rel="stylesheet">
@@ -23,6 +23,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <!-- Custom Fonts -->
         <link href="<?php echo base_url() ?>assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        
+        <!-- Main CSS -->
+        <link href="<?php echo base_url() ?>assets/css/main.css" rel="stylesheet">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -38,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <!-- Navigation -->
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">Startmin</a>
+                    <a class="navbar-brand" href="index.html">VMS</a>
                 </div>
 
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -151,7 +154,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <a href="<?php echo site_url(); ?>VehicleDetailsCon/showAddNewRecordPage">Add New Record</a>
                                     </li>
                                     <li>
-                                        <a href="morris.html">View All Records</a>
+                                        <a href="<?php echo site_url(); ?>VehicleDetailsCon/showAllRecordsPage">View All Records</a>
                                     </li>
                                 </ul>
                                 <!-- /.nav-second-level -->
@@ -162,7 +165,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
                 <!-- /.navbar-static-side -->
             </nav>
-
+            
             <div id="page-wrapper">
                 <div class="container-fluid">
                     <div class="row">
@@ -188,9 +191,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     <p class="help-block"></p>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Vehicle Number</label>
+                                                    <label>Vehicle Number <span>*</span></label>
                                                     <input name="vehicle_number" class="form-control">
-                                                    <p class="help-block"></p>
+                                                    <p></p><span class="error-msg"><?php echo form_error('vehicle_number'); ?></span>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Model</label>
@@ -218,8 +221,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Vehicle type</label>
-                                                    <input name="vehicle_type" class="form-control">
+                                                    <label>Vehicle Brand</label>
+                                                    <input name="brand" class="form-control">
                                                     <p class="help-block"></p>
                                                 </div>
                                                 <div class="form-group">
@@ -275,7 +278,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     </div>                                  
                                                     <div class="radio">
                                                         <label>
-                                                            <input type="radio" name="running_status" id="optionsRadios2" value="3">Under Repair
+                                                            <input type="radio" name="running_status" id="optionsRadios3" value="3">Under Repair
                                                         </label>
                                                     </div>                                  
                                                 </div>
@@ -353,8 +356,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
-                                        <button type="submit" class="btn btn-default">Save</button>
-                                                <button type="reset" class="btn btn-default">Reset</button>
+                                            <button type="submit" class="btn btn-default">Save</button>
+                                            <a href="<?php echo site_url(); ?>VehicleDetailsCon/showAddNewRecordPage" class="btn btn-default">Reset</a>
                                         </div>
                                         </form>
                                         <!-- /.col-lg-6 (nested) -->
@@ -387,6 +390,38 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <!-- Custom Theme JavaScript -->
         <script src="<?php echo base_url() ?>assets/js/startmin.js"></script>
+        
+        <!--  Notifications Plugin    -->
+        <script src="<?php echo base_url() ?>assets/js/bootstrap-notify.js"></script>
+        
+          <script>
+            window.onload = function() {
+
+            <?php if (isset($message)) { ?>
+                <?php if ($message == 1) { ?>
+
+                    var color = 'success'; 
+                    var icon = 'nc-icon nc-check-2';
+                    var msg = 'New record has been added successfully.'  
+
+                <?php  }  ?>
+
+                $.notify({
+                    icon: icon,
+                    message: msg
+
+                }, {
+                    type: color,
+                    timer: 1000,
+                    placement: {
+                        from: 'top',
+                        align: 'right'
+                    }
+                });
+
+             <?php  }  ?>
+            }
+           </script>
 
     </body>
 </html>
