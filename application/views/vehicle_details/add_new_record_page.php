@@ -187,19 +187,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <div class="col-lg-6">                                
                                                 <div class="form-group">
                                                     <label>Owner</label>
-                                                    <input name="owner" class="form-control">
+                                                    <input name="owner" class="form-control" value="<?php echo set_value('owner'); ?>">
                                                     <p class="help-block"></p>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Vehicle Number <span>*</span></label>
-                                                    <input name="vehicle_number" class="form-control">
+                                                    <input name="vehicle_number" class="form-control" value="<?php echo set_value('vehicle_number'); ?>">
                                                     <p></p><span class="error-msg"><?php echo form_error('vehicle_number'); ?></span>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Model</label>
                                                     <select name="model" class="form-control">
                                                         <option value="0">Please select vehicle model</option>
-                                                        <option value="1">Bus</option>
+                                                        <option value="1" <?= set_value('owner') == '1' ? ' selected="selected"' : '';?>>Bus</option>
                                                         <option value="2">Car</option>
                                                         <option value="3">Commercial</option>
                                                         <option value="4">Double cab</option>

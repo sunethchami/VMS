@@ -79,7 +79,7 @@ class VehicleDetailsCon extends CI_Controller {
                 'owner' => $owner,
                 'vehicle_number' => $vehicle_number,
                 'model' => $model,
-                'vehicle_type' => $brand,
+                'brand' => $brand,
                 'use_status' => $use_status,
                 'expense' => $expense,
                 'location' => $location,
