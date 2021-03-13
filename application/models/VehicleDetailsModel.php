@@ -11,5 +11,11 @@ class VehicleDetailsModel extends CI_Model {
     public function setNewRecords($data){
         return $this->db->insert('vehicle_details_tb', $data);
     }
+    
+    public function getAllRecords(){
+        $this->db->select('*');
+        $query = $this->db->get('vehicle_details_tb');
+        return $query->result_array(); 
+    }
 }
 

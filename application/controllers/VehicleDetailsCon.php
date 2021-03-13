@@ -107,8 +107,10 @@ class VehicleDetailsCon extends CI_Controller {
         
     }
     
-    public function showAllRecordsPage() {
+    public function showAllRecordsPage() {        
         $this->data['message'] = $this->session->flashdata('message');
+        $this->data['result'] = $this->VehicleDetailsModel->getAllRecords();
+        $this->data['page'] = "all";
         $this->load->view('vehicle_details/view_all_records_page',$this->data);
     }
     

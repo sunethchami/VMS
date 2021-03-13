@@ -196,162 +196,162 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     <p></p><span class="error-msg"><?php echo form_error('vehicle_number'); ?></span>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Model</label>
+                                                    <label>Vehicle Model</label>
                                                     <select name="model" class="form-control">
                                                         <option value="0">Please select vehicle model</option>
-                                                        <option value="1" <?= set_value('owner') == '1' ? ' selected="selected"' : '';?>>Bus</option>
-                                                        <option value="2">Car</option>
-                                                        <option value="3">Commercial</option>
-                                                        <option value="4">Double cab</option>
-                                                        <option value="5">Dual purpose</option>
-                                                        <option value="6">Hand tractor</option>
-                                                        <option value="7">Jeep & Sport utility vehicle</option>
-                                                        <option value="8">Land vehicle</option>
-                                                        <option value="9">Motor coach</option>
-                                                        <option value="10">Motor cycle</option>
-                                                        <option value="11">Motor lorry</option>
-                                                        <option value="12">Motor tricycle van</option>
-                                                        <option value="13">Single cab</option>
-                                                        <option value="14">Special purpose vehicle</option>
-                                                        <option value="15">Three wheeler</option>
-                                                        <option value="16">Tractor</option>
-                                                        <option value="17">Tractor trailer/bowser</option>
-                                                        <option value="18">Van</option>
-                                                        <option value="19">Other vehicle</option>
+                                                        <option value="1" <?= set_value('model') == '1' ? ' selected="selected"' : '';?>>Bus</option>
+                                                        <option value="2" <?= set_value('model') == '2' ? ' selected="selected"' : '';?>>Car</option>
+                                                        <option value="3" <?= set_value('model') == '3' ? ' selected="selected"' : '';?>>Commercial</option>
+                                                        <option value="4" <?= set_value('model') == '4' ? ' selected="selected"' : '';?>>Double cab</option>
+                                                        <option value="5" <?= set_value('model') == '5' ? ' selected="selected"' : '';?>>Dual purpose</option>
+                                                        <option value="6" <?= set_value('model') == '6' ? ' selected="selected"' : '';?>>Hand tractor</option>
+                                                        <option value="7" <?= set_value('model') == '7' ? ' selected="selected"' : '';?>>Jeep & Sport utility vehicle</option>
+                                                        <option value="8" <?= set_value('model') == '8' ? ' selected="selected"' : '';?>>Land vehicle</option>
+                                                        <option value="9" <?= set_value('model') == '9' ? ' selected="selected"' : '';?>>Motor coach</option>
+                                                        <option value="10" <?= set_value('model') == '10' ? ' selected="selected"' : '';?>>Motor cycle</option>
+                                                        <option value="11" <?= set_value('model') == '11' ? ' selected="selected"' : '';?>>Motor lorry</option>
+                                                        <option value="12" <?= set_value('model') == '12' ? ' selected="selected"' : '';?>>Motor tricycle van</option>
+                                                        <option value="13" <?= set_value('model') == '13' ? ' selected="selected"' : '';?>>Single cab</option>
+                                                        <option value="14" <?= set_value('model') == '14' ? ' selected="selected"' : '';?>>Special purpose vehicle</option>
+                                                        <option value="15" <?= set_value('model') == '15' ? ' selected="selected"' : '';?>>Three wheeler</option>
+                                                        <option value="16" <?= set_value('model') == '16' ? ' selected="selected"' : '';?>>Tractor</option>
+                                                        <option value="17" <?= set_value('model') == '17' ? ' selected="selected"' : '';?>>Tractor trailer/bowser</option>
+                                                        <option value="18" <?= set_value('model') == '18' ? ' selected="selected"' : '';?>>Van</option>
+                                                        <option value="19" <?= set_value('model') == '19' ? ' selected="selected"' : '';?>>Other vehicle</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Vehicle Brand</label>
-                                                    <input name="brand" class="form-control">
+                                                    <input name="brand" class="form-control"  value="<?php echo set_value('brand'); ?>">
                                                     <p class="help-block"></p>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Usage</label>
                                                     <select name="use_status" class="form-control">
                                                         <option value="0">Please select usage</option>
-                                                        <option value="1">Assigned</option>
-                                                        <option value="3">Commercial Purposes</option>
-                                                        <option value="4">Non Commercial Transport</option>
-                                                        <option value="5">Pool</option>
-                                                        <option value="6">Public Transport</option>
-                                                        <option value="7">Other</option>
+                                                        <option value="1" <?= set_value('use_status') == '1' ? ' selected="selected"' : '';?>>Assigned</option>
+                                                        <option value="2" <?= set_value('use_status') == '2' ? ' selected="selected"' : '';?>>Commercial Purposes</option>
+                                                        <option value="3" <?= set_value('use_status') == '3' ? ' selected="selected"' : '';?>>Non Commercial Transport</option>
+                                                        <option value="4" <?= set_value('use_status') == '4' ? ' selected="selected"' : '';?>>Pool</option>
+                                                        <option value="5" <?= set_value('use_status') == '5' ? ' selected="selected"' : '';?>>Public Transport</option>
+                                                        <option value="6" <?= set_value('use_status') == '6' ? ' selected="selected"' : '';?>>Other</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Expense</label>
-                                                    <input name="expense" class="form-control">
+                                                    <input name="expense" class="form-control" value="<?php echo set_value('expense'); ?>">
                                                     <p class="help-block"></p>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>location</label>
-                                                    <input name="location" class="form-control">
+                                                    <input name="location" class="form-control" value="<?php echo set_value('location'); ?>">
                                                     <p class="help-block"></p>
                                                 </div>
                                                  <div class="form-group">
                                                     <label>Vehicle Type</label>
                                                     <select name="type" class="form-control">
-                                                        <option value="0">Please select vehicle type</option>
-                                                        <option value="1">6112101 - Passenger Vehicles</option>
-                                                        <option value="2">6112109 - Motor Cycles </option>
-                                                        <option value="3">6112103 - Agriculture Vehicles</option>
-                                                        <option value="4">6112102 - Cargo Vehicles</option>
-                                                        <option value="5">6112104 - Industrial Vehicles</option>
-                                                        <option value="6">6112111 - Other (not specified above)</option>
-                                                        <option value="7">6112110 - Trailers</option>
-                                                        <option value="8">land vehicle</option>
-                                                        <option value="9">6112103 - Tractors</option>
-                                                        <option value="10">6112102- Tractor Trailer</option>
-                                                        <option value="11">6112109 - Bicycles</option>
+                                                        <option value="0" >Please select vehicle type</option>
+                                                        <option value="1" <?= set_value('type') == '1' ? ' selected="selected"' : '';?>>6112101 - Passenger Vehicles</option>
+                                                        <option value="2" <?= set_value('type') == '2' ? ' selected="selected"' : '';?>>6112109 - Motor Cycles </option>
+                                                        <option value="3" <?= set_value('type') == '3' ? ' selected="selected"' : '';?>>6112103 - Agriculture Vehicles</option>
+                                                        <option value="4" <?= set_value('type') == '4' ? ' selected="selected"' : '';?>>6112102 - Cargo Vehicles</option>
+                                                        <option value="5" <?= set_value('type') == '5' ? ' selected="selected"' : '';?>>6112104 - Industrial Vehicles</option>
+                                                        <option value="6" <?= set_value('type') == '6' ? ' selected="selected"' : '';?>>6112111 - Other (not specified above)</option>
+                                                        <option value="7" <?= set_value('type') == '7' ? ' selected="selected"' : '';?>>6112110 - Trailers</option>
+                                                        <option value="8" <?= set_value('type') == '8' ? ' selected="selected"' : '';?>>land vehicle</option>
+                                                        <option value="9" <?= set_value('type') == '9' ? ' selected="selected"' : '';?>>6112103 - Tractors</option>
+                                                        <option value="10" <?= set_value('type') == '10' ? ' selected="selected"' : '';?>>6112102- Tractor Trailer</option>
+                                                        <option value="11" <?= set_value('type') == '11' ? ' selected="selected"' : '';?>>6112109 - Bicycles</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Vehicle Status</label>
                                                     <div class="radio">
                                                         <label>
-                                                            <input type="radio" name="running_status" id="optionsRadios1" value="1" checked>Running
+                                                            <input type="radio" name="running_status" <?= set_value('running_status') == '1' ?'checked':'' ?> id="optionsRadios1" value="1" checked>Running
                                                         </label>
                                                     </div>
                                                     <div class="radio">
                                                         <label>
-                                                            <input type="radio" name="running_status" id="optionsRadios2" value="2">Not Running
+                                                            <input type="radio" name="running_status" <?= set_value('running_status') == '2' ?'checked':'' ?> id="optionsRadios2" value="2">Not Running
                                                         </label>
                                                     </div>                                  
                                                     <div class="radio">
                                                         <label>
-                                                            <input type="radio" name="running_status" id="optionsRadios3" value="3">Under Repair
+                                                            <input type="radio" name="running_status" <?= set_value('running_status') == '3' ?'checked':'' ?> id="optionsRadios3" value="3">Under Repair
                                                         </label>
                                                     </div>                                  
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Other Details</label>
-                                                    <textarea name="other_details" class="form-control" rows="3"></textarea>
+                                                    <textarea name="other_details" class="form-control" rows="3"><?php echo set_value('other_details'); ?></textarea>
                                                 </div>                                                                                            
                                         </div>
                                         <!-- /.col-lg-6 (nested) -->
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label>Officer Name</label>
-                                                <input name="officer_name" class="form-control">
+                                                <input name="officer_name" class="form-control" value="<?php echo set_value('officer_name'); ?>">
                                                 <p class="help-block"></p>
                                             </div>
                                             <div class="form-group">
                                                 <label>Officer Designation</label>
-                                                <input name="designation" class="form-control">
+                                                <input name="designation" class="form-control" value="<?php echo set_value('designation'); ?>">
                                                 <p class="help-block"></p>
                                             </div>
                                             <div class="form-group">
                                                 <label>Officer Work Place</label>
-                                                <input name="workplace" class="form-control">
+                                                <input name="workplace" class="form-control" value="<?php echo set_value('workplace'); ?>">
                                                 <p class="help-block"></p>
                                             </div>
                                             <div class="form-group">
                                                 <label>Officer Grade</label>
                                                 <select name="grade" class="form-control">
                                                     <option value="0">Please select Officer Grade</option>
-                                                    <option value="1">Special</option>
-                                                    <option value="3">Grade 1</option>
+                                                    <option value="1" <?= set_value('grade') == '1' ? ' selected="selected"' : '';?>>Special</option>
+                                                    <option value="2" <?= set_value('grade') == '2' ? ' selected="selected"' : '';?>>Grade 1</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                 <label>Status of Designation</label>
                                                 <select name="status_designation" class="form-control">
-                                                    <option value="0">Please select Status of Designation</option>
-                                                    <option value="1">Permanent</option>
-                                                    <option value="3">Acting</option>
-                                                    <option value="3">Performing Duties</option>
-                                                    <option value="3">Duty Cover</option>
+                                                    <option value="0" >Please select Status of Designation</option>
+                                                    <option value="1" <?= set_value('status_designation') == '1' ? ' selected="selected"' : '';?>>Permanent</option>
+                                                    <option value="2" <?= set_value('status_designation') == '2' ? ' selected="selected"' : '';?>>Acting</option>
+                                                    <option value="3" <?= set_value('status_designation') == '3' ? ' selected="selected"' : '';?>>Performing Duties</option>
+                                                    <option value="4" <?= set_value('status_designation') == '4' ? ' selected="selected"' : '';?>>Duty Cover</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                 <label>Monthly Fuel Allowance</label>
                                                 <select name="monthly_fuel_allowance" class="form-control">
                                                     <option value="0">Please select Monthly Fuel Allowance</option>
-                                                    <option value="1">Yes</option>
-                                                    <option value="3">No</option>
+                                                    <option value="1" <?= set_value('monthly_fuel_allowance') == '1' ? ' selected="selected"' : '';?>>Yes</option>
+                                                    <option value="2" <?= set_value('monthly_fuel_allowance') == '1' ? ' selected="selected"' : '';?>>No</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                 <label>Monthly Fuel Intake</label>
-                                                <input name="monthly_fuel_intake" class="form-control">
+                                                <input name="monthly_fuel_intake" class="form-control" value="<?php echo set_value('monthly_fuel_intake'); ?>">
                                                 <p class="help-block"></p>
                                             </div>
                                             <div class="form-group">
                                                 <label>Other Note</label>
-                                                <textarea name="other_note" class="form-control" rows="3"></textarea>
+                                                <textarea name="other_note" class="form-control" rows="3"><?php echo set_value('other_note'); ?></textarea>
                                             </div>
                                             <div class="form-group">
                                                 <label>File Number</label>
-                                                <input name="file_number" class="form-control">
+                                                <input name="file_number" class="form-control" value="<?php echo set_value('file_number'); ?>">
                                                 <p class="help-block"></p>
                                             </div>
                                             <div class="form-group">
                                                 <label>Director Division</label>
-                                                <input name="director_division" class="form-control">
+                                                <input name="director_division" class="form-control" value="<?php echo set_value('director_division'); ?>">
                                                 <p class="help-block"></p>
                                             </div>
                                             <div class="form-group">
                                                 <label>Sub Division</label>
-                                                <input name="sub_division" class="form-control">
+                                                <input name="sub_division" class="form-control" value="<?php echo set_value('sub_division'); ?>">
                                                 <p class="help-block"></p>
                                             </div>
                                         </div>

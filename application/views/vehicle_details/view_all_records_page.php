@@ -26,6 +26,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         
         <!-- Main CSS -->
         <link href="<?php echo base_url() ?>assets/css/main.css" rel="stylesheet">
+        
+        <!-- Data tables -->
+        <link href="<?php echo base_url() ?>assets/css/jquery.dataTables.min.css" rel="stylesheet" />
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -184,29 +187,57 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <!-- /.panel-heading -->
                                 <div class="panel-body">
                                     <div class="table-responsive">
-                                      <table class="display" id="allTable">
+                                      <table class="display cell-border" id="allTable">
                                         <thead class=" text-primary">
-                                          <th>Reg No</th>
-                                          <th>Name</th>
-                                          <th class="th-mark">Owner</th>
-                                          <th class="th-mark">Vehicle Number</th>
-                                          <th class="th-mark">Model</th>
-                                          <th class="th-mark">Vehicle Type</th>
-                                          <th class="th-mark">Usage</th>
-                                          <th class="th-mark">Expense</th>
-                                          <th class="th-mark">location</th>
+                                          <th class="th">Owner</th>
+                                          <th class="th">Vehicle Number</th>
+                                          <th class="th">Vehicle Model</th>
+                                          <th class="th">Vehicle Brand</th>
+                                          <th class="th">Usage</th>
+                                          <th class="th">Expense</th>
+                                          <th class="th">location</th>
+                                          <th class="th">Vehicle Type</th>
+                                          <th class="th">Vehicle Status</th>
+                                          <th class="th">Other Details</th>
+                                          <th class="th">Officer Name</th>
+                                          <th class="th">Officer Designation</th>
+                                          <th class="th">Officer Work Place</th>
+                                          <th class="th">Officer Grade</th>
+                                          <th class="th">Status of Designation</th>
+                                          <th class="th">Monthly Fuel Allowance</th>
+                                          <th class="th">Monthly Fuel Intake</th>
+                                          <th class="th">Other Note</th>
+                                          <th class="th">File Number</th>
+                                          <th class="th">Director Division</th>
+                                          <th class="th">Sub Division</th>
                                           <th class="th-action">Actions</th>
                                         </thead>
                                         <tbody>
                                          <?php
                                             foreach ($result as $row) {
                                                 echo'<tr>';
-                                                echo'<td>' . $row['reg_no'] . '</td>';
-                                                echo'<td>' . $row['name'] . '</td>';
-                                                echo'<td class="td-mark">' . $row['combined_maths'] . '</td>';
-                                                echo'<td class="td-mark">' . $row['physics'] . '</td>';
-                                                echo'<td class="td-mark">' . $row['chemistry'] . '</td>'; 
-                                                echo'<td class="td-action"><p class="table-button"><a href="' . site_url() . 'StudentDetailsCon/moreDetails/' . $row['id'] . '/'.$page.'"><img src="'. base_url() .'assets/icons/info-circle.svg" width="32" height="32" title="More Details"></a></p><p class="table-button"><a href="' . site_url() . 'StudentDetailsCon/editRecord/' . $row['id'] . '/'. $page.'"><img src="'. base_url() .'assets/icons/pencil-square.svg" width="32" height="32" title="Edit"></a></p><p class="table-button"><a href="#" data-id="' . $row['id'] . '" data-toggle="modal" class="deleteBtn" data-target="#comfirmModal"><img src="'. base_url() .'assets/icons/trash.svg" width="32" height="32" title ="Delete"></a></p></td>';
+                                                echo'<td>' . $row['owner'] . '</td>';
+                                                echo'<td>' . $row['vehicle_number'] . '</td>';
+                                                echo'<td>' . $row['model'] . '</td>';
+                                                echo'<td>' . $row['brand'] . '</td>';
+                                                echo'<td>' . $row['use_status'] . '</td>'; 
+                                                echo'<td>' . $row['expense'] . '</td>'; 
+                                                echo'<td>' . $row['location'] . '</td>'; 
+                                                echo'<td>' . $row['type'] . '</td>'; 
+                                                echo'<td>' . $row['running_status'] . '</td>'; 
+                                                echo'<td>' . $row['other_details'] . '</td>'; 
+                                                echo'<td>' . $row['officer_name'] . '</td>';  
+                                                echo'<td>' . $row['designation'] . '</td>'; 
+                                                echo'<td>' . $row['workplace'] . '</td>'; 
+                                                echo'<td>' . $row['grade'] . '</td>'; 
+                                                echo'<td>' . $row['status_designation'] . '</td>'; 
+                                                echo'<td>' . $row['monthly_fuel_allowance'] . '</td>'; 
+                                                echo'<td>' . $row['monthly_fuel_intake'] . '</td>'; 
+                                                echo'<td>' . $row['other_note'] . '</td>'; 
+                                                echo'<td>' . $row['file_number'] . '</td>'; 
+                                                echo'<td>' . $row['director_division'] . '</td>'; 
+                                                echo'<td>' . $row['sub_division'] . '</td>'; 
+                                                echo'<td><p class="table-button"><a href="' . site_url() . 'StudentDetailsCon/moreDetails/' . $row['vehicle_number'] . '/'.$page.'"><img src="'. base_url() .'assets/icons/info-circle.svg" width="32" height="32" title="More Details"></a></p><p class="table-button"><a href="' . site_url() . 'StudentDetailsCon/editRecord/' . $row['vehicle_number'] . '/'. $page.'"><img src="'. base_url() .'assets/icons/pencil-square.svg" width="32" height="32" title="Edit"></a></p><p class="table-button"><a href="#" data-id="' . $row['vehicle_number'] . '" data-toggle="modal" class="deleteBtn" data-target="#comfirmModal"><img src="'. base_url() .'assets/icons/trash.svg" width="32" height="32" title ="Delete"></a></p></td>';
                                                 echo'</tr>';
                                             }
                                             ?>
@@ -231,25 +262,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!-- /#wrapper -->
 
         <!-- jQuery -->
-        <script src="../js/jquery.min.js"></script>
+        <script src="<?php echo base_url() ?>assets/js/jquery.min.js"></script>
 
         <!-- Bootstrap Core JavaScript -->
-        <script src="../js/bootstrap.min.js"></script>
+        <script src="<?php echo base_url() ?>assets/js/bootstrap.min.js"></script>
 
         <!-- Metis Menu Plugin JavaScript -->
-        <script src="../js/metisMenu.min.js"></script>
-
-        <!-- DataTables JavaScript -->
-        <script src="../js/dataTables/jquery.dataTables.min.js"></script>
-        <script src="../js/dataTables/dataTables.bootstrap.min.js"></script>
+        <script src="<?php echo base_url() ?>assets/js/metisMenu.min.js"></script>
 
         <!-- Custom Theme JavaScript -->
-        <script src="../js/startmin.js"></script>
+        <script src="<?php echo base_url() ?>assets/js/startmin.js"></script>
 
+        <!-- Data tables -->
+        <script src="<?php echo base_url() ?>assets/js/jquery.dataTables.min.js" type="text/javascript"></script>
         <!-- Page-Level Demo Scripts - Tables - Use for reference -->
         <script>
             $(document).ready(function() {
-                $('#dataTables-example').DataTable({
+                $('#allTable').DataTable({
                         responsive: true
                 });
             });
