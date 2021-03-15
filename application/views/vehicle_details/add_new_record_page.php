@@ -198,7 +198,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <div class="form-group">
                                                     <label>Vehicle Model</label>
                                                     <select name="model" class="form-control">
-                                                        <option value="0">Please select vehicle model</option>
+                                                        <option>Please select vehicle model</option>
                                                         <option value="1" <?= set_value('model') == '1' ? ' selected="selected"' : '';?>>Bus</option>
                                                         <option value="2" <?= set_value('model') == '2' ? ' selected="selected"' : '';?>>Car</option>
                                                         <option value="3" <?= set_value('model') == '3' ? ' selected="selected"' : '';?>>Commercial</option>
@@ -228,7 +228,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <div class="form-group">
                                                     <label>Usage</label>
                                                     <select name="use_status" class="form-control">
-                                                        <option value="0">Please select usage</option>
+                                                        <option>Please select usage</option>
                                                         <option value="1" <?= set_value('use_status') == '1' ? ' selected="selected"' : '';?>>Assigned</option>
                                                         <option value="2" <?= set_value('use_status') == '2' ? ' selected="selected"' : '';?>>Commercial Purposes</option>
                                                         <option value="3" <?= set_value('use_status') == '3' ? ' selected="selected"' : '';?>>Non Commercial Transport</option>
@@ -250,18 +250,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                  <div class="form-group">
                                                     <label>Vehicle Type</label>
                                                     <select name="type" class="form-control">
-                                                        <option value="0" >Please select vehicle type</option>
+                                                        <option>Please select vehicle type</option>
                                                         <option value="1" <?= set_value('type') == '1' ? ' selected="selected"' : '';?>>6112101 - Passenger Vehicles</option>
-                                                        <option value="2" <?= set_value('type') == '2' ? ' selected="selected"' : '';?>>6112109 - Motor Cycles </option>
-                                                        <option value="3" <?= set_value('type') == '3' ? ' selected="selected"' : '';?>>6112103 - Agriculture Vehicles</option>
-                                                        <option value="4" <?= set_value('type') == '4' ? ' selected="selected"' : '';?>>6112102 - Cargo Vehicles</option>
-                                                        <option value="5" <?= set_value('type') == '5' ? ' selected="selected"' : '';?>>6112104 - Industrial Vehicles</option>
-                                                        <option value="6" <?= set_value('type') == '6' ? ' selected="selected"' : '';?>>6112111 - Other (not specified above)</option>
-                                                        <option value="7" <?= set_value('type') == '7' ? ' selected="selected"' : '';?>>6112110 - Trailers</option>
-                                                        <option value="8" <?= set_value('type') == '8' ? ' selected="selected"' : '';?>>land vehicle</option>
-                                                        <option value="9" <?= set_value('type') == '9' ? ' selected="selected"' : '';?>>6112103 - Tractors</option>
-                                                        <option value="10" <?= set_value('type') == '10' ? ' selected="selected"' : '';?>>6112102- Tractor Trailer</option>
-                                                        <option value="11" <?= set_value('type') == '11' ? ' selected="selected"' : '';?>>6112109 - Bicycles</option>
+                                                        <option value="2" <?= set_value('type') == '2' ? ' selected="selected"' : '';?>>6112102- Tractor Trailer</option>
+                                                        <option value="3" <?= set_value('type') == '3' ? ' selected="selected"' : '';?>>6112102 - Cargo Vehicles</option>
+                                                        <option value="4" <?= set_value('type') == '4' ? ' selected="selected"' : '';?>>6112103 - Tractors</option>
+                                                        <option value="5" <?= set_value('type') == '5' ? ' selected="selected"' : '';?>>6112103 - Agriculture Vehicles</option>                                                      
+                                                        <option value="6" <?= set_value('type') == '6' ? ' selected="selected"' : '';?>>6112104 - Industrial Vehicles</option>                                                        
+                                                        <option value="7" <?= set_value('type') == '7' ? ' selected="selected"' : '';?>>6112109 - Motor Cycles</option>
+                                                        <option value="8" <?= set_value('type') == '8' ? ' selected="selected"' : '';?>>6112109 - Bicycles</option>
+                                                        <option value="9" <?= set_value('type') == '9' ? ' selected="selected"' : '';?>>6112110 - Trailers</option>
+                                                        <option value="10" <?= set_value('type') == '10' ? ' selected="selected"' : '';?>>land vehicle</option>
+                                                        <option value="11" <?= set_value('type') == '11' ? ' selected="selected"' : '';?>>6112111 - Other (not specified above)</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
@@ -307,7 +307,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <div class="form-group">
                                                 <label>Officer Grade</label>
                                                 <select name="grade" class="form-control">
-                                                    <option value="0">Please select Officer Grade</option>
+                                                    <option>Please select Officer Grade</option>
                                                     <option value="1" <?= set_value('grade') == '1' ? ' selected="selected"' : '';?>>Special</option>
                                                     <option value="2" <?= set_value('grade') == '2' ? ' selected="selected"' : '';?>>Grade 1</option>
                                                 </select>
@@ -315,7 +315,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <div class="form-group">
                                                 <label>Status of Designation</label>
                                                 <select name="status_designation" class="form-control">
-                                                    <option value="0" >Please select Status of Designation</option>
+                                                    <option>Please select Status of Designation</option>
                                                     <option value="1" <?= set_value('status_designation') == '1' ? ' selected="selected"' : '';?>>Permanent</option>
                                                     <option value="2" <?= set_value('status_designation') == '2' ? ' selected="selected"' : '';?>>Acting</option>
                                                     <option value="3" <?= set_value('status_designation') == '3' ? ' selected="selected"' : '';?>>Performing Duties</option>
@@ -325,7 +325,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <div class="form-group">
                                                 <label>Monthly Fuel Allowance</label>
                                                 <select name="monthly_fuel_allowance" class="form-control">
-                                                    <option value="0">Please select Monthly Fuel Allowance</option>
+                                                    <option >Please select Monthly Fuel Allowance</option>
                                                     <option value="1" <?= set_value('monthly_fuel_allowance') == '1' ? ' selected="selected"' : '';?>>Yes</option>
                                                     <option value="2" <?= set_value('monthly_fuel_allowance') == '1' ? ' selected="selected"' : '';?>>No</option>
                                                 </select>
