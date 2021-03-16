@@ -13,4 +13,7 @@ and open the template in the editor.
     color: red;
 }
 
-
+.table-button{
+    display: inline-block !important;
+    margin: 4px !important;
+}
