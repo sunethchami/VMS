@@ -191,7 +191,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     <p class="help-block"></p>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Vehicle Number <span>*</span></label>
+                                                    <label>Vehicle Number <span class="star">*</span></label>
                                                     <input name="vehicle_number" class="form-control" value="<?php echo set_value('vehicle_number'); ?>">
                                                     <p></p><span class="error-msg"><?php echo form_error('vehicle_number'); ?></span>
                                                 </div>
@@ -284,7 +284,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Other Details</label>
-                                                    <textarea name="other_details" class="form-control" rows="3"><?php echo set_value('other_details'); ?></textarea>
+                                                    <textarea name="other_details" class="form-control" rows="8"><?php echo set_value('other_details'); ?></textarea>
                                                 </div>                                                                                            
                                         </div>
                                         <!-- /.col-lg-6 (nested) -->
@@ -342,6 +342,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <div class="form-group">
                                                 <label>File Number</label>
                                                 <input name="file_number" class="form-control" value="<?php echo set_value('file_number'); ?>">
+                                                <p class="help-block"></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>File Number/Book Number</label>
+                                                <input name="file_no_book_no" class="form-control" value="<?php echo set_value('file_no_book_no'); ?>">
                                                 <p class="help-block"></p>
                                             </div>
                                             <div class="form-group">
@@ -415,7 +420,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     timer: 1000,
                     placement: {
                         from: 'top',
-                        align: 'right'
+                        align: 'center'
                     }
                 });
 

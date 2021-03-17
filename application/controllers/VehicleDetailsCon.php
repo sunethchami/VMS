@@ -65,6 +65,7 @@ class VehicleDetailsCon extends CI_Controller {
         $monthly_fuel_intake = trim($this->input->post('monthly_fuel_intake'));
         $other_note = trim($this->input->post('other_note'));
         $file_number = trim($this->input->post('file_number'));
+        $file_no_book_no = trim($this->input->post('file_no_book_no'));
         $director_division = trim($this->input->post('director_division'));
         $sub_division = trim($this->input->post('sub_division'));
         
@@ -95,6 +96,7 @@ class VehicleDetailsCon extends CI_Controller {
                 'monthly_fuel_intake' => $monthly_fuel_intake,
                 'other_note' => $other_note,
                 'file_number' => $file_number,
+                'file_no_book_no' => $file_no_book_no,
                 'director_division' => $director_division,
                 'sub_division' => $sub_division
             );
@@ -115,174 +117,115 @@ class VehicleDetailsCon extends CI_Controller {
         //var_dump($this->data['result']);
         
         foreach ($result as $key => $value) {
-            
-            if ($result[$key]['model'] == '0'){
-               $result[$key]['model'] = "";
-            }
-            if ($result[$key]['model'] == '1'){
-               $result[$key]['model'] = "Bus";
-            }
-            if ($result[$key]['model'] == '2'){
-               $result[$key]['model'] = "Car";
-            }
-            if ($result[$key]['model'] == '3'){
-               $result[$key]['model'] = "Commercial";
-            }
-            if ($result[$key]['model'] == '4'){
-               $result[$key]['model'] = "Double cab";
-            }
-            if ($result[$key]['model'] == '5'){
-               $result[$key]['model'] = "Dual purpose";
-            }
-            if ($result[$key]['model'] == '6'){
-               $result[$key]['model'] = "Hand tractor";
-            }
-            if ($result[$key]['model'] == '7'){
-               $result[$key]['model'] = "Jeep & Sport utility vehicle";
-            }
-            if ($result[$key]['model'] == '8'){
-               $result[$key]['model'] = "Land vehicle";
-            }
-            if ($result[$key]['model'] == '9'){
-               $result[$key]['model'] = "Motor coach";
-            }
-            if ($result[$key]['model'] == '10'){
-               $result[$key]['model'] = "Motor cycle";
-            }
-            if ($result[$key]['model'] == '11'){
-               $result[$key]['model'] = "Motor lorry";
-            }
-            if ($result[$key]['model'] == '12'){
-               $result[$key]['model'] = "Motor tricycle van";
-            }
-            if ($result[$key]['model'] == '13'){
-               $result[$key]['model'] = "Single cab";
-            }
-            if ($result[$key]['model'] == '14'){
-               $result[$key]['model'] = "Special purpose vehicle";
-            }
-            if ($result[$key]['model'] == '15'){
-               $result[$key]['model'] = "Three wheeler";
-            }
-            if ($result[$key]['model'] == '16'){
-               $result[$key]['model'] = "Tractor";
-            }
-            if ($result[$key]['model'] == '17'){
-               $result[$key]['model'] = "Tractor trailer/bowser";
-            }
-            if ($result[$key]['model'] == '18'){
-               $result[$key]['model'] = "Van";
-            }
-            if ($result[$key]['model'] == '19'){
-               $result[$key]['model'] = "Other vehicle";
-            }
-            if ($result[$key]['use_status'] == '0'){
-               $result[$key]['use_status'] = "";
-            }
-            if ($result[$key]['use_status'] == '1'){
-               $result[$key]['use_status'] = "Assigned";
-            }
-            if ($result[$key]['use_status'] == '2'){
-               $result[$key]['use_status'] = "Commercial Purposes";
-            }
-            if ($result[$key]['use_status'] == '3'){
-               $result[$key]['use_status'] = "Non Commercial Transport";
-            }
-            if ($result[$key]['use_status'] == '4'){
-               $result[$key]['use_status'] = "Pool";
-            }
-            if ($result[$key]['use_status'] == '5'){
-               $result[$key]['use_status'] = "Public Transport";
-            }
-            if ($result[$key]['use_status'] == '6'){
-               $result[$key]['use_status'] = "Other";
-            }
-            if ($result[$key]['type'] == '0'){
-               $result[$key]['type'] = "";
-            }
-            if ($result[$key]['type'] == '1'){
-               $result[$key]['type'] = "6112101 - Passenger Vehicles";
-            }
-            if ($result[$key]['type'] == '2'){
-               $result[$key]['type'] = "6112102- Tractor Trailer";
-            }
-            if ($result[$key]['type'] == '3'){
-               $result[$key]['type'] = "6112102 - Cargo Vehicles";
-            }
-            if ($result[$key]['type'] == '4'){
-               $result[$key]['type'] = "6112103 - Tractors";
-            }
-            if ($result[$key]['type'] == '5'){
-               $result[$key]['type'] = "6112103 - Agriculture Vehicles";
-            }
-            if ($result[$key]['type'] == '6'){
-               $result[$key]['type'] = "6112104 - Industrial Vehicles";
-            }
-            if ($result[$key]['type'] == '7'){
-               $result[$key]['type'] = "6112109 - Motor Cycles";
-            }
-            if ($result[$key]['type'] == '8'){
-               $result[$key]['type'] = "66112109 - Bicycles";
-            }
-            if ($result[$key]['type'] == '9'){
-               $result[$key]['type'] = "6112110 - Trailers";
-            }
-            if ($result[$key]['type'] == '10'){
-               $result[$key]['type'] = "land vehicle";
-            }
-            if ($result[$key]['type'] == '11'){
-               $result[$key]['type'] = "6112111 - Other (not specified above)";
-            }                       
-            if ($result[$key]['running_status'] == '0'){
-               $result[$key]['running_status'] = "";
-            }                       
-            if ($result[$key]['running_status'] == '1'){
-               $result[$key]['running_status'] = "Running";
-            }                       
-            if ($result[$key]['running_status'] == '2'){
-               $result[$key]['running_status'] = "Not Running";
-            }                       
-            if ($result[$key]['running_status'] == '3'){
-               $result[$key]['running_status'] = "Under Repair";
-            }                       
-            if ($result[$key]['grade'] == '0'){
-               $result[$key]['grade'] = "";
-            }                       
-            if ($result[$key]['grade'] == '1'){
-               $result[$key]['grade'] = "Special";
-            }                       
-            if ($result[$key]['grade'] == '2'){
-               $result[$key]['grade'] = "Grade 1";
-            }                       
-            if ($result[$key]['status_designation'] == '0'){
-               $result[$key]['status_designation'] = "";
-            }                       
-            if ($result[$key]['status_designation'] == '1'){
-               $result[$key]['status_designation'] = "Permanent";
-            }                       
-            if ($result[$key]['status_designation'] == '2'){
-               $result[$key]['status_designation'] = "Acting";
-            }                       
-            if ($result[$key]['status_designation'] == '3'){
-               $result[$key]['status_designation'] = "Performing Duties";
-            }                       
-            if ($result[$key]['status_designation'] == '4'){
-               $result[$key]['status_designation'] = "Duty Cover";
-            }                        
-            if ($result[$key]['monthly_fuel_allowance'] == '0'){
-               $result[$key]['monthly_fuel_allowance'] = "";
-            }                       
-            if ($result[$key]['monthly_fuel_allowance'] == '1'){
-               $result[$key]['monthly_fuel_allowance'] = "Yes";
-            }                       
-            if ($result[$key]['monthly_fuel_allowance'] == '2'){
-               $result[$key]['monthly_fuel_allowance'] = "No";
-            } 
-            if ($result[$key]['monthly_fuel_intake'] == 0){
-               $result[$key]['monthly_fuel_intake'] = "";
-            } 
-            
-            
+           
+            ($result[$key]['model'] == '0') ? $result[$key]['model'] = "" : "";
+            ($result[$key]['model'] == '1') ? $result[$key]['model'] 
+                    = "Bus" : "";
+            ($result[$key]['model'] == '2') ? $result[$key]['model'] 
+                    = "Car" : "";
+            ($result[$key]['model'] == '3') ? $result[$key]['model'] 
+                    = "Commercial" : "";
+            ($result[$key]['model'] == '4') ? $result[$key]['model'] 
+                    = "Double cab" : "";
+            ($result[$key]['model'] == '5') ? $result[$key]['model'] 
+                    = "Dual purpose" : "";
+            ($result[$key]['model'] == '6') ? $result[$key]['model'] 
+                    = "Hand tractor" : "";
+            ($result[$key]['model'] == '7') ? $result[$key]['model'] 
+                    = "Jeep & Sport utility vehicle" : "";
+            ($result[$key]['model'] == '8') ? $result[$key]['model'] 
+                    = "Land vehicle" : "";
+            ($result[$key]['model'] == '9') ? $result[$key]['model'] 
+                    = "Motor coach" : "";
+            ($result[$key]['model'] == '10') ? $result[$key]['model'] 
+                    = "Motor cycle" : "";
+            ($result[$key]['model'] == '11') ? $result[$key]['model'] 
+                    = "Motor lorry" : "";
+            ($result[$key]['model'] == '12') ? $result[$key]['model'] 
+                    = "Motor tricycle van" : "";
+            ($result[$key]['model'] == '13') ? $result[$key]['model'] 
+                    = "Single cab" : "";
+            ($result[$key]['model'] == '14') ? $result[$key]['model']
+                    = "Special purpose vehicle" : "";
+            ($result[$key]['model'] == '15') ? $result[$key]['model'] 
+                    = "Three wheeler" : "";
+            ($result[$key]['model'] == '16') ? $result[$key]['model'] 
+                    = "Tractor" : "";
+            ($result[$key]['model'] == '17') ? $result[$key]['model'] 
+                    = "Tractor trailer/bowser" : "";
+            ($result[$key]['model'] == '18') ? $result[$key]['model'] 
+                    = "Van" : "";
+            ($result[$key]['model'] == '19') ? $result[$key]['model'] 
+                    = "Other vehicle" : "";
+            ($result[$key]['use_status'] == '0') ? $result[$key]['use_status'] 
+                    = "" : "";
+            ($result[$key]['use_status'] == '1') ? $result[$key]['use_status'] 
+                    = "Assigned" : "";
+            ($result[$key]['use_status'] == '2') ? $result[$key]['use_status'] 
+                    = "Commercial Purposes" : "";
+            ($result[$key]['use_status'] == '3') ? $result[$key]['use_status'] 
+                    = "Non Commercial Transport" : "";
+            ($result[$key]['use_status'] == '4') ? $result[$key]['use_status']
+                    = "Pool" : "";
+            ($result[$key]['use_status'] == '5') ? $result[$key]['use_status'] 
+                    = "Public Transport" : "";
+            ($result[$key]['use_status'] == '6') ? $result[$key]['use_status'] 
+                    = "Other" : "";
+            ($result[$key]['type'] == '0') ? $result[$key]['type'] = "" : "";
+            ($result[$key]['type'] == '1') ? $result[$key]['type'] 
+                    = "6112101 - Passenger Vehicles" : "";
+            ($result[$key]['type'] == '2') ? $result[$key]['type'] 
+                    = "6112102- Tractor Trailer" : "";
+            ($result[$key]['type'] == '3') ? $result[$key]['type'] 
+                    = "6112102 - Cargo Vehicles" : "";
+            ($result[$key]['type'] == '4') ? $result[$key]['type'] 
+                    = "6112103 - Tractors" : "";
+            ($result[$key]['type'] == '5') ? $result[$key]['type'] 
+                    = "6112103 - Agriculture Vehicles" : "";
+            ($result[$key]['type'] == '6') ? $result[$key]['type'] 
+                    = "6112104 - Industrial Vehicles" : "";
+            ($result[$key]['type'] == '7') ? $result[$key]['type'] 
+                    = "6112109 - Motor Cycles" : "";
+            ($result[$key]['type'] == '8') ? $result[$key]['type'] 
+                    = "66112109 - Bicycles" : "";
+            ($result[$key]['type'] == '9') ? $result[$key]['type'] 
+                    = "6112110 - Trailers" : "";            
+            ($result[$key]['type'] == '10') ? $result[$key]['type'] 
+                    = "land vehicle" : ""; 
+            ($result[$key]['type'] == '11') ? $result[$key]['type'] 
+                    = "6112111 - Other (not specified above)" : "";
+            ($result[$key]['running_status'] == '0') 
+                ? $result[$key]['running_status'] = "" : "";
+            ($result[$key]['running_status'] == '1') 
+                ? $result[$key]['running_status'] = "Running" : "";
+            ($result[$key]['running_status'] == '2') 
+                ? $result[$key]['running_status'] = "Not Running" : "";
+            ($result[$key]['running_status'] == '3') 
+                ? $result[$key]['running_status'] = "Under Repair" : "";
+            ($result[$key]['grade'] == '0') ? $result[$key]['grade'] 
+                    = "" : "";
+            ($result[$key]['grade'] == '1') ? $result[$key]['grade']
+                    = "Special" : "";
+            ($result[$key]['grade'] == '2') ? $result[$key]['grade'] 
+                    = "Grade 1" : "";
+            ($result[$key]['status_designation'] == '0') 
+                ? $result[$key]['status_designation'] = "" : "";
+            ($result[$key]['status_designation'] == '1') 
+                ? $result[$key]['status_designation'] = "Permanent" : "";
+            ($result[$key]['status_designation'] == '2') 
+                ? $result[$key]['status_designation'] = "Acting" : 
+            ($result[$key]['status_designation'] == '3') 
+                ? $result[$key]['status_designation'] = "Performing Duties" : "";  
+            ($result[$key]['status_designation'] == '4') 
+                ? $result[$key]['status_designation'] = "Duty Cover" : "";
+            ($result[$key]['monthly_fuel_allowance'] == '0') 
+                ? $result[$key]['monthly_fuel_allowance'] = "" : "";
+            ($result[$key]['monthly_fuel_allowance'] == '1') 
+                ? $result[$key]['monthly_fuel_allowance'] = "Yes" : "";
+            ($result[$key]['monthly_fuel_allowance'] == '2') 
+                ? $result[$key]['monthly_fuel_allowance'] = "No" : "";
+            ($result[$key]['monthly_fuel_intake'] == '0') 
+                ? $result[$key]['monthly_fuel_intake'] = "" : "";
         }
        
         $this->data['result'] = $result;

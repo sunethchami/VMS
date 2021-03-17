@@ -17,3 +17,12 @@ and open the template in the editor.
     display: inline-block !important;
     margin: 4px !important;
 }
+
+.td-action{
+    width:20%;
+    text-align: center;
+}
+
+.star{
+    color:red;
+}

@@ -207,7 +207,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                           <th class="th">Monthly Fuel Allowance</th>
                                           <th class="th">Monthly Fuel Intake</th>
                                           <th class="th">Other Note</th>
-                                          <th class="th">File Number</th>
+                                          <th class="th">File No</th>
+                                          <th class="th">File No/Book No</th>
                                           <th class="th">Director Division</th>
                                           <th class="th">Sub Division</th>
                                           <th class="th-action">Actions</th>
@@ -235,9 +236,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 echo'<td>' . $row['monthly_fuel_intake'] . '</td>'; 
                                                 echo'<td>' . $row['other_note'] . '</td>'; 
                                                 echo'<td>' . $row['file_number'] . '</td>'; 
+                                                echo'<td>' . $row['file_no_book_no'] . '</td>'; 
                                                 echo'<td>' . $row['director_division'] . '</td>'; 
                                                 echo'<td>' . $row['sub_division'] . '</td>'; 
-                                                echo'<td><p class="table-button"><a href="' . site_url() . 'StudentDetailsCon/moreDetails/' . $row['vehicle_number'] . '/'.$page.'"><img src="'. base_url() .'assets/icons/info-circle.svg" width="32" height="32" title="More Details"></a></p><p class="table-button"><a href="' . site_url() . 'StudentDetailsCon/editRecord/' . $row['vehicle_number'] . '/'. $page.'"><img src="'. base_url() .'assets/icons/pencil-square.svg" width="32" height="32" title="Edit"></a></p><p class="table-button"><a href="#" data-id="' . $row['vehicle_number'] . '" data-toggle="modal" class="deleteBtn" data-target="#comfirmModal"><img src="'. base_url() .'assets/icons/trash.svg" width="32" height="32" title ="Delete"></a></p></td>';
+                                                echo'<td class="td-action"><p class="table-button"><a href="' . site_url() . 'StudentDetailsCon/moreDetails/' . $row['vehicle_number'] . '/'.$page.'"><img src="'. base_url() .'assets/icons/info-circle.svg" width="32" height="32" title="More Details"></a></p><p class="table-button"><a href="' . site_url() . 'StudentDetailsCon/editRecord/' . $row['vehicle_number'] . '/'. $page.'"><img src="'. base_url() .'assets/icons/pencil-square.svg" width="32" height="32" title="Edit"></a></p><p class="table-button"><a href="#" data-id="' . $row['vehicle_number'] . '" data-toggle="modal" class="deleteBtn" data-target="#comfirmModal"><img src="'. base_url() .'assets/icons/trash.svg" width="32" height="32" title ="Delete"></a></p></td>';
                                                 echo'</tr>';
                                             }
                                             ?>
@@ -279,7 +281,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <script>
             $(document).ready(function() {
                 $('#allTable').DataTable({
-                        responsive: true
                 });
             });
         </script>
