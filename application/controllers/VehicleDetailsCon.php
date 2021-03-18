@@ -44,8 +44,7 @@ class VehicleDetailsCon extends CI_Controller {
      */
     
     public function setNewRecord() {
-        //var_dump($this->input->post());
-        //exit();
+        
         $owner = trim($this->input->post('owner'));
         $vehicle_number = trim($this->input->post('vehicle_number'));
         $model = trim($this->input->post('model'));
@@ -112,7 +111,6 @@ class VehicleDetailsCon extends CI_Controller {
     public function showAllRecordsPage() {        
         $this->data['message'] = $this->session->flashdata('message');
         $result = $this->VehicleDetailsModel->getAllRecords();
-        $this->data['page'] = "all";
         
         //var_dump($this->data['result']);
         
@@ -230,6 +228,22 @@ class VehicleDetailsCon extends CI_Controller {
        
         $this->data['result'] = $result;
         $this->load->view('vehicle_details/view_all_records_page',$this->data);
+    }
+    
+    /**
+     * author : Suneth Senanayake. 
+     * editReacord()
+     * show edit page for selected vehicle.
+     */
+    
+    public function editRecord() {
+        
+        $vehicle_no = utf8_decode(urldecode($this->uri->segment(3)));
+        
+        $this->data['result'] = $this->VehicleDetailsModel
+            ->getRecord($vehicle_no);
+        //var_dump($this->data['result']);
+        $this->load->view('vehicle_details/edit_record_page', $this->data);
     }
     
     

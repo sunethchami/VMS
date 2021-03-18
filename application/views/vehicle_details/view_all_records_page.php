@@ -189,6 +189,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <div class="table-responsive">
                                       <table class="display cell-border" id="allTable">
                                         <thead class=" text-primary">
+                                          <th class="th-action">Actions</th>
                                           <th class="th">Owner</th>
                                           <th class="th">Vehicle Number</th>
                                           <th class="th">Vehicle Model</th>
@@ -211,12 +212,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                           <th class="th">File No/Book No</th>
                                           <th class="th">Director Division</th>
                                           <th class="th">Sub Division</th>
-                                          <th class="th-action">Actions</th>
                                         </thead>
                                         <tbody>
                                          <?php
                                             foreach ($result as $row) {
                                                 echo'<tr>';
+                                                echo'<td class="td-action"><p class="table-button"><a href="' . site_url() . 'StudentDetailsCon/moreDetails/' . utf8_encode($row['vehicle_number']) . '"><img src="'. base_url() .'assets/icons/info-circle.svg" width="32" height="32" title="More Details"></a></p><p class="table-button"><a href="' . site_url() . 'VehicleDetailsCon/editRecord/' . utf8_encode($row['vehicle_number']) . '"><img src="'. base_url() .'assets/icons/pencil-square.svg" width="32" height="32" title="Edit"></a></p><p class="table-button"><a href="#" data-id="' . utf8_encode($row['vehicle_number']) . '" data-toggle="modal" class="deleteBtn" data-target="#comfirmModal"><img src="'. base_url() .'assets/icons/trash.svg" width="32" height="32" title ="Delete"></a></p></td>';
                                                 echo'<td>' . $row['owner'] . '</td>';
                                                 echo'<td>' . $row['vehicle_number'] . '</td>';
                                                 echo'<td>' . $row['model'] . '</td>';
@@ -238,8 +239,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 echo'<td>' . $row['file_number'] . '</td>'; 
                                                 echo'<td>' . $row['file_no_book_no'] . '</td>'; 
                                                 echo'<td>' . $row['director_division'] . '</td>'; 
-                                                echo'<td>' . $row['sub_division'] . '</td>'; 
-                                                echo'<td class="td-action"><p class="table-button"><a href="' . site_url() . 'StudentDetailsCon/moreDetails/' . $row['vehicle_number'] . '/'.$page.'"><img src="'. base_url() .'assets/icons/info-circle.svg" width="32" height="32" title="More Details"></a></p><p class="table-button"><a href="' . site_url() . 'StudentDetailsCon/editRecord/' . $row['vehicle_number'] . '/'. $page.'"><img src="'. base_url() .'assets/icons/pencil-square.svg" width="32" height="32" title="Edit"></a></p><p class="table-button"><a href="#" data-id="' . $row['vehicle_number'] . '" data-toggle="modal" class="deleteBtn" data-target="#comfirmModal"><img src="'. base_url() .'assets/icons/trash.svg" width="32" height="32" title ="Delete"></a></p></td>';
+                                                echo'<td>' . $row['sub_division'] . '</td>';                                                 
                                                 echo'</tr>';
                                             }
                                             ?>
