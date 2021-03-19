@@ -183,12 +183,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </div>
                                 <div class="panel-body">
                                     <div class="row">
-                                        <form role="form" id="add_new_records_form" method="post" action="<?php echo site_url(); ?>VehicleDetailsCon/setNewRecord">
+                                        <form role="form" id="add_new_records_form" method="post" action="<?php echo site_url(); ?>VehicleDetailsCon/updateRecord">
                                         <div class="col-lg-6">                                
                                                 <div class="form-group">
                                                     <label>Owner</label>
                                                     <input name="owner" class="form-control" value="<?php if(isset($result->owner)){ echo $result->owner;}else{ echo set_value('owner');} ?>">
-                                                    <input name="vehicle_number" type="hidden" value="<?php if(isset($result->vehicle_number)){ echo $result->vehicle_number;}else{ echo $indexVN;} ?>"/>
+                                                    <input name="vehicle_number_old" type="hidden" value="<?php if(isset($result->vehicle_number)){ echo $result->vehicle_number;}else{ echo $vehicle_number_old;} ?>"/>
                                                     <p class="help-block"></p>
                                                 </div>
                                                 <div class="form-group">
@@ -327,43 +327,43 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <label>Monthly Fuel Allowance</label>
                                                 <select name="monthly_fuel_allowance" class="form-control">
                                                     <option >Please select Monthly Fuel Allowance</option>
-                                                    <option value="1" <?= set_value('monthly_fuel_allowance') == '1' ? ' selected="selected"' : '';?>>Yes</option>
-                                                    <option value="2" <?= set_value('monthly_fuel_allowance') == '1' ? ' selected="selected"' : '';?>>No</option>
+                                                    <option value="1" <?php if(isset($result->monthly_fuel_allowance)){ echo $result->monthly_fuel_allowance == '1' ? ' selected="selected"' : '';}else{ echo set_value('monthly_fuel_allowance') == '1' ? ' selected="selected"' : '';} ?>>Yes</option>
+                                                    <option value="2" <?php if(isset($result->monthly_fuel_allowance)){ echo $result->monthly_fuel_allowance == '2' ? ' selected="selected"' : '';}else{ echo set_value('monthly_fuel_allowance') == '2' ? ' selected="selected"' : '';} ?>>No</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                 <label>Monthly Fuel Intake</label>
-                                                <input name="monthly_fuel_intake" class="form-control" value="<?php echo set_value('monthly_fuel_intake'); ?>">
+                                                <input name="monthly_fuel_intake" class="form-control" value="<?php if(isset($result->monthly_fuel_intake)){ echo $result->monthly_fuel_intake;}else{ echo set_value('monthly_fuel_intake');} ?>">
                                                 <p class="help-block"></p>
                                             </div>
                                             <div class="form-group">
                                                 <label>Other Note</label>
-                                                <textarea name="other_note" class="form-control" rows="3"><?php echo set_value('other_note'); ?></textarea>
+                                                <textarea name="other_note" class="form-control" rows="3"><?php if(isset($result->other_note)){ echo $result->other_note;}else{ echo set_value('other_note');} ?></textarea>
                                             </div>
                                             <div class="form-group">
                                                 <label>File Number</label>
-                                                <input name="file_number" class="form-control" value="<?php echo set_value('file_number'); ?>">
+                                                <input name="file_number" class="form-control" value="<?php if(isset($result->file_number)){ echo $result->file_number;}else{ echo set_value('file_number');} ?>">
                                                 <p class="help-block"></p>
                                             </div>
                                             <div class="form-group">
                                                 <label>File Number/Book Number</label>
-                                                <input name="file_no_book_no" class="form-control" value="<?php echo set_value('file_no_book_no'); ?>">
+                                                <input name="file_no_book_no" class="form-control" value="<?php if(isset($result->file_no_book_no)){ echo $result->file_no_book_no;}else{ echo set_value('file_no_book_no');} ?>">
                                                 <p class="help-block"></p>
                                             </div>
                                             <div class="form-group">
                                                 <label>Director Division</label>
-                                                <input name="director_division" class="form-control" value="<?php echo set_value('director_division'); ?>">
+                                                <input name="director_division" class="form-control" value="<?php if(isset($result->director_division)){ echo $result->director_division;}else{ echo set_value('director_division');} ?>">
                                                 <p class="help-block"></p>
                                             </div>
                                             <div class="form-group">
                                                 <label>Sub Division</label>
-                                                <input name="sub_division" class="form-control" value="<?php echo set_value('sub_division'); ?>">
+                                                <input name="sub_division" class="form-control" value="<?php if(isset($result->sub_division)){ echo $result->sub_division;}else{ echo set_value('sub_division');} ?>">
                                                 <p class="help-block"></p>
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
                                             <button type="submit" class="btn btn-default">Save</button>
-                                            <a href="<?php echo site_url(); ?>VehicleDetailsCon/showAddNewRecordPage" class="btn btn-default">Reset</a>
+                                            <a href="<?php echo site_url(); ?>VehicleDetailsCon/editRecord/<?php if(isset($result->vehicle_number)){echo utf8_encode($result->vehicle_number);}else{echo utf8_encode($vehicle_number_old);} ?>" class="btn btn-default">Reset</a>
                                         </div>
                                         </form>
                                         <!-- /.col-lg-6 (nested) -->

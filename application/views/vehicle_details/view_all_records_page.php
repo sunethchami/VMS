@@ -278,12 +278,52 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!-- Data tables -->
         <script src="<?php echo base_url() ?>assets/js/jquery.dataTables.min.js" type="text/javascript"></script>
         <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+        
+        <!--  Notifications Plugin    -->
+        <script src="<?php echo base_url() ?>assets/js/bootstrap-notify.js"></script>
+        
         <script>
             $(document).ready(function() {
                 $('#allTable').DataTable({
                 });
             });
         </script>
+        <script>
+            window.onload = function() {
+
+            <?php if (isset($message)) { ?>
+                <?php if ($message == 1) { ?>
+                
+                    var color = 'success'; 
+                    var icon = 'nc-icon nc-check-2';
+                    var msg = 'The record has been updated successfully.'  
+            
+                <?php  }  ?>
+            
+                <?php if ($message == 2) { ?>
+
+                    var color = 'success'; 
+                    var icon = 'nc-icon nc-check-2';
+                    var msg = 'The record has been deleted successfully.'  
+
+                <?php  }  ?>
+
+                $.notify({
+                    icon: icon,
+                    message: msg
+
+                }, {
+                    type: color,
+                    timer: 1000,
+                    placement: {
+                        from: 'top',
+                        align: 'right'
+                    }
+                });
+
+             <?php  }  ?>
+            }
+           </script>
 
     </body>
 </html>

@@ -420,7 +420,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     timer: 1000,
                     placement: {
                         from: 'top',
-                        align: 'center'
+                        align: 'right'
                     }
                 });
 
