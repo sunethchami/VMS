@@ -173,7 +173,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">View All Records</h1>
+                            <h1 class="page-header">Display Vehicle Details</h1>
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>
@@ -182,69 +182,97 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-lg-12">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    View all vehicle details
+                                    Display Details
                                 </div>
                                 <!-- /.panel-heading -->
                                 <div class="panel-body">
                                     <div class="table-responsive">
-                                      <table class="display cell-border" id="allTable">
-                                        <thead class=" text-primary">
-                                          <th class="th-action">Actions</th>
-                                          <th class="th">Owner</th>
-                                          <th class="th">Vehicle Number</th>
-                                          <th class="th">Vehicle Model</th>
-                                          <th class="th">Vehicle Brand</th>
-                                          <th class="th">Usage</th>
-                                          <th class="th">Expense</th>
-                                          <th class="th">Location</th>
-                                          <th class="th">Vehicle Type</th>
-                                          <th class="th">Vehicle Status</th>
-                                          <th class="th">Other Details</th>
-                                          <th class="th">Officer Name</th>
-                                          <th class="th">Officer Designation</th>
-                                          <th class="th">Officer Work Place</th>
-                                          <th class="th">Officer Grade</th>
-                                          <th class="th">Status of Designation</th>
-                                          <th class="th">Monthly Fuel Allowance</th>
-                                          <th class="th">Monthly Fuel Intake</th>
-                                          <th class="th">Other Note</th>
-                                          <th class="th">File No</th>
-                                          <th class="th">File No/Book No</th>
-                                          <th class="th">Director Division</th>
-                                          <th class="th">Sub Division</th>
-                                        </thead>
-                                        <tbody>
-                                         <?php
-                                            foreach ($result as $row) {
-                                                echo'<tr>';
-                                                echo'<td class="td-action"><p class="table-button"><a href="' . site_url() . 'VehicleDetailsCon/moreDetails/' . utf8_encode($row['vehicle_number']) . '"><img src="'. base_url() .'assets/icons/info-circle.svg" width="32" height="32" title="Display Details"></a></p><p class="table-button"><a href="' . site_url() . 'VehicleDetailsCon/editRecord/' . utf8_encode($row['vehicle_number']) . '"><img src="'. base_url() .'assets/icons/pencil-square.svg" width="32" height="32" title="Edit"></a></p><p class="table-button"><a href="#" data-id="' . utf8_encode($row['vehicle_number']) . '" data-toggle="modal" class="deleteBtn" data-target="#comfirmModal"><img src="'. base_url() .'assets/icons/trash.svg" width="32" height="32" title ="Delete"></a></p></td>';
-                                                echo'<td>' . $row['owner'] . '</td>';
-                                                echo'<td>' . $row['vehicle_number'] . '</td>';
-                                                echo'<td>' . $row['model'] . '</td>';
-                                                echo'<td>' . $row['brand'] . '</td>';
-                                                echo'<td>' . $row['use_status'] . '</td>'; 
-                                                echo'<td>' . $row['expense'] . '</td>'; 
-                                                echo'<td>' . $row['location'] . '</td>'; 
-                                                echo'<td>' . $row['type'] . '</td>'; 
-                                                echo'<td>' . $row['running_status'] . '</td>'; 
-                                                echo'<td>' . $row['other_details'] . '</td>'; 
-                                                echo'<td>' . $row['officer_name'] . '</td>';  
-                                                echo'<td>' . $row['designation'] . '</td>'; 
-                                                echo'<td>' . $row['workplace'] . '</td>'; 
-                                                echo'<td>' . $row['grade'] . '</td>'; 
-                                                echo'<td>' . $row['status_designation'] . '</td>'; 
-                                                echo'<td>' . $row['monthly_fuel_allowance'] . '</td>'; 
-                                                echo'<td>' . $row['monthly_fuel_intake'] . '</td>'; 
-                                                echo'<td>' . $row['other_note'] . '</td>'; 
-                                                echo'<td>' . $row['file_number'] . '</td>'; 
-                                                echo'<td>' . $row['file_no_book_no'] . '</td>'; 
-                                                echo'<td>' . $row['director_division'] . '</td>'; 
-                                                echo'<td>' . $row['sub_division'] . '</td>';                                                 
-                                                echo'</tr>';
-                                            }
-                                            ?>
-                                        </tbody>
-                                      </table>
+                                        <table class="table table-striped table-bordered table-hover">
+                                            <thead hidden>
+                                                 <tr>
+                                                 <th></th>
+                                                 <th></th>
+                                                 </tr>
+                                              </thead>
+                                            <tbody>
+                                              <?php                       
+                                                    echo'<tr>';
+                                                    echo'<td><b>'. "Owner" . '<b></td>';
+                                                    echo'<td>' . $result->owner . '</td>';
+                                                    echo'</tr>';
+                                                    echo'<tr>';
+                                                    echo'<td><b>'. "Vehicle Number" . '<b></td>';
+                                                    echo'<td>' . $result->vehicle_number . '</td>';
+                                                    echo'</tr>';
+                                                    echo'<tr>';
+                                                    echo'<td><b>'. "Vehicle Model" . '<b></td>';
+                                                    echo'<td>' . $result->model . '</td>';
+                                                    echo'</tr>';
+                                                    echo'<tr>';
+                                                    echo'<td><b>'. "Vehicle Brand" . '<b></td>';
+                                                    echo'<td>' . $result->brand . '</td>';
+                                                    echo'</tr>';
+                                                    echo'<tr>';
+                                                    echo'<td><b>'. "Usage" . '<b></td>';
+                                                    echo'<td>' . $result->use_status . '</td>';
+                                                    echo'</tr>';
+                                                    echo'<tr>';
+                                                    echo'<td><b>'. "Expense" . '<b></td>';
+                                                    echo'<td>' . $result->expense. '</td>';
+                                                    echo'</tr>';
+                                                    echo'<tr>';
+                                                    echo'<td><b>'. "Location" . '<b></td>';
+                                                    echo'<td>' . $result->location . '</td>';
+                                                    echo'</tr>';
+                                                    echo'<tr>';
+                                                    echo'<td><b>'. "Vehicle Type" . '<b></td>';
+                                                    echo'<td>' . $result->type . '</td>';
+                                                    echo'</tr>';                                                                                                            
+                                                    echo'<td><b>'. "Vehicle Status" . '<b></td>';
+                                                    echo'<td>' . $result->running_status . '</td>';
+                                                    echo'</tr>';                                                                                                            
+                                                    echo'<td><b>'. "Other Details" . '<b></td>';
+                                                    echo'<td>' . $result->monthly_fuel_intake . '</td>';
+                                                    echo'</tr>';                                                                                                            
+                                                    echo'<td><b>'. "Officer Name" . '<b></td>';
+                                                    echo'<td>' . $result->other_note . '</td>';
+                                                    echo'</tr>';                                                                                                            
+                                                    echo'<td><b>'. "Officer Designation" . '<b></td>';
+                                                    echo'<td>' . $result->designation . '</td>';
+                                                    echo'</tr>';                                                                                                            
+                                                    echo'<td><b>'. "Officer Work Place" . '<b></td>';
+                                                    echo'<td>' . $result->workplace . '</td>';
+                                                    echo'</tr>';                                                                                                            
+                                                    echo'<td><b>'. "Officer Grade" . '<b></td>';
+                                                    echo'<td>' . $result->grade . '</td>';
+                                                    echo'</tr>';                                                                                                            
+                                                    echo'<td><b>'. "Status of Designation" . '<b></td>';
+                                                    echo'<td>' . $result->status_designation . '</td>';
+                                                    echo'</tr>';                                                                                                            
+                                                    echo'<td><b>'. "Monthly Fuel Allowance" . '<b></td>';
+                                                    echo'<td>' . $result->monthly_fuel_allowance . '</td>';
+                                                    echo'</tr>';                                                                                                            
+                                                    echo'<td><b>'. "Monthly Fuel Intake" . '<b></td>';
+                                                    echo'<td>' . $result->monthly_fuel_intake . '</td>';
+                                                    echo'</tr>';                                                                                                            
+                                                    echo'<td><b>'. "Other Note" . '<b></td>';
+                                                    echo'<td>' . $result->other_note . '</td>';
+                                                    echo'</tr>';                                                                                                            
+                                                    echo'<td><b>'. "File No" . '<b></td>';
+                                                    echo'<td>' . $result->file_number . '</td>';
+                                                    echo'</tr>';                                                                                                            
+                                                    echo'<td><b>'. "File No/Book No" . '<b></td>';
+                                                    echo'<td>' . $result->file_no_book_no . '</td>';
+                                                    echo'</tr>';                                                                                                            
+                                                    echo'<td><b>'. "Director Division" . '<b></td>';
+                                                    echo'<td>' . $result->director_division . '</td>';
+                                                    echo'</tr>';                                                                                                            
+                                                    echo'<td><b>'. "Sub Division" . '<b></td>';
+                                                    echo'<td>' . $result->sub_division . '</td>';
+                                                    echo'</tr>';                                                                                                            
+                                                ?>
+                                            </tbody>
+                                        </table>
                                     </div>
                                     <!-- /.table-responsive -->                                    
                                 </div>

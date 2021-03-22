@@ -60,7 +60,8 @@ class VehicleDetailsCon extends CI_Controller {
         $workplace = trim($this->input->post('workplace'));
         $grade = trim($this->input->post('grade'));
         $status_designation = trim($this->input->post('status_designation'));
-        $monthly_fuel_allowance = trim($this->input->post('monthly_fuel_allowance'));
+        $monthly_fuel_allowance = trim($this->input
+                ->post('monthly_fuel_allowance'));
         $monthly_fuel_intake = trim($this->input->post('monthly_fuel_intake'));
         $other_note = trim($this->input->post('other_note'));
         $file_number = trim($this->input->post('file_number'));
@@ -213,7 +214,8 @@ class VehicleDetailsCon extends CI_Controller {
             ($result[$key]['status_designation'] == '2') 
                 ? $result[$key]['status_designation'] = "Acting" : 
             ($result[$key]['status_designation'] == '3') 
-                ? $result[$key]['status_designation'] = "Performing Duties" : "";  
+                ? $result[$key]['status_designation'] = 
+                    "Performing Duties" : "";  
             ($result[$key]['status_designation'] == '4') 
                 ? $result[$key]['status_designation'] = "Duty Cover" : "";
             ($result[$key]['monthly_fuel_allowance'] == '0') 
@@ -292,8 +294,8 @@ class VehicleDetailsCon extends CI_Controller {
                     'is_unique[vehicle_details_tb.vehicle_number]',
                 array('is_unique' => 'This %s already exist.')); 
             }else{
-                $this->form_validation->set_rules('vehicle_number','Vehicle Number',
-            'required');
+                $this->form_validation->set_rules('vehicle_number',
+                        'Vehicle Number','required');
             }
         }
         
@@ -334,6 +336,21 @@ class VehicleDetailsCon extends CI_Controller {
             redirect('VehicleDetailsCon/showAllRecordsPage');  
                       
         } 
+    }
+    
+    /**
+     * author : Suneth Senanayake. 
+     * moreDetails()
+     * View more details for selected vehicle.
+     */
+    
+    public function moreDetails() {
+        
+        $vehicleNumber = $this->uri->segment(3);
+        $this->data['result'] = $this->VehicleDetailsModel
+                ->getRecord($vehicleNumber);        
+        $this->load->view('vehicle_details/more_details_page', $this->data);
+        
     }
     
     
