@@ -31,5 +31,12 @@ class VehicleDetailsModel extends CI_Model {
         $this->db->where('vehicle_number',$vehicle_number);
         return $this->db->update('vehicle_details_tb',$data);
     }
+    
+    public function getRecordArray($vehicle_no){
+        $this->db->select('*');
+        $this->db->where('vehicle_number',$vehicle_no);
+        $query = $this->db->get('vehicle_details_tb');
+        return $query->result_array(); 
+    }
 }
 

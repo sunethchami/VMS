@@ -109,11 +109,21 @@ class VehicleDetailsCon extends CI_Controller {
         
     }
     
+    /**
+     * author : Suneth Senanayake. 
+     * showAllRecordsPage()
+     * Show all records in table.
+     **/
+    
     public function showAllRecordsPage() {        
         $this->data['message'] = $this->session->flashdata('message');
         $result = $this->VehicleDetailsModel->getAllRecords();
-        
-        //var_dump($this->data['result']);
+        $result = $this->getVahicleDetailsWithFullValue($result);       
+        $this->data['result'] = $result;
+        $this->load->view('vehicle_details/view_all_records_page',$this->data);
+    }
+    
+    private function getVahicleDetailsWithFullValue($result){
         
         foreach ($result as $key => $value) {
            
@@ -227,10 +237,9 @@ class VehicleDetailsCon extends CI_Controller {
             ($result[$key]['monthly_fuel_intake'] == '0') 
                 ? $result[$key]['monthly_fuel_intake'] = "" : "";
         }
-       
-        $this->data['result'] = $result;
-        $this->load->view('vehicle_details/view_all_records_page',$this->data);
+        return $result;
     }
+    
     
     /**
      * author : Suneth Senanayake. 
@@ -344,11 +353,12 @@ class VehicleDetailsCon extends CI_Controller {
      * View more details for selected vehicle.
      */
     
-    public function moreDetails() {
+    public function displayDetails() {
         
         $vehicleNumber = $this->uri->segment(3);
-        $this->data['result'] = $this->VehicleDetailsModel
-                ->getRecord($vehicleNumber);        
+        $result = $this->VehicleDetailsModel
+                ->getRecordArray($vehicleNumber); 
+        $this->data['result'] = $this->getVahicleDetailsWithFullValue($result);
         $this->load->view('vehicle_details/more_details_page', $this->data);
         
     }
