@@ -262,6 +262,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         </div>
         <!-- /#wrapper -->
+        
+        <!-- Modal -->
+          <div class="modal fade" id="comfirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Delete a Record</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                 Are you sure, do you want to delete this record?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" id="yesBtn">Yes</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>              
+                </div>
+              </div>
+            </div>
+          </div>
+        
+        
 
         <!-- jQuery -->
         <script src="<?php echo base_url() ?>assets/js/jquery.min.js"></script>
@@ -285,6 +308,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <script>
             $(document).ready(function() {
                 $('#allTable').DataTable({
+                });
+                
+                 $('.deleteBtn').click(function(){
+                    var ID = $(this).data('id');
+                    //set the data attribute on the modal button
+                 $('#yesBtn').data('id', ID); 
+                });
+
+                $('#yesBtn').click(function(){
+                    var vehicle_id = $(this).data('id');
+                    window.location = "<?php echo site_url(); ?>VehicleDetailsCon/deleteRecord/"+vehicle_id;
                 });
             });
         </script>
