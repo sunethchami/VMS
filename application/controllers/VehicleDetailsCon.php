@@ -363,6 +363,30 @@ class VehicleDetailsCon extends CI_Controller {
         
     }
     
+    /**
+     * author : Suneth Senanayake. 
+     * deleteRacord()
+     * Delete record from db for selected vehicle.
+     */
+    
+    public function deleteRecord() {
+        
+       $vehicle_no = utf8_decode(urldecode($this->uri->segment(3)));
+        
+        $result = $this->VehicleDetailsModel->deleteRecordData($vehicle_no);
+        if ($result == 1) {
+            $this->session->set_flashdata('message', '2'); 
+            redirect('VehicleDetailsCon/showAllRecordsPage');                        
+        } else {
+            echo "Database error!";
+        }
+    } 
+    
+    public function showImportVehicleDetailsPage() {
+        $this->data['message'] = $this->session->flashdata('message');
+        $this->load->view('import/vehicle_details_page',$this->data);
+    }
+    
     
     
 }

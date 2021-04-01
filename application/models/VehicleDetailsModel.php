@@ -38,5 +38,10 @@ class VehicleDetailsModel extends CI_Model {
         $query = $this->db->get('vehicle_details_tb');
         return $query->result_array(); 
     }
+    
+    public function deleteRecordData($vehicle_no){
+        $this->db->where('vehicle_number', $vehicle_no);
+        return $query = $this->db->delete('vehicle_details_tb');        
+    }
 }
 
