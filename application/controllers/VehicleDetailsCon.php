@@ -211,6 +211,8 @@ class VehicleDetailsCon extends CI_Controller {
                 ? $result[$key]['running_status'] = "Not Running" : "";
             ($result[$key]['running_status'] == '3') 
                 ? $result[$key]['running_status'] = "Under Repair" : "";
+            ($result[$key]['running_status'] == '4') 
+                ? $result[$key]['running_status'] = "Tender" : "";
             ($result[$key]['grade'] == '0') ? $result[$key]['grade'] 
                     = "" : "";
             ($result[$key]['grade'] == '1') ? $result[$key]['grade']

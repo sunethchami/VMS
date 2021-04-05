@@ -145,14 +145,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <!-- /input-group -->
                             </li>
                             <li>
-                                <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                                <a href="<?php echo site_url(); ?>DashboardCon/index"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                             </li>
                             <li>
                                 <a href="#" class="active"><i class="fa fa-automobile fa-fw"></i> Vehicle Details<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="flot.html">Search</a>
-                                    </li>
                                     <li>
                                         <a href="<?php echo site_url(); ?>VehicleDetailsCon/showAddNewRecordPage">Add New Record</a>
                                     </li>
@@ -166,13 +163,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <a href="#"><i class="fa fa-automobile fa-fw"></i> Import<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="flot.html">Vehicle Details</a>
+                                        <a href="<?php echo site_url(); ?>VehicleDetailsCon/showImportVehicleDetailsPage">Vehicle Details</a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo site_url(); ?>VehicleDetailsCon/showAddNewRecordPage">Reservation of Official Vehicles</a>
+                                        <a href="#">Reservation of Official Vehicles</a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo site_url(); ?>VehicleDetailsCon/showAllRecordsPage">Certificates of registration</a>
+                                        <a href="#">Certificates of registration</a>
                                     </li>
                                 </ul>
                                 <!-- /.nav-second-level -->
@@ -207,8 +204,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                           <th class="th-action">Actions</th>
                                           <th class="th">Owner</th>
                                           <th class="th">Vehicle Number</th>
-                                          <th class="th">Vehicle Model</th>
-                                          <th class="th">Vehicle Brand</th>
+                                          <th class="th">Vehicle Model</th>                                          
                                           <th class="th">Usage</th>
                                           <th class="th">Expense</th>
                                           <th class="th">Location</th>
@@ -225,6 +221,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                           <th class="th">Other Note</th>
                                           <th class="th">File No</th>
                                           <th class="th">File No/Book No</th>
+                                          <th class="th">Vehicle Brand</th>
                                           <th class="th">Director Division</th>
                                           <th class="th">Sub Division</th>
                                         </thead>
@@ -236,7 +233,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 echo'<td>' . $row['owner'] . '</td>';
                                                 echo'<td>' . $row['vehicle_number'] . '</td>';
                                                 echo'<td>' . $row['model'] . '</td>';
-                                                echo'<td>' . $row['brand'] . '</td>';
                                                 echo'<td>' . $row['use_status'] . '</td>'; 
                                                 echo'<td>' . $row['expense'] . '</td>'; 
                                                 echo'<td>' . $row['location'] . '</td>'; 
@@ -252,7 +248,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 echo'<td>' . $row['monthly_fuel_intake'] . '</td>'; 
                                                 echo'<td>' . $row['other_note'] . '</td>'; 
                                                 echo'<td>' . $row['file_number'] . '</td>'; 
-                                                echo'<td>' . $row['file_no_book_no'] . '</td>'; 
+                                                echo'<td>' . $row['file_no_book_no'] . '</td>';                                                 
+                                                echo'<td>' . $row['brand'] . '</td>';
                                                 echo'<td>' . $row['director_division'] . '</td>'; 
                                                 echo'<td>' . $row['sub_division'] . '</td>';                                                 
                                                 echo'</tr>';

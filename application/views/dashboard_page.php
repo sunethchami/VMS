@@ -97,9 +97,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <a href="#"><i class="fa fa-automobile fa-fw"></i> Vehicle Details<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="flot.html">Search</a>
-                                    </li>
-                                    <li>
                                         <a href="<?php echo site_url(); ?>VehicleDetailsCon/showAddNewRecordPage">Add New Record</a>
                                     </li>
                                     <li>
@@ -115,10 +112,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <a href="<?php echo site_url(); ?>VehicleDetailsCon/showImportVehicleDetailsPage">Vehicle Details</a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo site_url(); ?>VehicleDetailsCon/showAddNewRecordPage">Reservation of Official Vehicles</a>
+                                        <a href="#">Reservation of Official Vehicles</a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo site_url(); ?>VehicleDetailsCon/showAllRecordsPage">Certificates of registration</a>
+                                        <a href="#">Certificates of registration</a>
                                     </li>
                                 </ul>
                                 <!-- /.nav-second-level -->

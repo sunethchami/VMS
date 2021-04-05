@@ -142,14 +142,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <!-- /input-group -->
                             </li>                            
                             <li>
-                                <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                                <a href="<?php echo site_url(); ?>DashboardCon/index"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                             </li>
                             <li>
-                                <a href="#" class="active"><i class="fa fa-automobile fa-fw"></i> Vehicle Details<span class="fa arrow"></span></a>
+                                <a href="#"><i class="fa fa-automobile fa-fw"></i> Vehicle Details<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="flot.html">Search</a>
-                                    </li>
                                     <li>
                                         <a href="<?php echo site_url(); ?>VehicleDetailsCon/showAddNewRecordPage">Add New Record</a>
                                     </li>
@@ -163,13 +160,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <a href="#"><i class="fa fa-automobile fa-fw"></i> Import<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="flot.html">Vehicle Details</a>
+                                        <a href="<?php echo site_url(); ?>VehicleDetailsCon/showImportVehicleDetailsPage">Vehicle Details</a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo site_url(); ?>VehicleDetailsCon/showAddNewRecordPage">Reservation of Official Vehicles</a>
+                                        <a href="#">Reservation of Official Vehicles</a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo site_url(); ?>VehicleDetailsCon/showAllRecordsPage">Certificates of registration</a>
+                                        <a href="#">Certificates of registration</a>
                                     </li>
                                 </ul>
                                 <!-- /.nav-second-level -->
@@ -286,8 +283,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         cache:false,
                         processData:false,
                         success:function(data){
-                            $('#file').val('');                            
-                            alert(data);
+                            var color = 'success'; 
+                            var icon = 'nc-icon nc-check-2';
+                            var msg = 'Data has been added successfully.' 
+                            
+                            $.notify({
+                                icon: icon,
+                                message: msg
+                            },{
+                                type: color,
+                                timer: 1000,
+                                placement: {
+                                    from: 'top',
+                                    align: 'right'
+                                }
+                            });
                         }
                      })
                  });

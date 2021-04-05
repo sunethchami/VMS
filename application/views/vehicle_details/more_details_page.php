@@ -145,14 +145,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <!-- /input-group -->
                             </li>
                             <li>
-                                <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                                <a href="<?php echo site_url(); ?>DashboardCon/index"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                             </li>
                             <li>
                                 <a href="#" class="active"><i class="fa fa-automobile fa-fw"></i> Vehicle Details<span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="flot.html">Search</a>
-                                    </li>
+                                <ul class="nav nav-second-level">                                    
                                     <li>
                                         <a href="<?php echo site_url(); ?>VehicleDetailsCon/showAddNewRecordPage">Add New Record</a>
                                     </li>
@@ -166,13 +163,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <a href="#"><i class="fa fa-automobile fa-fw"></i> Import<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="flot.html">Vehicle Details</a>
+                                        <a href="<?php echo site_url(); ?>VehicleDetailsCon/showImportVehicleDetailsPage">Vehicle Details</a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo site_url(); ?>VehicleDetailsCon/showAddNewRecordPage">Reservation of Official Vehicles</a>
+                                        <a href="#">Reservation of Official Vehicles</a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo site_url(); ?>VehicleDetailsCon/showAllRecordsPage">Certificates of registration</a>
+                                        <a href="#">Certificates of registration</a>
                                     </li>
                                 </ul>
                                 <!-- /.nav-second-level -->
@@ -222,10 +219,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     echo'<tr>';
                                                     echo'<td><b>'. "Vehicle Model" . '<b></td>';
                                                     echo'<td>' . $result[0]['model'] . '</td>';
-                                                    echo'</tr>';
-                                                    echo'<tr>';
-                                                    echo'<td><b>'. "Vehicle Brand" . '<b></td>';
-                                                    echo'<td>' . $result[0]['brand']. '</td>';
                                                     echo'</tr>';
                                                     echo'<tr>';
                                                     echo'<td><b>'. "Usage" . '<b></td>';
@@ -278,7 +271,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     echo'</tr>';                                                                                                            
                                                     echo'<td><b>'. "File No/Book No" . '<b></td>';
                                                     echo'<td>' . $result[0]['file_no_book_no'] . '</td>';
-                                                    echo'</tr>';                                                                                                            
+                                                    echo'</tr>';  
+                                                    echo'<tr>';
+                                                    echo'<td><b>'. "Vehicle Brand" . '<b></td>';
+                                                    echo'<td>' . $result[0]['brand']. '</td>';
+                                                    echo'</tr>';                                                                                                          
                                                     echo'<td><b>'. "Director Division" . '<b></td>';
                                                     echo'<td>' . $result[0]['director_division'] . '</td>';
                                                     echo'</tr>';                                                                                                            

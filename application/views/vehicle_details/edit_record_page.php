@@ -142,14 +142,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <!-- /input-group -->
                             </li>                            
                             <li>
-                                <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                                <a href="<?php echo site_url(); ?>DashboardCon/index"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                             </li>
                             <li>
                                 <a href="#" class="active"><i class="fa fa-automobile fa-fw"></i> Vehicle Details<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="flot.html">Search</a>
-                                    </li>
                                     <li>
                                         <a href="<?php echo site_url(); ?>VehicleDetailsCon/showAddNewRecordPage">Add New Record</a>
                                     </li>
@@ -163,13 +160,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <a href="#"><i class="fa fa-automobile fa-fw"></i> Import<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="flot.html">Vehicle Details</a>
+                                        <a href="<?php echo site_url(); ?>VehicleDetailsCon/showImportVehicleDetailsPage">Vehicle Details</a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo site_url(); ?>VehicleDetailsCon/showAddNewRecordPage">Reservation of Official Vehicles</a>
+                                        <a href="#">Reservation of Official Vehicles</a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo site_url(); ?>VehicleDetailsCon/showAllRecordsPage">Certificates of registration</a>
+                                        <a href="#">Certificates of registration</a>
                                     </li>
                                 </ul>
                                 <!-- /.nav-second-level -->
@@ -235,12 +232,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         <option value="18" <?php if(isset($result->model)){ echo $result->model == '18' ? ' selected="selected"' : '';}else{ echo set_value('model') == '18' ? ' selected="selected"' : '';} ?>>Van</option>
                                                         <option value="19" <?php if(isset($result->model)){ echo $result->model == '19' ? ' selected="selected"' : '';}else{ echo set_value('model') == '19' ? ' selected="selected"' : '';} ?>>Other vehicle</option>
                                                     </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Vehicle Brand</label>
-                                                    <input name="brand" class="form-control"  value="<?php if(isset($result->brand)){ echo $result->brand;}else{ echo set_value('brand');} ?>">
-                                                    <p class="help-block"></p>
-                                                </div>
+                                                </div>                          
                                                 <div class="form-group">
                                                     <label>Usage</label>
                                                     <select name="use_status" class="form-control">
@@ -295,6 +287,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     <div class="radio">
                                                         <label>
                                                             <input type="radio" name="running_status" <?php if(isset($result->running_status)){ echo $result->running_status == '3' ? 'checked' : '';}else{ echo set_value('running_status') == '3' ? 'checked' : '';} ?> id="optionsRadios3" value="3">Under Repair
+                                                        </label>
+                                                    </div>                                  
+                                                    <div class="radio">
+                                                        <label>
+                                                            <input type="radio" name="running_status" <?php if(isset($result->running_status)){ echo $result->running_status == '4' ? 'checked' : '';}else{ echo set_value('running_status') == '4' ? 'checked' : '';} ?> id="optionsRadios4" value="4">Tender
                                                         </label>
                                                     </div>                                  
                                                 </div>
@@ -363,6 +360,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <div class="form-group">
                                                 <label>File Number/Book Number</label>
                                                 <input name="file_no_book_no" class="form-control" value="<?php if(isset($result->file_no_book_no)){ echo $result->file_no_book_no;}else{ echo set_value('file_no_book_no');} ?>">
+                                                <p class="help-block"></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Vehicle Brand</label>
+                                                <input name="brand" class="form-control"  value="<?php if(isset($result->brand)){ echo $result->brand;}else{ echo set_value('brand');} ?>">
                                                 <p class="help-block"></p>
                                             </div>
                                             <div class="form-group">
