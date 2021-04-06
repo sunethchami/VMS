@@ -160,7 +160,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <a href="#"><i class="fa fa-upload fa-fw"></i> Import<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="<?php echo site_url(); ?>ImportCon/showImportVehicleDetailsPage">Vehicle Details</a>
+                                        <a href="<?php echo site_url(); ?>VehicleDetailsCon/showImportVehicleDetailsPage">Vehicle Details</a>
                                     </li>
                                     <li>
                                         <a href="#">Reservation of Official Vehicles</a>
@@ -182,7 +182,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h2 class="page-header">Import Vehicle Details</h2>
+                            <h2 class="page-header">Import Reservation of Official Vehicles</h2>
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>
@@ -191,11 +191,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-lg-12">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    Vehicle details
+                                    Reservation of Official Vehicles
                                 </div>
                                 <div class="panel-body">
                                     <div class="row">
-                                        <form role="form" id="import_form" method="post" enctype="multipart/form-data">
+                                        <form role="form" id="import_form" method="post"  enctype="multipart/form-data">
                                             <div class="col-lg-6">                                
                                                     <div class="form-group">
                                                         <label>Select Excel File</label>
@@ -276,7 +276,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $('#import_form').on('submit', function(event){
                     event.preventDefault();
                     $.ajax({
-                        url:"<?php echo base_url(); ?>ImportCon/importVehicleDetails",
+                        url:"<?php echo base_url(); ?>ImportCon/importReservationOfOfficialVehicles",
                         method:"POST",
                         data:new FormData(this),
                         contentType:false,

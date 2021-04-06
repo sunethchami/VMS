@@ -160,10 +160,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <!-- /.nav-second-level -->
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-automobile fa-fw"></i> Import<span class="fa arrow"></span></a>
+                                <a href="#"><i class="fa fa-upload fa-fw"></i> Import<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="<?php echo site_url(); ?>VehicleDetailsCon/showImportVehicleDetailsPage">Vehicle Details</a>
+                                        <a href="<?php echo site_url(); ?>ImportCon/showImportVehicleDetailsPage">Vehicle Details</a>
                                     </li>
                                     <li>
                                         <a href="#">Reservation of Official Vehicles</a>

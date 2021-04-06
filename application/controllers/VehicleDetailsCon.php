@@ -384,12 +384,5 @@ class VehicleDetailsCon extends CI_Controller {
         }
     } 
     
-    public function showImportVehicleDetailsPage() {
-        $this->data['message'] = $this->session->flashdata('message');
-        $this->load->view('import/vehicle_details_page',$this->data);
-    }
-    
-    
-    
 }
 

@@ -13,14 +13,22 @@ class ImportCon extends CI_Controller {
         $this->load->library('excel');
     }
     
+    public function showImportVehicleDetailsPage() {
+        $this->load->view('import/vehicle_details_page');
+    }
+    
     public function importVehicleDetails() {
         
         if (isset($_FILES["file"]["name"])) {
+            
             $path = $_FILES["file"]["tmp_name"];
             $object = PHPExcel_IOFactory::load($path);
+            
             foreach ($object->getWorksheetIterator() as $worksheet) {
+                
                 $highestRow = $worksheet->getHighestRow();
                 $highestColumn = $worksheet->getHighestColumn();
+                
                 for ($row = 2; $row <= $highestRow; $row++) {
                     $owner = $worksheet->getCellByColumnAndRow(0, $row)
                         ->getValue();
@@ -223,6 +231,63 @@ class ImportCon extends CI_Controller {
         }
         
         return $running_status_new;
+    }
+    
+    public function showImportResevationOfOfficialVehiclePage() {
+        $this->load->view('import/vehicle_details_page');
+    }
+    
+    public function importReservationOfOfficialVehicles() {
+        
+         if (isset($_FILES["file"]["name"])) {
+             
+            $path = $_FILES["file"]["tmp_name"];
+            $object = PHPExcel_IOFactory::load($path);
+            
+            foreach ($object->getWorksheetIterator() as $worksheet) {
+                
+                $highestRow = $worksheet->getHighestRow();
+                $highestColumn = $worksheet->getHighestColumn();
+
+                for ($row = 2; $row <= $highestRow; $row++) {
+                    echo $Grade = $worksheet->getCellByColumnAndRow(0, $row)
+                        ->getValue();
+                    echo $officerDesignation = $worksheet->getCellByColumnAndRow(1, $row)
+                        ->getValue();
+                    echo $officerWorkPlace = $worksheet->getCellByColumnAndRow(2, $row)
+                        ->getValue();                   
+                    echo $officerName = $worksheet->getCellByColumnAndRow(3, $row)
+                        ->getValue();
+                    echo $statusOfDesignation = $worksheet->getCellByColumnAndRow(4, $row)
+                        ->getValue();
+                    echo $vehicleNumber = $worksheet->getCellByColumnAndRow(5, $row)
+                        ->getValue();
+                    echo $monthlyFuelAllowance = $worksheet->getCellByColumnAndRow(6, $row)
+                        ->getValue();
+                    echo $otherNote = $worksheet->getCellByColumnAndRow(7, $row)
+                        ->getValue();
+                    echo $FileNumber = $worksheet->getCellByColumnAndRow(8, $row)
+                        ->getValue();       
+       
+//                    $data[] = array(
+//                        'owner' => $owner,
+//                        'vehicle_number' => $vehicle_number,
+//                        'model' => $this->getModel($model),
+//                        'use_status' => $this->getUseStatus($use_status),
+//                        'expense' => $expense,
+//                        'location' => $location,
+//                        'type' => $this->getType($type),
+//                        'running_status' => $this->
+//                            getRunningStatus($running_status),
+//                        'other_details' => $other_details,
+//                    );
+                }
+            }
+            
+            $this->ImportModel->setVehicleData($data);
+            echo 'Data Imported successfully';
+        }
+        
     }
 
 }
