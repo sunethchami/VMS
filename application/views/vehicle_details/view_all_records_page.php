@@ -185,7 +185,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">View All Records</h1>
+                            <h1 class="page-header">View all vehicle details</h1>
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>
@@ -194,7 +194,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-lg-12">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    View all vehicle details
+                                    View All Records
                                 </div>
                                 <!-- /.panel-heading -->
                                 <div class="panel-body">
