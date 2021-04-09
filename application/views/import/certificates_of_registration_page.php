@@ -1,13 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-
             
             <div id="page-wrapper">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h2 class="page-header">Import Reservation of Official Vehicles</h2>
+                            <h2 class="page-header">Import Certificates of Registration</h2>
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>
@@ -16,11 +15,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-lg-12">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    Reservation of Official Vehicles
+                                    Certificates of Registration
                                 </div>
                                 <div class="panel-body">
                                     <div class="row">
-                                        <form role="form" id="import_form" method="post"  enctype="multipart/form-data">
+                                        <form role="form" id="import_form" method="post" enctype="multipart/form-data">
                                             <div class="col-lg-6">                                
                                                     <div class="form-group">
                                                         <label>Select Excel File</label>
@@ -101,7 +100,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $('#import_form').on('submit', function(event){
                     event.preventDefault();
                     $.ajax({
-                        url:"<?php echo base_url(); ?>ImportCon/importReservationOfOfficialVehicles",
+                        url:"<?php echo base_url(); ?>ImportCon/importCertificatesOfRegistration",
                         method:"POST",
                         data:new FormData(this),
                         contentType:false,
@@ -128,4 +127,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                  });
 
                 });
-           </script>
+           </script> 

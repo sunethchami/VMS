@@ -15,7 +15,9 @@ class ImportCon extends CI_Controller {
     }
     
     public function showImportVehicleDetailsPage() {
+        $this->load->view('templates/header');
         $this->load->view('import/vehicle_details_page');
+        $this->load->view('templates/footer');
     }
     
     public function importVehicleDetails() {
@@ -235,7 +237,9 @@ class ImportCon extends CI_Controller {
     }
     
     public function showImportResevationOfOfficialVehiclePage() {
+        $this->load->view('templates/header');
         $this->load->view('import/reservation_of_official_vahicle_page');
+        $this->load->view('templates/footer');
     }
     
     public function importReservationOfOfficialVehicles() {
@@ -334,6 +338,60 @@ class ImportCon extends CI_Controller {
         }
         
         return $grade_new;
+    }
+    
+     public function showImportCertificatesOfRegistrationPage() {
+        $this->load->view('templates/header');
+        $this->load->view('import/certificates_of_registration_page');
+        $this->load->view('templates/footer');
+    }
+    
+    public function importCertificatesOfRegistration() {
+        
+        if (isset($_FILES["file"]["name"])) {
+            
+            $path = $_FILES["file"]["tmp_name"];
+            $object = PHPExcel_IOFactory::load($path);
+            
+            foreach ($object->getWorksheetIterator() as $worksheet) {
+                
+                $highestRow = $worksheet->getHighestRow();
+                $highestColumn = $worksheet->getHighestColumn();
+                
+                for ($row = 2; $row <= $highestRow; $row++) {
+                    $vehicle_number = $worksheet->getCellByColumnAndRow(0, $row)
+                        ->getValue();
+                    $brand = $worksheet->getCellByColumnAndRow(1, $row)
+                        ->getValue();
+                    $director_division = $worksheet->getCellByColumnAndRow(2, $row)
+                        ->getValue();                   
+                    $sub_division = $worksheet->getCellByColumnAndRow(3, $row)
+                        ->getValue();
+                    $file_no_book_no = $worksheet->getCellByColumnAndRow(4, $row)
+                        ->getValue();      
+       
+                    $data = array(
+                        'vehicle_number' => $vehicle_number,
+                        'brand' => $brand,
+                        'director_division' => $director_division,
+                        'sub_division' => $sub_division,
+                        'file_no_book_no' => $file_no_book_no
+                    );
+                    
+                    $record = $this->VehicleDetailsModel
+                        ->getRecord($vehicle_number);
+                    
+                    if(empty($record)){
+                        $this->VehicleDetailsModel->setNewRecords($data);
+                    }else{
+                        $this->VehicleDetailsModel
+                            ->updateRecordData($vehicle_number,$data);
+                    }
+                }
+            }
+            
+            echo 'Data Imported successfully';
+        }
     }
 
 }

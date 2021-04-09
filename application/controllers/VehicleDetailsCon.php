@@ -355,11 +355,13 @@ class VehicleDetailsCon extends CI_Controller {
     
     public function displayDetails() {
         
-        $vehicleNumber = $this->uri->segment(3);
+        $vehicleNumber = utf8_decode(urldecode($this->uri->segment(3)));
         $result = $this->VehicleDetailsModel
                 ->getRecordArray($vehicleNumber); 
         $this->data['result'] = $this->getVahicleDetailsWithFullValue($result);
+        $this->load->view('templates/header');
         $this->load->view('vehicle_details/more_details_page', $this->data);
+        $this->load->view('templates/footer');
         
     }
     

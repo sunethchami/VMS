@@ -112,7 +112,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <a href="<?php echo site_url(); ?>ImportCon/showImportResevationOfOfficialVehiclePage">Reservation of Official Vehicles</a>
                                     </li>
                                     <li>
-                                        <a href="#">Certificates of registration</a>
+                                        <a href="<?php echo site_url(); ?>ImportCon/showImportCertificatesOfRegistrationPage">Certificates of registration</a>
                                     </li>
                                 </ul>
                                 <!-- /.nav-second-level -->

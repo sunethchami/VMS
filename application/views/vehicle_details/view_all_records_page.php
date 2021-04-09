@@ -145,10 +145,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $('#allTable').DataTable({
                 });
                 
-                 $('.deleteBtn').click(function(){
-                    var ID = $(this).data('id');
+                $("#allTable").on('click', '.deleteBtn', function(){
+                    var ID = $(this).data('id');     
                     //set the data attribute on the modal button
-                 $('#yesBtn').data('id', ID); 
+                    $('#yesBtn').data('id', ID); 
                 });
 
                 $('#yesBtn').click(function(){
