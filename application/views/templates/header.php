@@ -103,6 +103,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <!-- /.nav-second-level -->
                             </li>
                             <li>
+                                <a href="#"><i class="fa fa-tint fa-fw"></i> Additional Fuel<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="<?php echo site_url(); ?>AdditionalFuelCon/showAddNewRecordPage">Add New Record</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo site_url(); ?>AdditionalFuelCon/showAllRecordsPage">View All Records</a>
+                                    </li>
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>
+                            <li>
                                 <a href="#"><i class="fa fa-upload fa-fw"></i> Import<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>

@@ -8,10 +8,8 @@ class VehicleDetailsCon extends CI_Controller {
         parent::__construct();
         $this->load->model('VehicleDetailsModel');
         $this->load->helper(array('url'));
-//        $this->load->helper('form');
         $this->load->library('form_validation');
         $this->load->library('session');
-//        $this->load->database();
 
     }    
     
