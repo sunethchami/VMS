@@ -21,7 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </div>
                                 <div class="panel-body">
                                     <div class="row">
-                                        <form role="form" id="add_new_records_form" method="post" action="<?php echo site_url(); ?>VehicleDetailsCon/setNewRecord">
+                                        <form role="form" id="add_new_records_form" method="post" action="<?php echo site_url(); ?>AdditionalFuelCon/setNewRecord">
                                         <div class="col-lg-6">                                
                                                 <div class="form-group">
                                                     <label>Index Number</label>
@@ -36,7 +36,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <div class="form-group">
                                                     <label>Month</label>
                                                     <select name="month" class="form-control">
-                                                        <option>Please select vehicle model</option>
+                                                        <option value="0">Please select Month</option>
                                                         <option value="1" <?= set_value('month') == '1' ? ' selected="selected"' : '';?>>January</option>
                                                         <option value="2" <?= set_value('month') == '2' ? ' selected="selected"' : '';?>>February</option>
                                                         <option value="3" <?= set_value('month') == '3' ? ' selected="selected"' : '';?>>March</option>
@@ -58,12 +58,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 </div>                                                
                                                 <div class="form-group">
                                                     <label>Application Received Date</label>
-                                                    <input name="location" class="form-control" value="<?php echo set_value('location'); ?>">
+                                                    <input name="application_received_date" id="datepicker0" class="form-control" value="<?php echo set_value('location'); ?>">
                                                     <p class="help-block"></p>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Shortcomings</label>
-                                                    <textarea name="other_details" class="form-control" rows="4"><?php echo set_value('other_details'); ?></textarea>
+                                                    <textarea name="shortcomings" class="form-control" rows="4"><?php echo set_value('other_details'); ?></textarea>
                                                     <p class="help-block"></p>
                                                 </div>                                                                                                 
                                         </div>
@@ -71,32 +71,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <div class="col-lg-6">
                                            <div class="form-group">
                                                 <label>Revised Application Resend Date </label>
-                                                <input name="location" id="datepicker1" class="form-control" value="<?php echo set_value('location'); ?>">
+                                                <input name="revised_application_resend_date" id="datepicker1" class="form-control" value="<?php echo set_value('location'); ?>">
                                                 <p class="help-block"></p>
                                             </div>
                                             <div class="form-group">
                                                 <label>Date of the application send for approval to A.D.G </label>
-                                                <input name="location" id="datepicker2" class="form-control" value="<?php echo set_value('location'); ?>">
+                                                <input name="date_application_send_approval" id="datepicker2" class="form-control" value="<?php echo set_value('location'); ?>">
                                                 <p class="help-block"></p>
                                             </div>
                                             <div class="form-group">
                                                 <label>Date of Receiving Approval by A.D.G </label>
-                                                <input name="location" id="datepicker3" class="form-control" value="<?php echo set_value('location'); ?>">
-                                                <p class="help-block"></p>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Date of Receiving Approval by A.D.G </label>
-                                                <input name="location" id="datepicker4" class="form-control" value="<?php echo set_value('location'); ?>">
+                                                <input name="date_receiving_approval" id="datepicker4" class="form-control" value="<?php echo set_value('location'); ?>">
                                                 <p class="help-block"></p>
                                             </div>
                                             <div class="form-group">
                                                 <label>Date of Sending Approval of A.D.G </label>
-                                                <input name="location" id="datepicker5" class="form-control" value="<?php echo set_value('location'); ?>">
+                                                <input name="date_sending_approval" id="datepicker5" class="form-control" value="<?php echo set_value('location'); ?>">
                                                 <p class="help-block"></p>
                                             </div>
                                             <div class="form-group">
                                                 <label>Other Details</label>
-                                                <textarea name="other_details" class="form-control" rows="4"><?php echo set_value('other_details'); ?></textarea>
+                                                <textarea name="other_details" class="form-control" rows="8"><?php echo set_value('other_details'); ?></textarea>
                                             </div>  
                                         </div>
                                         <div class="col-lg-12">
@@ -170,7 +165,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }
             
             $( function() {
+                $( "#datepicker0" ).datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    dateFormat: "yy-mm-dd"
+                });
                 $( "#datepicker1" ).datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    dateFormat: "yy-mm-dd"
+                });
+                $( "#datepicker2" ).datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    dateFormat: "yy-mm-dd"
+                });
+                $( "#datepicker3" ).datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    dateFormat: "yy-mm-dd"
+                });
+                $( "#datepicker4" ).datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    dateFormat: "yy-mm-dd"
+                });
+                $( "#datepicker5" ).datepicker({
                     changeMonth: true,
                     changeYear: true,
                     dateFormat: "yy-mm-dd"
