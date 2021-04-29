@@ -59,11 +59,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <div class="form-group">
                                                     <label>Application Received Date</label>
                                                     <input name="application_received_date" id="datepicker0" class="form-control" value="<?php echo set_value('location'); ?>">
-                                                    <p class="help-block"></p>
+                                                    <p></p><span class="error-msg"><?php echo form_error('application_received_date'); ?></span>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Shortcomings</label>
-                                                    <textarea name="shortcomings" class="form-control" rows="4"><?php echo set_value('other_details'); ?></textarea>
+                                                    <textarea name="shortcomings" class="form-control" rows="4"><?php echo set_value('shortcomings'); ?></textarea>
                                                     <p class="help-block"></p>
                                                 </div>                                                                                                 
                                         </div>
@@ -71,22 +71,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <div class="col-lg-6">
                                            <div class="form-group">
                                                 <label>Revised Application Resend Date </label>
-                                                <input name="revised_application_resend_date" id="datepicker1" class="form-control" value="<?php echo set_value('location'); ?>">
+                                                <input name="revised_application_resend_date" id="datepicker1" class="form-control" value="<?php echo set_value('revised_application_resend_date'); ?>">
                                                 <p class="help-block"></p>
                                             </div>
                                             <div class="form-group">
                                                 <label>Date of the application send for approval to A.D.G </label>
-                                                <input name="date_application_send_approval" id="datepicker2" class="form-control" value="<?php echo set_value('location'); ?>">
+                                                <input name="date_application_send_approval" id="datepicker2" class="form-control" value="<?php echo set_value('date_application_send_approval'); ?>">
                                                 <p class="help-block"></p>
                                             </div>
                                             <div class="form-group">
                                                 <label>Date of Receiving Approval by A.D.G </label>
-                                                <input name="date_receiving_approval" id="datepicker4" class="form-control" value="<?php echo set_value('location'); ?>">
+                                                <input name="date_receiving_approval" id="datepicker4" class="form-control" value="<?php echo set_value('date_receiving_approval'); ?>">
                                                 <p class="help-block"></p>
                                             </div>
                                             <div class="form-group">
                                                 <label>Date of Sending Approval of A.D.G </label>
-                                                <input name="date_sending_approval" id="datepicker5" class="form-control" value="<?php echo set_value('location'); ?>">
+                                                <input name="date_sending_approval" id="datepicker5" class="form-control" value="<?php echo set_value('date_sending_approval'); ?>">
                                                 <p class="help-block"></p>
                                             </div>
                                             <div class="form-group">

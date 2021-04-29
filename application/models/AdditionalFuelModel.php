@@ -11,6 +11,12 @@ class AdditionalFuelModel extends CI_Model {
     public function setNewRecords($data){
         return $this->db->insert('additional_fuel_tb', $data);
     }
+    
+    public function getAllRecords(){
+        $this->db->select('*');
+        $query = $this->db->get('additional_fuel_tb');
+        return $query->result_array(); 
+    }
 
 }
 
