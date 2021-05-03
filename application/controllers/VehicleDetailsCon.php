@@ -64,7 +64,9 @@ class VehicleDetailsCon extends CI_Controller {
                 array('is_unique' => 'This %s already exist.'));
         
         if ($this->form_validation->run() == FALSE) {
+            $this->load->view('templates/header');
             $this->load->view('vehicle_details/add_new_record_page');
+            $this->load->view('templates/footer');
         } else {
             $data = array(
                 'owner' => $owner,
@@ -347,8 +349,8 @@ class VehicleDetailsCon extends CI_Controller {
     
     /**
      * author : Suneth Senanayake. 
-     * moreDetails()
-     * View more details for selected vehicle.
+     * displayDetails()
+     * View details in a table for selected vehicle.
      */
     
     public function displayDetails() {

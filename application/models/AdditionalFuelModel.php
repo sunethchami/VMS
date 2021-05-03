@@ -17,6 +17,30 @@ class AdditionalFuelModel extends CI_Model {
         $query = $this->db->get('additional_fuel_tb');
         return $query->result_array(); 
     }
+    
+    public function getRecord($id){
+        $this->db->select('*');
+        $this->db->where('id',$id);
+        $query = $this->db->get('additional_fuel_tb');
+        return $query->row();
+    }
+    
+    public function updateRecordData($id,$data){
+        $this->db->where('id',$id);
+        return $this->db->update('additional_fuel_tb',$data);
+    }
+    
+     public function getRecordArray($id){
+        $this->db->select('*');
+        $this->db->where('id',$id);
+        $query = $this->db->get('additional_fuel_tb');
+        return $query->result_array(); 
+    }
+    
+    public function deleteRecordData($id){
+        $this->db->where('id', $id);
+        return $query = $this->db->delete('additional_fuel_tb');        
+    }
 
 }
 

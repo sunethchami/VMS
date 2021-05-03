@@ -27,7 +27,7 @@ class VehicleDetailsModel extends CI_Model {
         return $query->row();
     }
     
-     public function updateRecordData($vehicle_number,$data){
+    public function updateRecordData($vehicle_number,$data){
         $this->db->where('vehicle_number',$vehicle_number);
         return $this->db->update('vehicle_details_tb',$data);
     }

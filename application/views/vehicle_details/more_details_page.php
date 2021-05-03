@@ -149,39 +149,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 });
             });
         </script>
-        <script>
-            window.onload = function() {
-
-            <?php if (isset($message)) { ?>
-                <?php if ($message == 1) { ?>
-                
-                    var color = 'success'; 
-                    var icon = 'nc-icon nc-check-2';
-                    var msg = 'The record has been updated successfully.'  
-            
-                <?php  }  ?>
-            
-                <?php if ($message == 2) { ?>
-
-                    var color = 'success'; 
-                    var icon = 'nc-icon nc-check-2';
-                    var msg = 'The record has been deleted successfully.'  
-
-                <?php  }  ?>
-
-                $.notify({
-                    icon: icon,
-                    message: msg
-
-                }, {
-                    type: color,
-                    timer: 1000,
-                    placement: {
-                        from: 'top',
-                        align: 'right'
-                    }
-                });
-
-             <?php  }  ?>
-            }
-           </script>

@@ -56,13 +56,25 @@ class AdditionalFuelCon extends CI_Controller {
                 $date_receiving_approval != "" || $date_sending_approval != "" ||
                 $other_details != "") {
 
-            $this->form_validation->set_rules('reg[application_received_date]',
-                'Application Received Date', 
-                'regex_match[/^\d{4}[\/.]\d{1,2}[\/.]\d{1,2}$]/'); 
+            $this->form_validation->set_rules('application_received_date',
+                'Application Received Date','datetime[Y-m-d]'); 
+            $this->form_validation->set_rules('revised_application_resend_date',
+                'Revised Application Resend Date','datetime[Y-m-d]'); 
+            $this->form_validation->set_rules('date_application_send_approval',
+                'Date of the application send for approval to A.D.G',
+                    'datetime[Y-m-d]');              
+            $this->form_validation->set_rules('date_receiving_approval',
+                'Date of Receiving Approval by A.D.G','datetime[Y-m-d]');              
+            $this->form_validation->set_rules('date_sending_approval',
+                'Date of the application send for approval to A.D.G',
+                    'datetime[Y-m-d]'); 
 
             if ($this->form_validation->run() == FALSE) {
-                $this->load->view('AdditionalFuelCon/add_new_record_page');
+                $this->load->view('templates/header');
+                $this->load->view('additional_fuel/add_new_record_page');
+                $this->load->view('templates/footer');
             } else {
+                
                 $data = array(
                     'index_no' => $index_no,
                     'vehicle_number' => $vehicle_number,
@@ -138,6 +150,128 @@ class AdditionalFuelCon extends CI_Controller {
                     = "December" : "";
         }
         return $result;
+    }
+    
+    /**
+     * author : Suneth Senanayake. 
+     * editReacord()
+     * show edit page for selected vehicle.
+     */
+    
+    public function editRecord() {
+        
+        $id = $this->uri->segment(3);
+        
+        $this->data['result'] = $this->AdditionalFuelModel->getRecord($id);
+        
+        $this->load->view('templates/header');
+        $this->load->view('additional_fuel/edit_record_page', $this->data);
+        $this->load->view('templates/footer');
+    }
+    
+     /**
+     * author : Suneth Senanayake. 
+     * updateReacord()
+     * Update record of selected id.
+     */
+    
+    public function updateRecord() {
+        
+        $index_no = trim($this->input->post('index_no'));
+        $vehicle_number = trim($this->input->post('vehicle_number'));
+        $month = trim($this->input->post('month'));
+        $value = trim($this->input->post('value'));
+        $application_received_date = trim($this->input
+                        ->post('application_received_date'));
+        $shortcomings = trim($this->input->post('shortcomings'));
+        $revised_application_resend_date = trim($this->input
+                        ->post('revised_application_resend_date'));
+        $date_application_send_approval = trim($this->input
+                        ->post('date_application_send_approval'));
+        $date_receiving_approval = trim($this->input
+                        ->post('date_receiving_approval'));
+        $date_sending_approval = trim($this->input
+                        ->post('date_sending_approval'));
+        $other_details = trim($this->input->post('other_details'));
+        $this->data['id'] = $this->input->post('id');
+        
+        $this->form_validation->set_rules('application_received_date',
+                'Application Received Date', 'datetime[Y-m-d]');
+        $this->form_validation->set_rules('revised_application_resend_date',
+                'Revised Application Resend Date', 'datetime[Y-m-d]');
+        $this->form_validation->set_rules('date_application_send_approval',
+                'Date of the application send for approval to A.D.G', 
+                'datetime[Y-m-d]');
+        $this->form_validation->set_rules('date_receiving_approval',
+                'Date of Receiving Approval by A.D.G', 'datetime[Y-m-d]');
+        $this->form_validation->set_rules('date_sending_approval',
+                'Date of the application send for approval to A.D.G',
+                'datetime[Y-m-d]');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('templates/header');
+            $this->load->view('additional_fuel/edit_record_page', $this->data);
+            $this->load->view('templates/footer');
+        } else {
+            $data = array(
+                'index_no' => $index_no,
+                'vehicle_number' => $vehicle_number,
+                'month' => $month,
+                'value' => $value,
+                'application_received_date' => $application_received_date,
+                'shortcomings' => $shortcomings,
+                'revised_application_resend_date' =>
+                $revised_application_resend_date,
+                'date_application_send_approval' =>
+                $date_application_send_approval,
+                'date_receiving_approval' => $date_receiving_approval,
+                'date_sending_approval' => $date_sending_approval,
+                'other_details' => $other_details
+            );
+
+            $result = $this->AdditionalFuelModel
+                    ->updateRecordData($this->data['id'], $data);
+
+
+            $this->session->set_flashdata('message', '1');
+            redirect('AdditionalFuelCon/showAllRecordsPage');
+        }
+    }
+    
+    /**
+     * author : Suneth Senanayake. 
+     * displayDetails()
+     * View details in a table for selected vehicle.
+     */
+    
+    public function displayDetails() {
+        
+        $id= $this->uri->segment(3);
+        $result = $this->AdditionalFuelModel->getRecordArray($id); 
+        $this->data['result'] = $this->getWithFullValue($result);
+        $this->load->view('templates/header');
+        $this->load->view('additional_fuel/more_details_page', $this->data);
+        $this->load->view('templates/footer');
+        
+    }
+    
+    /**
+     * author : Suneth Senanayake. 
+     * deleteRacord()
+     * Delete record from db for selected vehicle.
+     */
+    
+    public function deleteRecord() {
+
+        $id = $this->uri->segment(3);
+
+        $result = $this->AdditionalFuelModel->deleteRecordData($id);
+        if ($result == 1) {
+            $this->session->set_flashdata('message', '2');
+            redirect('AdditionalFuelCon/showAllRecordsPage');
+        } else {
+            echo "Database error!";
+        }
     }
 
 }
