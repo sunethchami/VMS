@@ -53,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                          <?php
                                             foreach ($result as $row) {
                                                 echo'<tr>';
-                                                echo'<td class="td-action"><p class="table-button"><a href="' . site_url() . 'VehicleDetailsCon/displayDetails/' . utf8_encode($row['vehicle_number']) . '"><img src="'. base_url() .'assets/icons/info-circle.svg" width="32" height="32" title="Display Details"></a></p><p class="table-button"><a href="' . site_url() . 'VehicleDetailsCon/editRecord/' . utf8_encode($row['vehicle_number']) . '"><img src="'. base_url() .'assets/icons/pencil-square.svg" width="32" height="32" title="Edit"></a></p><p class="table-button"><a href="#" data-id="' . utf8_encode($row['vehicle_number']) . '" data-toggle="modal" class="deleteBtn" data-target="#comfirmModal"><img src="'. base_url() .'assets/icons/trash.svg" width="32" height="32" title ="Delete"></a></p></td>';
+                                                echo'<td class="td-action"><p class="table-button"><a href="' . site_url() . 'VehicleDetailsCon/displayDetails/' . $row['id'] . '"><img src="'. base_url() .'assets/icons/info-circle.svg" width="32" height="32" title="Display Details"></a></p><p class="table-button"><a href="' . site_url() . 'VehicleDetailsCon/editRecord/' . $row['id'] . '"><img src="'. base_url() .'assets/icons/pencil-square.svg" width="32" height="32" title="Edit"></a></p><p class="table-button"><a href="#" data-id="' . $row['id'] . '" data-toggle="modal" class="deleteBtn" data-target="#comfirmModal"><img src="'. base_url() .'assets/icons/trash.svg" width="32" height="32" title ="Delete"></a></p></td>';
                                                 echo'<td>' . $row['owner'] . '</td>';
                                                 echo'<td>' . $row['vehicle_number'] . '</td>';
                                                 echo'<td>' . $row['model'] . '</td>';
@@ -152,8 +152,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 });
 
                 $('#yesBtn').click(function(){
-                    var vehicle_id = $(this).data('id');
-                    window.location = "<?php echo site_url(); ?>VehicleDetailsCon/deleteRecord/"+vehicle_id;
+                    var id = $(this).data('id');
+                    window.location = "<?php echo site_url(); ?>VehicleDetailsCon/deleteRecord/"+id;
                 });
             });
         </script>

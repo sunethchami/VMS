@@ -110,7 +110,7 @@ class VehicleDetailsCon extends CI_Controller {
     public function showAllRecordsPage() {        
         $this->data['message'] = $this->session->flashdata('message');      
         $result = $this->VehicleDetailsModel->getAllRecords();
-        $result = $this->getVahicleDetailsWithFullValue($result);       
+        $result = $this->getVahicleDetailsWithFullValue($result);
         $this->data['result'] = $result;       
         $this->load->view('templates/header');
         $this->load->view('vehicle_details/view_all_records_page',$this->data);
@@ -218,7 +218,7 @@ class VehicleDetailsCon extends CI_Controller {
             $result[$key]['status_designation'] == '1' 
                 ? $result[$key]['status_designation'] = "Permanent" : "";
             $result[$key]['status_designation'] == '2' 
-                ? $result[$key]['status_designation'] = "Acting" : 
+                ? $result[$key]['status_designation'] = "Acting" : "";
             $result[$key]['status_designation'] == '3' 
                 ? $result[$key]['status_designation'] = 
                     "Performing Duties" : "";  
@@ -245,10 +245,10 @@ class VehicleDetailsCon extends CI_Controller {
     
     public function editRecord() {
         
-        $vehicle_no = utf8_decode(urldecode($this->uri->segment(3)));
+        $id = $this->uri->segment(3);
         
         $this->data['result'] = $this->VehicleDetailsModel
-            ->getRecord($vehicle_no);
+            ->getRecord($id);
         
         $this->load->view('templates/header');
         $this->load->view('vehicle_details/edit_record_page', $this->data);
@@ -264,8 +264,9 @@ class VehicleDetailsCon extends CI_Controller {
     public function updateRecord() {
         
         $owner = trim($this->input->post('owner'));
-        $vehicle_number_old = trim($this->input->post('vehicle_number_old'));
+        $id = trim($this->input->post('id'));
         $vehicle_number = trim($this->input->post('vehicle_number'));
+        $vehicle_number_old = trim($this->input->post('vehicle_number_old'));
         $model = trim($this->input->post('model'));
         $brand = trim($this->input->post('brand'));
         $use_status = trim($this->input->post('use_status'));
@@ -288,6 +289,7 @@ class VehicleDetailsCon extends CI_Controller {
         $director_division = trim($this->input->post('director_division'));
         $sub_division = trim($this->input->post('sub_division'));
         
+        $this->data['id'] = $id;
         $this->data['vehicle_number_old'] = $vehicle_number_old;
         
         if($vehicle_number == ''){

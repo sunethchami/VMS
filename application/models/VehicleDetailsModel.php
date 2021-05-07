@@ -18,10 +18,10 @@ class VehicleDetailsModel extends CI_Model {
         return $query->result_array(); 
     }
     
-    public function getRecord($vehicle_no){
+    public function getRecord($id){
         //$where = "LOWER(REPLACE(vehicle_number, ' ', '')) = LOWER(REPLACE('".$vehicle_no."', ' ', ''))";
         $this->db->select('*');
-        $this->db->where('vehicle_number',$vehicle_no);
+        $this->db->where('id',$id);
         //$this->db->where($where);
         $query = $this->db->get('vehicle_details_tb');
         return $query->row();
