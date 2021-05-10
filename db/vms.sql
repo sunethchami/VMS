@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 20, 2021 at 10:47 PM
+-- Generation Time: May 10, 2021 at 10:30 PM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
@@ -24,16 +24,40 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `additional_fuel_tb`
+--
+
+DROP TABLE IF EXISTS `additional_fuel_tb`;
+CREATE TABLE IF NOT EXISTS `additional_fuel_tb` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `index_no` int(11) NOT NULL,
+  `vehicle_number` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `month` int(11) NOT NULL,
+  `value` decimal(10,2) NOT NULL,
+  `application_received_date` date NOT NULL,
+  `shortcomings` varchar(225) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `revised_application_resend_date` date NOT NULL,
+  `date_application_send_approval` date NOT NULL,
+  `date_receiving_approval` date NOT NULL,
+  `date_sending_approval` date NOT NULL,
+  `other_details` varchar(225) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `vehicle_details_tb`
 --
 
 DROP TABLE IF EXISTS `vehicle_details_tb`;
 CREATE TABLE IF NOT EXISTS `vehicle_details_tb` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `owner` varchar(225) DEFAULT NULL,
-  `vehicle_number` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `vehicle_number` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `model` int(11) DEFAULT NULL,
   `use_status` int(11) DEFAULT NULL,
-  `expense` decimal(10,0) DEFAULT NULL,
+  `expense` decimal(10,2) DEFAULT NULL,
   `location` varchar(225) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `type` int(11) DEFAULT NULL,
   `running_status` int(11) DEFAULT NULL,
@@ -51,17 +75,8 @@ CREATE TABLE IF NOT EXISTS `vehicle_details_tb` (
   `brand` varchar(100) DEFAULT NULL,
   `director_division` varchar(225) DEFAULT NULL,
   `sub_division` varchar(225) DEFAULT NULL,
-  PRIMARY KEY (`vehicle_number`)
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `vehicle_details_tb`
---
-
-INSERT INTO `vehicle_details_tb` (`owner`, `vehicle_number`, `model`, `use_status`, `expense`, `location`, `type`, `running_status`, `other_details`, `officer_name`, `designation`, `workplace`, `grade`, `status_designation`, `monthly_fuel_allowance`, `monthly_fuel_intake`, `other_note`, `file_number`, `file_no_book_no`, `brand`, `director_division`, `sub_division`) VALUES
-('Aliquid officia quis', '100', 2, 0, '0', 'Accusamus porro et a', 3, 2, 'Ut magni recusandae', 'Marah Mccullough', 'Irure assumenda ipsu', 'Labore nihil sit ut', 0, 4, 0, 7, 'Voluptas nihil non s', '962', '0', 'Sint in dolor non au', 'Pariatur Sunt elit', 'Nemo temporibus aut'),
-('In molestiae soluta', '630', 17, 6, '1231212', 'Quo eveniet asperna', 7, 1, 'Non asperiores ut qu', 'Maggy Browning', 'Consequatur Eaque s', 'Non laborum Pariatu', 1, 2, 1, 7, 'Quia alias nisi temp', '625', 'Et voluptatem Sed l', 'Quidem harum nulla v', 'Sit voluptatum itaqu', 'Id aute aliquam beat'),
-('Ea eum voluptate aut', '107', 9, 6, '0', 'Dolor voluptatum sit', 5, 3, 'Aut aliquam aute ali', 'සුනෙත්', 'Dolor ex sint delect', 'Laborum ut unde et s', 0, 1, 1, 10, 'Voluptatem Suscipit', '34', 'Aperiam ad hic quibu', 'Officia ut consectet', 'Ea hic duis sit cum', 'Sint ratione eaque m');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
