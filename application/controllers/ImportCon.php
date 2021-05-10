@@ -43,11 +43,11 @@ class ImportCon extends CI_Controller {
                         ->getValue();
                     $expense = $worksheet->getCellByColumnAndRow(4, $row)
                         ->getValue();
-                    $location = $worksheet->getCellByColumnAndRow(5, $row)
+                    $type = $worksheet->getCellByColumnAndRow(5, $row)
                         ->getValue();
-                    $type = $worksheet->getCellByColumnAndRow(6, $row)
+                    $running_status = $worksheet->getCellByColumnAndRow(6, $row)
                         ->getValue();
-                    $running_status = $worksheet->getCellByColumnAndRow(7, $row)
+                    $location = $worksheet->getCellByColumnAndRow(7, $row)
                         ->getValue();
                     $other_details = $worksheet->getCellByColumnAndRow(8, $row)
                         ->getValue();       

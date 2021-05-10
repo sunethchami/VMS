@@ -206,7 +206,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         </div>
                                         <div class="col-lg-12">
                                             <button type="submit" class="btn btn-default">Save</button>
-                                            <a href="<?php echo site_url(); ?>VehicleDetailsCon/editRecord/<?php if(isset($result->vehicle_number)){echo utf8_encode($result->vehicle_number);}else{echo utf8_encode($vehicle_number_old);} ?>" class="btn btn-default">Reset</a>
+                                            <a href="<?php echo site_url(); ?>VehicleDetailsCon/editRecord/<?php if(isset($result->id)){echo utf8_encode($result->id);}else{echo $id;} ?>" class="btn btn-default">Reset</a>
                                         </div>
                                         </form>
                                         <!-- /.col-lg-6 (nested) -->

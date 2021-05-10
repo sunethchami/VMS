@@ -357,9 +357,8 @@ class VehicleDetailsCon extends CI_Controller {
     
     public function displayDetails() {
         
-        $vehicleNumber = utf8_decode(urldecode($this->uri->segment(3)));
-        $result = $this->VehicleDetailsModel
-                ->getRecordArray($vehicleNumber); 
+        $id = $this->uri->segment(3);
+        $result = $this->VehicleDetailsModel->getRecordArray($id); 
         $this->data['result'] = $this->getVahicleDetailsWithFullValue($result);
         $this->load->view('templates/header');
         $this->load->view('vehicle_details/more_details_page', $this->data);
@@ -375,9 +374,10 @@ class VehicleDetailsCon extends CI_Controller {
     
     public function deleteRecord() {
         
-       $vehicle_no = utf8_decode(urldecode($this->uri->segment(3)));
+       //$vehicle_no = utf8_decode(urldecode($this->uri->segment(3)));
+       $id = $this->uri->segment(3);
         
-        $result = $this->VehicleDetailsModel->deleteRecordData($vehicle_no);
+        $result = $this->VehicleDetailsModel->deleteRecordData($id);
         if ($result == 1) {
             $this->session->set_flashdata('message', '2'); 
             redirect('VehicleDetailsCon/showAllRecordsPage');                        
