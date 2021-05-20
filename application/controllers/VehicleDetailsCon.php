@@ -7,6 +7,7 @@ class VehicleDetailsCon extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('VehicleDetailsModel');
+        $this->load->model('ModelTypeModel');
         $this->load->helper(array('url'));
         $this->load->library('form_validation');
         $this->load->library('session');
@@ -21,7 +22,8 @@ class VehicleDetailsCon extends CI_Controller {
     
     public function showAddNewRecordPage() {
         
-        $this->data['message'] = $this->session->flashdata('message');        
+        $this->data['message'] = $this->session->flashdata('message'); 
+        $this->data['models'] = $this->ModelTypeModel->getAllTypes();
         $this->load->view('templates/header');
         $this->load->view('vehicle_details/add_new_record_page',$this->data); 
         $this->load->view('templates/footer');
@@ -37,7 +39,7 @@ class VehicleDetailsCon extends CI_Controller {
         
         $owner = trim($this->input->post('owner'));
         $vehicle_number = trim($this->input->post('vehicle_number'));        
-        $model = trim($this->input->post('model'));
+        $model = trim($this->input->post('model'));         
         $brand = trim($this->input->post('brand'));
         $use_status = trim($this->input->post('use_status'));
         $expense = trim($this->input->post('expense'));
@@ -68,10 +70,19 @@ class VehicleDetailsCon extends CI_Controller {
             $this->load->view('vehicle_details/add_new_record_page');
             $this->load->view('templates/footer');
         } else {
+            
+            if($model == ''){
+                $model = 0;
+            }else{
+                $model = $this->getModelId($model);  
+            }
+            
+            echo $model;
+            
             $data = array(
                 'owner' => $owner,
                 'vehicle_number' => $vehicle_number,
-                'model' => $model,
+                'model' => (int)$model,
                 'brand' => $brand,
                 'use_status' => $use_status,
                 'expense' => $expense,
@@ -103,6 +114,30 @@ class VehicleDetailsCon extends CI_Controller {
     
     /**
      * author : Suneth Senanayake. 
+     * getModelId($model_name)
+     * Check model and return index.
+     **/
+    
+    private function getModelId($model_name) {
+        
+        $results = $this->ModelTypeModel->getRecord($model_name);
+        
+        if(empty($results)){
+            //new model
+            $data = array(
+                'name' => $model_name
+            );
+            $insert_id = $this->ModelTypeModel->setNewRecord($data);
+            return $insert_id;
+        }else{
+            //existing model
+            return $results->id;
+        }
+        
+    }
+    
+    /**
+     * author : Suneth Senanayake. 
      * showAllRecordsPage()
      * Show all records in table.
      **/
@@ -111,7 +146,7 @@ class VehicleDetailsCon extends CI_Controller {
         $this->data['message'] = $this->session->flashdata('message');      
         $result = $this->VehicleDetailsModel->getAllRecords();
         $result = $this->getVahicleDetailsWithFullValue($result);
-        $this->data['result'] = $result;       
+        $this->data['result'] = $result;  
         $this->load->view('templates/header');
         $this->load->view('vehicle_details/view_all_records_page',$this->data);
         $this->load->view('templates/footer');
@@ -120,46 +155,13 @@ class VehicleDetailsCon extends CI_Controller {
     private function getVahicleDetailsWithFullValue($result){
         
         foreach ($result as $key => $value) {
-           
-            $result[$key]['model'] == '0' ? $result[$key]['model'] = "" : "";
-            $result[$key]['model'] == '1' ? $result[$key]['model'] 
-                    = "Bus" : "";
-            $result[$key]['model'] == '2' ? $result[$key]['model'] 
-                    = "Car" : "";
-            $result[$key]['model'] == '3' ? $result[$key]['model'] 
-                    = "Commercial" : "";
-            $result[$key]['model'] == '4' ? $result[$key]['model'] 
-                    = "Double cab" : "";
-            $result[$key]['model'] == '5' ? $result[$key]['model'] 
-                    = "Dual purpose" : "";
-            $result[$key]['model'] == '6' ? $result[$key]['model'] 
-                    = "Hand tractor" : "";
-            $result[$key]['model'] == '7' ? $result[$key]['model'] 
-                    = "Jeep & Sport utility vehicle" : "";
-            $result[$key]['model'] == '8' ? $result[$key]['model'] 
-                    = "Land vehicle" : "";
-            $result[$key]['model'] == '9' ? $result[$key]['model'] 
-                    = "Motor coach" : "";
-            $result[$key]['model'] == '10' ? $result[$key]['model'] 
-                    = "Motor cycle" : "";
-            $result[$key]['model'] == '11' ? $result[$key]['model'] 
-                    = "Motor lorry" : "";
-            $result[$key]['model'] == '12' ? $result[$key]['model'] 
-                    = "Motor tricycle van" : "";
-            $result[$key]['model'] == '13' ? $result[$key]['model'] 
-                    = "Single cab" : "";
-            $result[$key]['model'] == '14' ? $result[$key]['model']
-                    = "Special purpose vehicle" : "";
-            $result[$key]['model'] == '15' ? $result[$key]['model'] 
-                    = "Three wheeler" : "";
-            $result[$key]['model'] == '16' ? $result[$key]['model'] 
-                    = "Tractor" : "";
-            $result[$key]['model'] == '17' ? $result[$key]['model'] 
-                    = "Tractor trailer/bowser" : "";
-            $result[$key]['model'] == '18' ? $result[$key]['model'] 
-                    = "Van" : "";
-            $result[$key]['model'] == '19' ? $result[$key]['model'] 
-                    = "Other vehicle" : "";
+                                   
+            $model = $this->ModelTypeModel
+                ->getRecordById($result[$key]['model']);
+            
+            $result[$key]['model'] == '0' ? $result[$key]['model'] 
+                    = "" : $result[$key]['model'] = $model->name;
+            
             $result[$key]['use_status'] == '0' ? $result[$key]['use_status'] 
                     = "" : "";
             $result[$key]['use_status'] == '1' ? $result[$key]['use_status'] 

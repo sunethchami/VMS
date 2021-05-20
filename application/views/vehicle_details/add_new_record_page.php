@@ -34,28 +34,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Vehicle Model</label>
-                                                    <select name="model" class="form-control">
-                                                        <option>Please select vehicle model</option>
-                                                        <option value="1" <?= set_value('model') == '1' ? ' selected="selected"' : '';?>>Bus</option>
-                                                        <option value="2" <?= set_value('model') == '2' ? ' selected="selected"' : '';?>>Car</option>
-                                                        <option value="3" <?= set_value('model') == '3' ? ' selected="selected"' : '';?>>Commercial</option>
-                                                        <option value="4" <?= set_value('model') == '4' ? ' selected="selected"' : '';?>>Double cab</option>
-                                                        <option value="5" <?= set_value('model') == '5' ? ' selected="selected"' : '';?>>Dual purpose</option>
-                                                        <option value="6" <?= set_value('model') == '6' ? ' selected="selected"' : '';?>>Hand tractor</option>
-                                                        <option value="7" <?= set_value('model') == '7' ? ' selected="selected"' : '';?>>Jeep & Sport utility vehicle</option>
-                                                        <option value="8" <?= set_value('model') == '8' ? ' selected="selected"' : '';?>>Land vehicle</option>
-                                                        <option value="9" <?= set_value('model') == '9' ? ' selected="selected"' : '';?>>Motor coach</option>
-                                                        <option value="10" <?= set_value('model') == '10' ? ' selected="selected"' : '';?>>Motor cycle</option>
-                                                        <option value="11" <?= set_value('model') == '11' ? ' selected="selected"' : '';?>>Motor lorry</option>
-                                                        <option value="12" <?= set_value('model') == '12' ? ' selected="selected"' : '';?>>Motor tricycle van</option>
-                                                        <option value="13" <?= set_value('model') == '13' ? ' selected="selected"' : '';?>>Single cab</option>
-                                                        <option value="14" <?= set_value('model') == '14' ? ' selected="selected"' : '';?>>Special purpose vehicle</option>
-                                                        <option value="15" <?= set_value('model') == '15' ? ' selected="selected"' : '';?>>Three wheeler</option>
-                                                        <option value="16" <?= set_value('model') == '16' ? ' selected="selected"' : '';?>>Tractor</option>
-                                                        <option value="17" <?= set_value('model') == '17' ? ' selected="selected"' : '';?>>Tractor trailer/bowser</option>
-                                                        <option value="18" <?= set_value('model') == '18' ? ' selected="selected"' : '';?>>Van</option>
-                                                        <option value="19" <?= set_value('model') == '19' ? ' selected="selected"' : '';?>>Other vehicle</option>
-                                                    </select>
+                                                    <input list="models" value="<?php echo set_value('model'); ?>" name="model" class="form-control">
+                                                      <datalist id="models">
+                                                        <?php
+                                                            foreach ($models as $model) {
+                                                        ?>
+                                                                <option value="<?php echo $model['name']?>">
+                                                        <?php
+                                                            }
+                                                        ?>
+                                                      </datalist>
                                                 </div>                                                
                                                 <div class="form-group">
                                                     <label>Usage</label>
