@@ -77,8 +77,6 @@ class VehicleDetailsCon extends CI_Controller {
                 $model = $this->getModelId($model);  
             }
             
-            echo $model;
-            
             $data = array(
                 'owner' => $owner,
                 'vehicle_number' => $vehicle_number,
@@ -252,6 +250,13 @@ class VehicleDetailsCon extends CI_Controller {
         $this->data['result'] = $this->VehicleDetailsModel
             ->getRecord($id);
         
+        $model_id = $this->data['result']->model;
+        $model = $this->ModelTypeModel->getRecordById($model_id);
+        $model_name = $model->name;
+        $this->data['result']->model = $model->name;
+        
+        $this->data['models'] = $this->ModelTypeModel->getAllTypes();
+        
         $this->load->view('templates/header');
         $this->load->view('vehicle_details/edit_record_page', $this->data);
         $this->load->view('templates/footer');
@@ -315,6 +320,12 @@ class VehicleDetailsCon extends CI_Controller {
             $this->load->view('vehicle_details/edit_record_page', $this->data );
             $this->load->view('templates/footer');
         }else{
+            
+            if($model == ''){
+                $model = 0;
+            }else{
+                $model = $this->getModelId($model);  
+            }
             
             $data = array(
                 'owner' => $owner,
