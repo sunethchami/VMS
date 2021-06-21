@@ -10,6 +10,7 @@ class ModelTypeModel extends CI_Model {
     
     public function getAllTypes(){
         $this->db->select('*');
+        $this->db->order_by('name', 'ASC');
         $query = $this->db->get('model_list_tb');
         return $query->result_array(); 
     }

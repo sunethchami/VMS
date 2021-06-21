@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 10, 2021 at 10:30 PM
--- Server version: 5.7.31
--- PHP Version: 7.3.21
+-- Generation Time: Jun 21, 2021 at 11:19 AM
+-- Server version: 10.4.10-MariaDB
+-- PHP Version: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -41,6 +42,19 @@ CREATE TABLE IF NOT EXISTS `additional_fuel_tb` (
   `date_receiving_approval` date NOT NULL,
   `date_sending_approval` date NOT NULL,
   `other_details` varchar(225) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `model_list_tb`
+--
+
+DROP TABLE IF EXISTS `model_list_tb`;
+CREATE TABLE IF NOT EXISTS `model_list_tb` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 

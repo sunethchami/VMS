@@ -8,6 +8,7 @@ class ImportCon extends CI_Controller {
         parent::__construct();
         $this->load->model('ImportModel');
         $this->load->model('VehicleDetailsModel');
+        $this->load->model('ModelTypeModel');
         $this->load->helper(array('url'));
         $this->load->library('form_validation');
         $this->load->library('session');
@@ -72,71 +73,27 @@ class ImportCon extends CI_Controller {
         }
     }
     
-    private function getModel($model) {
+    private function getModel($model_name) {
 
-        switch ($model) {
-            case "Bus":
-                $modelNew = 1;
-                break;
-            case "Car":
-                $modelNew = 2;
-                break;
-            case "Commercial":
-                $modelNew = 3;
-                break;
-            case "Double cab":
-                $modelNew = 4;
-                break;
-            case "Dual purpose":
-                $modelNew = 5;
-                break;
-            case "Hand tractor":
-                $modelNew = 6;
-                break;
-            case "Jeep & Sport utility vehicle":
-                $modelNew = 7;
-                break;
-            case "Land vehicle":
-                $modelNew = 8;
-                break;
-            case "Motor coach":
-                $modelNew = 9;
-                break;
-            case "Motor cycle":
-                $modelNew = 10;
-                break;
-            case "Motor lorry":
-                $modelNew = 11;
-                break;
-            case "Motor tricycle van":
-                $modelNew = 12;
-                break;
-            case "Single cab":
-                $modelNew = 13;
-                break;
-            case "Special purpose vehicle":
-                $modelNew = 14;
-                break;
-            case "Three wheeler":
-                $modelNew = 15;
-                break;
-            case "Tractor":
-                $modelNew = 16;
-                break;
-            case "Tractor trailer/bowser":
-                $modelNew = 17;
-                break;
-            case "Van":
-                $modelNew = 18;
-                break;
-            case "Other vehicle":
-                $modelNew = 19;
-                break;
-            default:
-                $modelNew = 0;
+        if ($model_name == '') {
+            return 0;
+        } else {
+            
+             $results = $this->ModelTypeModel->getRecord($model_name);
+
+            if(empty($results)){
+                //new model
+                $data = array(
+                    'name' => $model_name
+                );
+                $insert_id = $this->ModelTypeModel->setNewRecord($data);
+                return $insert_id;
+            }else{
+                //existing model
+                return $results->id;
+            }
         }
-        
-        return $modelNew;
+       
     }
     
     private function getUseStatus($use_status) {
