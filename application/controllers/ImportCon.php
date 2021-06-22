@@ -9,6 +9,7 @@ class ImportCon extends CI_Controller {
         $this->load->model('ImportModel');
         $this->load->model('VehicleDetailsModel');
         $this->load->model('ModelTypeModel');
+        $this->load->model('UsageTypeModel');
         $this->load->helper(array('url'));
         $this->load->library('form_validation');
         $this->load->library('session');
@@ -96,32 +97,50 @@ class ImportCon extends CI_Controller {
        
     }
     
-    private function getUseStatus($use_status) {
+    private function getUseStatus($usage_name) {
         
-        switch ($use_status) {
-            case "Assigned":
-                $use_status_new = 1;
-                break;
-            case "Commercial Purposes":
-                $use_status_new = 2;
-                break;
-            case "Non Commercial Transport":
-                $use_status_new = 3;
-                break;
-            case "Pool":
-                $use_status_new = 4;
-                break;
-            case "Public Transport":
-                $use_status_new = 5;
-                break;
-            case "Other":
-                $use_status_new = 6;
-                break;
-            default:
-                $use_status_new = 0;
+//        switch ($use_status) {
+//            case "Assigned":
+//                $use_status_new = 1;
+//                break;
+//            case "Commercial Purposes":
+//                $use_status_new = 2;
+//                break;
+//            case "Non Commercial Transport":
+//                $use_status_new = 3;
+//                break;
+//            case "Pool":
+//                $use_status_new = 4;
+//                break;
+//            case "Public Transport":
+//                $use_status_new = 5;
+//                break;
+//            case "Other":
+//                $use_status_new = 6;
+//                break;
+//            default:
+//                $use_status_new = 0;
+//        }
+        
+//        return $use_status_new;
+        if ($usage_name == '') {
+            return 0;
+        } else {
+            
+             $results = $this->UsageTypeModel->getRecord($usage_name);
+
+            if(empty($results)){
+                //new usage
+                $data = array(
+                    'name' => $usage_name
+                );
+                $insert_id = $this->UsageTypeModel->setNewRecord($data);
+                return $insert_id;
+            }else{
+                //existing usage
+                return $results->id;
+            }
         }
-        
-        return $use_status_new;
     }
     
     private function getType($type) {

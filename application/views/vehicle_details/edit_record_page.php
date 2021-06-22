@@ -47,7 +47,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         ?>
                                                       </datalist>
                                                 </div>                           
-                                                <div class="form-group">
+<!--                                                <div class="form-group">
                                                     <label>Usage</label>
                                                     <select name="use_status" class="form-control">
                                                         <option>Please select usage</option>
@@ -58,7 +58,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         <option value="5" <?php if(isset($result->use_status)){ echo $result->use_status == '5' ? ' selected="selected"' : '';}else{ echo set_value('use_status') == '5' ? ' selected="selected"' : '';} ?>>Public Transport</option>
                                                         <option value="6" <?php if(isset($result->use_status)){ echo $result->use_status == '6' ? ' selected="selected"' : '';}else{ echo set_value('use_status') == '6' ? ' selected="selected"' : '';} ?>>Other</option>
                                                     </select>
-                                                </div>
+                                                </div>-->
+                                                <div class="form-group">
+                                                    <label>Usage</label>
+                                                    <input list="usage" value="<?php if(isset($result->use_status)){ echo $result->use_status;}else{ echo set_value('use_status');} ?>" name="use_status" class="form-control">
+                                                      <datalist id="usage">
+                                                        <?php
+                                                            foreach ($usages as $usage) {
+                                                        ?>
+                                                                <option value="<?php echo $usage['name']?>">
+                                                        <?php
+                                                            }
+                                                        ?>
+                                                      </datalist>
+                                                </div> 
                                                 <div class="form-group">
                                                     <label>Expense</label>
                                                     <input name="expense" class="form-control" value="<?php if(isset($result->expense)){ echo $result->expense;}else{ echo set_value('expense');} ?>">

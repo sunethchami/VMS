@@ -45,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         ?>
                                                       </datalist>
                                                 </div>                                                
-                                                <div class="form-group">
+<!--                                                <div class="form-group">
                                                     <label>Usage</label>
                                                     <select name="use_status" class="form-control">
                                                         <option>Please select usage</option>
@@ -56,6 +56,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         <option value="5" <?= set_value('use_status') == '5' ? ' selected="selected"' : '';?>>Public Transport</option>
                                                         <option value="6" <?= set_value('use_status') == '6' ? ' selected="selected"' : '';?>>Other</option>
                                                     </select>
+                                                </div>-->
+                                                <div class="form-group">
+                                                    <label>Usage</label>
+                                                    <input list="usage" value="<?php echo set_value('model'); ?>" name="use_status" class="form-control">
+                                                      <datalist id="usage">
+                                                        <?php
+                                                            foreach ($usages as $usage) {
+                                                        ?>
+                                                                <option value="<?php echo $usage['name']?>">
+                                                        <?php
+                                                            }
+                                                        ?>
+                                                      </datalist>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Expense</label>
@@ -67,7 +80,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     <input name="location" class="form-control" value="<?php echo set_value('location'); ?>">
                                                     <p class="help-block"></p>
                                                 </div>
-                                                 <div class="form-group">
+                                                <div class="form-group">
                                                     <label>Vehicle Type</label>
                                                     <select name="type" class="form-control">
                                                         <option>Please select vehicle type</option>

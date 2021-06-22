@@ -8,6 +8,7 @@ class VehicleDetailsCon extends CI_Controller {
         parent::__construct();
         $this->load->model('VehicleDetailsModel');
         $this->load->model('ModelTypeModel');
+        $this->load->model('UsageTypeModel');
         $this->load->helper(array('url'));
         $this->load->library('form_validation');
         $this->load->library('session');
@@ -24,6 +25,7 @@ class VehicleDetailsCon extends CI_Controller {
         
         $this->data['message'] = $this->session->flashdata('message'); 
         $this->data['models'] = $this->ModelTypeModel->getAllTypes();
+        $this->data['usages'] = $this->UsageTypeModel->getAllTypes();
         $this->load->view('templates/header');
         $this->load->view('vehicle_details/add_new_record_page',$this->data); 
         $this->load->view('templates/footer');
@@ -77,12 +79,18 @@ class VehicleDetailsCon extends CI_Controller {
                 $model = $this->getModelId($model);  
             }
             
+            if($use_status == ''){
+                $use_status = 0;
+            }else{
+                $use_status = $this->getUsageId($use_status);  
+            }
+            
             $data = array(
                 'owner' => $owner,
                 'vehicle_number' => $vehicle_number,
                 'model' => (int)$model,
                 'brand' => $brand,
-                'use_status' => $use_status,
+                'use_status' => (int)$use_status,
                 'expense' => $expense,
                 'location' => $location,
                 'type' => $type,
@@ -136,6 +144,30 @@ class VehicleDetailsCon extends CI_Controller {
     
     /**
      * author : Suneth Senanayake. 
+     * getUsageId($usage_name)
+     * Check usage and return index.
+     **/
+    
+    private function getUsageId($usage_name) {
+        
+        $results = $this->UsageTypeModel->getRecord($usage_name);
+        
+        if(empty($results)){
+            //new usage
+            $data = array(
+                'name' => $usage_name
+            );
+            $insert_id = $this->UsageTypeModel->setNewRecord($data);
+            return $insert_id;
+        }else{
+            //existing usage
+            return $results->id;
+        }
+        
+    }
+    
+    /**
+     * author : Suneth Senanayake. 
      * showAllRecordsPage()
      * Show all records in table.
      **/
@@ -160,20 +192,26 @@ class VehicleDetailsCon extends CI_Controller {
             $result[$key]['model'] == '0' ? $result[$key]['model'] 
                     = "" : $result[$key]['model'] = $model->name;
             
+            $usage = $this->UsageTypeModel
+                ->getRecordById($result[$key]['use_status']);
+            
             $result[$key]['use_status'] == '0' ? $result[$key]['use_status'] 
-                    = "" : "";
-            $result[$key]['use_status'] == '1' ? $result[$key]['use_status'] 
-                    = "Assigned" : "";
-            $result[$key]['use_status'] == '2' ? $result[$key]['use_status'] 
-                    = "Commercial Purposes" : "";
-            $result[$key]['use_status'] == '3' ? $result[$key]['use_status'] 
-                    = "Non Commercial Transport" : "";
-            $result[$key]['use_status'] == '4' ? $result[$key]['use_status']
-                    = "Pool" : "";
-            $result[$key]['use_status'] == '5' ? $result[$key]['use_status'] 
-                    = "Public Transport" : "";
-            $result[$key]['use_status'] == '6' ? $result[$key]['use_status'] 
-                    = "Other" : "";
+                    = "" : $result[$key]['use_status'] = $usage->name;
+            
+//            $result[$key]['use_status'] == '0' ? $result[$key]['use_status'] 
+//                    = "" : "";
+//            $result[$key]['use_status'] == '1' ? $result[$key]['use_status'] 
+//                    = "Assigned" : "";
+//            $result[$key]['use_status'] == '2' ? $result[$key]['use_status'] 
+//                    = "Commercial Purposes" : "";
+//            $result[$key]['use_status'] == '3' ? $result[$key]['use_status'] 
+//                    = "Non Commercial Transport" : "";
+//            $result[$key]['use_status'] == '4' ? $result[$key]['use_status']
+//                    = "Pool" : "";
+//            $result[$key]['use_status'] == '5' ? $result[$key]['use_status'] 
+//                    = "Public Transport" : "";
+//            $result[$key]['use_status'] == '6' ? $result[$key]['use_status'] 
+//                    = "Other" : "";
             $result[$key]['type'] == '0' ? $result[$key]['type'] = "" : "";
             $result[$key]['type'] == '1' ? $result[$key]['type'] 
                     = "6112101 - Passenger Vehicles" : "";
@@ -252,10 +290,14 @@ class VehicleDetailsCon extends CI_Controller {
         
         $model_id = $this->data['result']->model;
         $model = $this->ModelTypeModel->getRecordById($model_id);
-        $model_name = $model->name;
         $this->data['result']->model = $model->name;
         
+        $usage_id = $this->data['result']->use_status;
+        $usage = $this->UsageTypeModel->getRecordById($usage_id);
+        $this->data['result']->use_status = $usage->name;
+        
         $this->data['models'] = $this->ModelTypeModel->getAllTypes();
+        $this->data['usages'] = $this->UsageTypeModel->getAllTypes();
         
         $this->load->view('templates/header');
         $this->load->view('vehicle_details/edit_record_page', $this->data);
@@ -327,12 +369,18 @@ class VehicleDetailsCon extends CI_Controller {
                 $model = $this->getModelId($model);  
             }
             
+            if($use_status == ''){
+                $use_status = 0;
+            }else{
+                $use_status = $this->getUsageId($use_status);  
+            }
+            
             $data = array(
                 'owner' => $owner,
                 'vehicle_number' => $vehicle_number,
-                'model' => $model,
+                'model' => (int)$model,
                 'brand' => $brand,
-                'use_status' => $use_status,
+                'use_status' => (int)$use_status,
                 'expense' => $expense,
                 'location' => $location,
                 'type' => $type,
