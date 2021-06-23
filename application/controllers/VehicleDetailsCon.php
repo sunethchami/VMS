@@ -288,14 +288,20 @@ class VehicleDetailsCon extends CI_Controller {
         $this->data['result'] = $this->VehicleDetailsModel
             ->getRecord($id);
         
-        $model_id = $this->data['result']->model;
-        $model = $this->ModelTypeModel->getRecordById($model_id);
-        $this->data['result']->model = $model->name;
-        
-        $usage_id = $this->data['result']->use_status;
-        $usage = $this->UsageTypeModel->getRecordById($usage_id);
-        $this->data['result']->use_status = $usage->name;
-        
+        echo "model :".$model_id = $this->data['result']->model;
+        if ($model_id != 0) {
+            $model = $this->ModelTypeModel->getRecordById($model_id);
+            $this->data['result']->model = $model->name;
+        } else {
+            $this->data['result']->model = "";
+        }
+        echo "usage :" . $usage_id = $this->data['result']->use_status;
+        if ($usage_id != 0) {
+            $usage = $this->UsageTypeModel->getRecordById($usage_id);
+            $this->data['result']->use_status = $usage->name;
+        } else {
+            $this->data['result']->use_status = "";
+        }
         $this->data['models'] = $this->ModelTypeModel->getAllTypes();
         $this->data['usages'] = $this->UsageTypeModel->getAllTypes();
         

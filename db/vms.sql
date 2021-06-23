@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 21, 2021 at 11:19 AM
+-- Generation Time: Jun 23, 2021 at 06:33 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -53,6 +53,19 @@ CREATE TABLE IF NOT EXISTS `additional_fuel_tb` (
 
 DROP TABLE IF EXISTS `model_list_tb`;
 CREATE TABLE IF NOT EXISTS `model_list_tb` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `usage_list_tb`
+--
+
+DROP TABLE IF EXISTS `usage_list_tb`;
+CREATE TABLE IF NOT EXISTS `usage_list_tb` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)

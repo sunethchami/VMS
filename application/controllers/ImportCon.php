@@ -55,16 +55,16 @@ class ImportCon extends CI_Controller {
                         ->getValue();       
        
                     $data[] = array(
-                        'owner' => $owner,
-                        'vehicle_number' => $vehicle_number,
-                        'model' => $this->getModel($model),
-                        'use_status' => $this->getUseStatus($use_status),
-                        'expense' => $expense,
-                        'location' => $location,
-                        'type' => $this->getType($type),
+                        'owner' => trim($owner),
+                        'vehicle_number' => trim($vehicle_number),
+                        'model' => $this->getModel(trim($model)),
+                        'use_status' => $this->getUseStatus(trim($use_status)),
+                        'expense' => trim($expense),
+                        'location' => trim($location),
+                        'type' => $this->getType(trim($type)),
                         'running_status' => $this->
-                            getRunningStatus($running_status),
-                        'other_details' => $other_details,
+                            getRunningStatus(trim($running_status)),
+                        'other_details' => trim($other_details),
                     );
                 }
             }

@@ -85,7 +85,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     <select name="type" class="form-control">
                                                         <option>Please select vehicle type</option>
                                                         <option value="1" <?= set_value('type') == '1' ? ' selected="selected"' : '';?>>6112101 - Passenger Vehicles</option>
-                                                        <option value="2" <?= set_value('type') == '2' ? ' selected="selected"' : '';?>>6112102- Tractor Trailer</option>
+                                                        <option value="2" <?= set_value('type') == '2' ? ' selected="selected"' : '';?>>6112102 - Tractor Trailer</option>
                                                         <option value="3" <?= set_value('type') == '3' ? ' selected="selected"' : '';?>>6112102 - Cargo Vehicles</option>
                                                         <option value="4" <?= set_value('type') == '4' ? ' selected="selected"' : '';?>>6112103 - Tractors</option>
                                                         <option value="5" <?= set_value('type') == '5' ? ' selected="selected"' : '';?>>6112103 - Agriculture Vehicles</option>                                                      
