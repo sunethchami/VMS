@@ -168,7 +168,7 @@ class ImportCon extends CI_Controller {
             case "6112109 - Motor Cycles":
                 $typeNew = 7;
                 break;
-            case "66112109 - Bicycles":
+            case "6112109 - Bicycles":
                 $typeNew = 8;
                 break;
             case "6112110 - Trailers":

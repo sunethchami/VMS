@@ -28,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     <p class="help-block"></p>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Vehicle Number <span class="star">*</span></label>
+                                                    <label>Vehicle Number</label>
                                                     <input name="vehicle_number" class="form-control" value="<?php echo set_value('vehicle_number'); ?>">
                                                     <p></p><span class="error-msg"><?php echo form_error('vehicle_number'); ?></span>
                                                 </div>

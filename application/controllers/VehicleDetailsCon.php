@@ -228,7 +228,7 @@ class VehicleDetailsCon extends CI_Controller {
             $result[$key]['type'] == '7' ? $result[$key]['type'] 
                     = "6112109 - Motor Cycles" : "";
             $result[$key]['type'] == '8' ? $result[$key]['type'] 
-                    = "66112109 - Bicycles" : "";
+                    = "6112109 - Bicycles" : "";
             $result[$key]['type'] == '9' ? $result[$key]['type'] 
                     = "6112110 - Trailers" : "";            
             $result[$key]['type'] == '10' ? $result[$key]['type'] 
