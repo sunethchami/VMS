@@ -185,17 +185,19 @@ class VehicleDetailsCon extends CI_Controller {
     private function getVahicleDetailsWithFullValue($result){
         
         foreach ($result as $key => $value) {
-                                   
+            
             $model = $this->ModelTypeModel
                 ->getRecordById($result[$key]['model']);
             
-            $result[$key]['model'] == '0' ? $result[$key]['model'] 
+            $result[$key]['model'] == null || $result[$key]['model'] 
+                    == '0' ? $result[$key]['model'] 
                     = "" : $result[$key]['model'] = $model->name;
             
             $usage = $this->UsageTypeModel
                 ->getRecordById($result[$key]['use_status']);
             
-            $result[$key]['use_status'] == '0' ? $result[$key]['use_status'] 
+            $result[$key]['use_status'] == null || $result[$key]['use_status'] 
+                    == '0' ? $result[$key]['use_status'] 
                     = "" : $result[$key]['use_status'] = $usage->name;
             
 //            $result[$key]['use_status'] == '0' ? $result[$key]['use_status'] 
@@ -262,6 +264,8 @@ class VehicleDetailsCon extends CI_Controller {
                     "Performing Duties" : "";  
             $result[$key]['status_designation'] == '4' 
                 ? $result[$key]['status_designation'] = "Duty Cover" : "";
+            $result[$key]['status_designation'] == '5' 
+                ? $result[$key]['status_designation'] = "Contracts" : "";
             $result[$key]['monthly_fuel_allowance'] == '0' 
                 ? $result[$key]['monthly_fuel_allowance'] = "" : "";
             $result[$key]['monthly_fuel_allowance'] == '1' 
@@ -271,6 +275,7 @@ class VehicleDetailsCon extends CI_Controller {
             $result[$key]['monthly_fuel_intake'] == '0' 
                 ? $result[$key]['monthly_fuel_intake'] = "" : "";
         }
+        
         return $result;
     }
     
@@ -452,6 +457,11 @@ class VehicleDetailsCon extends CI_Controller {
             echo "Database error!";
         }
     } 
+    
+    public function deleteAll() {
+       $this->VehicleDetailsModel->deleteAllRecords();
+       redirect('VehicleDetailsCon/showAllRecordsPage');
+    }
     
 }
 

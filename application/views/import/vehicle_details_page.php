@@ -28,7 +28,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     </div>                                                                                                
                                             </div>
                                             <div class="col-lg-12">
-                                                <input type="submit" class="btn btn-default" name="import" value="Submit"/>
+                                                <input type="submit" class="btn btn-default" name="import" value="Submit"/>                                                
+                                                <a href="<?php echo site_url(); ?>VehicleDetailsCon/deleteAll">Delete All Vehicles</a>
                                                 <!--<button type="submit" class="btn btn-default">Submit</button>-->                                            
                                             </div>
                                         </form>

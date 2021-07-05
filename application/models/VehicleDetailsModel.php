@@ -27,6 +27,15 @@ class VehicleDetailsModel extends CI_Model {
         return $query->row();
     }
     
+    public function getRecordByVehicleNo($vehicle_number){
+        $this->db->select('*');
+        $this->db->where('vehicle_number',$vehicle_number);
+        $query = $this->db->get('vehicle_details_tb');
+        return $query->row();
+    }
+    
+    
+    
     public function updateRecordData($vehicle_number,$data){
         $this->db->where('vehicle_number',$vehicle_number);
         return $this->db->update('vehicle_details_tb',$data);
@@ -42,6 +51,10 @@ class VehicleDetailsModel extends CI_Model {
     public function deleteRecordData($id){
         $this->db->where('id', $id);
         return $query = $this->db->delete('vehicle_details_tb');        
+    }
+    
+    public function deleteAllRecords() {
+        $this->db->empty_table('vehicle_details_tb');
     }
 }
 

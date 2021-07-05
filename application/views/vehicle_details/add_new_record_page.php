@@ -158,6 +158,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     <option value="2" <?= set_value('status_designation') == '2' ? ' selected="selected"' : '';?>>Acting</option>
                                                     <option value="3" <?= set_value('status_designation') == '3' ? ' selected="selected"' : '';?>>Performing Duties</option>
                                                     <option value="4" <?= set_value('status_designation') == '4' ? ' selected="selected"' : '';?>>Duty Cover</option>
+                                                    <option value="5" <?= set_value('status_designation') == '5' ? ' selected="selected"' : '';?>>Contracts</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">

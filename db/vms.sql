@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 23, 2021 at 06:33 AM
--- Server version: 10.4.10-MariaDB
--- PHP Version: 7.3.12
+-- Generation Time: Jul 05, 2021 at 09:58 PM
+-- Server version: 5.7.31
+-- PHP Version: 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -81,7 +80,7 @@ DROP TABLE IF EXISTS `vehicle_details_tb`;
 CREATE TABLE IF NOT EXISTS `vehicle_details_tb` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `owner` varchar(225) DEFAULT NULL,
-  `vehicle_number` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `vehicle_number` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `model` int(11) DEFAULT NULL,
   `use_status` int(11) DEFAULT NULL,
   `expense` decimal(10,2) DEFAULT NULL,

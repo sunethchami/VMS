@@ -254,7 +254,7 @@ class ImportCon extends CI_Controller {
                             ->getCellByColumnAndRow(9, $row)->getValue();  
                     
                     $record = $this->VehicleDetailsModel
-                        ->getRecord($vehicleNumber);
+                        ->getRecordByVehicleNo($vehicleNumber);
                     
                     $data = array(
                         'vehicle_number' => $vehicleNumber,
