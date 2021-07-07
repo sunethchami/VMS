@@ -257,7 +257,7 @@ class ImportCon extends CI_Controller {
                         ->getRecordByVehicleNo($vehicleNumber);
                     
                     $data = array(
-                        'vehicle_number' => $vehicleNumber,
+                        'vehicle_number' => trim($vehicleNumber),
                         'officer_name' => $officerName,
                         'designation' => $officerDesignation,
                         'workplace' => $officerWorkPlace,
@@ -270,7 +270,9 @@ class ImportCon extends CI_Controller {
                         'file_number' => $fileNumber,
                     );
                     
-                    if(empty($record)){
+                    if($vehicleNumber == ''){
+                        $this->VehicleDetailsModel->setNewRecords($data);
+                    }else if(empty($record)){
                         $this->VehicleDetailsModel->setNewRecords($data);
                     }else{
                         $this->VehicleDetailsModel
@@ -347,21 +349,22 @@ class ImportCon extends CI_Controller {
                         ->getValue();      
        
                     $data = array(
-                        'vehicle_number' => $vehicle_number,
-                        'brand' => $brand,
-                        'director_division' => $director_division,
-                        'sub_division' => $sub_division,
-                        'file_no_book_no' => $file_no_book_no
+                        'vehicle_number' => trim($vehicle_number),
+                        'brand' => trim($brand),
+                        'director_division' => trim($director_division),
+                        'sub_division' => trim($sub_division),
+                        'file_no_book_no' => trim($file_no_book_no)
                     );
                     
                     $record = $this->VehicleDetailsModel
-                        ->getRecord($vehicle_number);
-                    
-                    if(empty($record)){
+                        ->getRecordByVehicleNo(trim($vehicle_number));
+                    if($vehicle_number == ''){
+                        $this->VehicleDetailsModel->setNewRecords($data);
+                    }else if(empty($record)){
                         $this->VehicleDetailsModel->setNewRecords($data);
                     }else{
                         $this->VehicleDetailsModel
-                            ->updateRecordData($vehicle_number,$data);
+                                ->updateById($record->id,$data);
                     }
                 }
             }
