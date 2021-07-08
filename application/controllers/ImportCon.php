@@ -363,6 +363,12 @@ class ImportCon extends CI_Controller {
                     }else if(empty($record)){
                         $this->VehicleDetailsModel->setNewRecords($data);
                     }else{
+                        $data = array(
+                            'brand' => trim($brand),
+                            'director_division' => trim($director_division),
+                            'sub_division' => trim($sub_division),
+                            'file_no_book_no' => trim($file_no_book_no)
+                        );
                         $this->VehicleDetailsModel
                                 ->updateById($record->id,$data);
                     }

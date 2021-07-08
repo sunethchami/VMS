@@ -25,14 +25,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <div class="form-group">
                                                     <label>Owner</label>
                                                     <input name="owner" class="form-control" value="<?php if(isset($result->owner)){ echo $result->owner;}else{ echo set_value('owner');} ?>">
-                                                    <input name="id" type="hidden" value="<?php if(isset($result->id)){ echo $result->id;}else{ echo $id;} ?>"/>
-                                                    <input name="vehicle_number_old" type="hidden" value="<?php if(isset($result->vehicle_number)){ echo $result->vehicle_number;}else{ echo $vehicle_number_old;} ?>"/>
+                                                    <input name="id" type="hidden" value="<?php if(isset($result->id)){ echo $result->id;}else{ echo $id;} ?>"/>                                                    
                                                     <p class="help-block"></p>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Vehicle Number</label>
                                                     <input name="vehicle_number" class="form-control" value="<?php if(isset($result->vehicle_number)){ echo $result->vehicle_number;}else{ echo set_value('vehicle_number');} ?>">
-                                                    <p></p><span class="error-msg"><?php echo form_error('vehicle_number'); ?></span>
+                                                    <p></p>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Vehicle Model</label>

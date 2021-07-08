@@ -12,6 +12,7 @@ class VehicleDetailsCon extends CI_Controller {
         $this->load->helper(array('url'));
         $this->load->library('form_validation');
         $this->load->library('session');
+        $this->load->database();
 
     }    
     
@@ -38,10 +39,10 @@ class VehicleDetailsCon extends CI_Controller {
      */
     
     public function setNewRecord() {
-        
+
         $owner = trim($this->input->post('owner'));
-        $vehicle_number = trim($this->input->post('vehicle_number'));        
-        $model = trim($this->input->post('model'));         
+        $vehicle_number = trim($this->input->post('vehicle_number'));
+        $model = trim($this->input->post('model'));
         $brand = trim($this->input->post('brand'));
         $use_status = trim($this->input->post('use_status'));
         $expense = trim($this->input->post('expense'));
@@ -55,42 +56,48 @@ class VehicleDetailsCon extends CI_Controller {
         $grade = trim($this->input->post('grade'));
         $status_designation = trim($this->input->post('status_designation'));
         $monthly_fuel_allowance = trim($this->input
-                ->post('monthly_fuel_allowance'));
+                        ->post('monthly_fuel_allowance'));
         $monthly_fuel_intake = trim($this->input->post('monthly_fuel_intake'));
         $other_note = trim($this->input->post('other_note'));
         $file_number = trim($this->input->post('file_number'));
         $file_no_book_no = trim($this->input->post('file_no_book_no'));
         $director_division = trim($this->input->post('director_division'));
         $sub_division = trim($this->input->post('sub_division'));
-        
-        $this->form_validation->set_rules('vehicle_number', 'Vehicle Number',
-            'trim|required|is_unique[vehicle_details_tb.vehicle_number]',
-                array('is_unique' => 'This %s already exist.'));
-        
-        if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header');
-            $this->load->view('vehicle_details/add_new_record_page');
-            $this->load->view('templates/footer');
-        } else {
-            
-            if($model == ''){
+
+        if ($owner != "" || $vehicle_number != "" || $model != "" ||
+                $use_status != "" || $expense != "" ||
+                $location != "" || $type != "Please select vehicle type" ||
+                $running_status != "1" || $other_details != "" ||
+                $officer_name != "" || $designation != "" || $workplace != "" ||
+                $grade != "Please select Officer Grade" ||
+                $status_designation != "Please select Status of Designation" ||
+                $monthly_fuel_allowance != "Please select Monthly Fuel Allowance" ||
+                $monthly_fuel_intake != "" || $other_note != "" ||
+                $file_number != "" || $file_no_book_no != "" ||
+                $director_division != "" || $sub_division != "") {
+
+            $this->form_validation->set_rules('vehicle_number', 'Vehicle Number',
+                    'trim|is_unique[vehicle_details_tb.vehicle_number]',
+                    array('is_unique' => 'This %s already exist.'));
+
+            if ($model == '') {
                 $model = 0;
-            }else{
-                $model = $this->getModelId($model);  
+            } else {
+                $model = $this->getModelId($model);
             }
-            
-            if($use_status == ''){
+
+            if ($use_status == '') {
                 $use_status = 0;
-            }else{
-                $use_status = $this->getUsageId($use_status);  
+            } else {
+                $use_status = $this->getUsageId($use_status);
             }
-            
+
             $data = array(
                 'owner' => $owner,
                 'vehicle_number' => $vehicle_number,
-                'model' => (int)$model,
+                'model' => (int) $model,
                 'brand' => $brand,
-                'use_status' => (int)$use_status,
+                'use_status' => (int) $use_status,
                 'expense' => $expense,
                 'location' => $location,
                 'type' => $type,
@@ -110,14 +117,15 @@ class VehicleDetailsCon extends CI_Controller {
                 'sub_division' => $sub_division
             );
 
-            $result = $this->VehicleDetailsModel->setNewRecords($data); 
-            
+            $result = $this->VehicleDetailsModel->setNewRecords($data);
+
             $this->session->set_flashdata('message', '1');
             redirect('VehicleDetailsCon/showAddNewRecordPage');
+        } else {
+            redirect('VehicleDetailsCon/showAddNewRecordPage');
         }
-        
     }
-    
+
     /**
      * author : Suneth Senanayake. 
      * getModelId($model_name)
@@ -322,11 +330,10 @@ class VehicleDetailsCon extends CI_Controller {
      */
     
     public function updateRecord() {
-        
+
         $owner = trim($this->input->post('owner'));
         $id = trim($this->input->post('id'));
         $vehicle_number = trim($this->input->post('vehicle_number'));
-        $vehicle_number_old = trim($this->input->post('vehicle_number_old'));
         $model = trim($this->input->post('model'));
         $brand = trim($this->input->post('brand'));
         $use_status = trim($this->input->post('use_status'));
@@ -340,87 +347,61 @@ class VehicleDetailsCon extends CI_Controller {
         $workplace = trim($this->input->post('workplace'));
         $grade = trim($this->input->post('grade'));
         $status_designation = trim($this->input->post('status_designation'));
-        $monthly_fuel_allowance 
-                = trim($this->input->post('monthly_fuel_allowance'));
+        $monthly_fuel_allowance = trim($this->input->post('monthly_fuel_allowance'));
         $monthly_fuel_intake = trim($this->input->post('monthly_fuel_intake'));
         $other_note = trim($this->input->post('other_note'));
         $file_number = trim($this->input->post('file_number'));
         $file_no_book_no = trim($this->input->post('file_no_book_no'));
         $director_division = trim($this->input->post('director_division'));
         $sub_division = trim($this->input->post('sub_division'));
-        
+
         $this->data['id'] = $id;
-        $this->data['vehicle_number_old'] = $vehicle_number_old;
-        
-        if($vehicle_number == ''){
-            $this->form_validation->set_rules('vehicle_number','Vehicle Number',
-            'required');
+
+        if ($model == '') {
+            $model = 0;
         } else {
-        
-            if($vehicle_number != $vehicle_number_old ){
-                $this->form_validation->set_rules('vehicle_number', 
-                    'Vehicle Number',
-                    'is_unique[vehicle_details_tb.vehicle_number]',
-                array('is_unique' => 'This %s already exist.')); 
-            }else{
-                $this->form_validation->set_rules('vehicle_number',
-                        'Vehicle Number','required');
-            }
+            $model = $this->getModelId($model);
         }
-        
-        if ($this->form_validation->run() == FALSE){            
-            $this->load->view('templates/header');
-            $this->load->view('vehicle_details/edit_record_page', $this->data );
-            $this->load->view('templates/footer');
-        }else{
-            
-            if($model == ''){
-                $model = 0;
-            }else{
-                $model = $this->getModelId($model);  
-            }
-            
-            if($use_status == ''){
-                $use_status = 0;
-            }else{
-                $use_status = $this->getUsageId($use_status);  
-            }
-            
-            $data = array(
-                'owner' => $owner,
-                'vehicle_number' => $vehicle_number,
-                'model' => (int)$model,
-                'brand' => $brand,
-                'use_status' => (int)$use_status,
-                'expense' => $expense,
-                'location' => $location,
-                'type' => $type,
-                'running_status' => $running_status,
-                'other_details' => $other_details,
-                'officer_name' => $officer_name,
-                'designation' => $designation,
-                'workplace' => $workplace,
-                'grade' => $grade,
-                'status_designation' => $status_designation,
-                'monthly_fuel_allowance' => $monthly_fuel_allowance,
-                'monthly_fuel_intake' => $monthly_fuel_intake,
-                'other_note' => $other_note,
-                'file_number' => $file_number,
-                'file_no_book_no' => $file_no_book_no,
-                'director_division' => $director_division,
-                'sub_division' => $sub_division
-            );
-            
-            $result = $this->VehicleDetailsModel
-                    ->updateRecordData($vehicle_number_old,$data);
-            
-            
-            $this->session->set_flashdata('message', '1');
-            redirect('VehicleDetailsCon/showAllRecordsPage');  
-                      
-        } 
+
+        if ($use_status == '') {
+            $use_status = 0;
+        } else {
+            $use_status = $this->getUsageId($use_status);
+        }
+
+        $data = array(
+            'owner' => $owner,
+            'vehicle_number' => $vehicle_number,
+            'model' => (int) $model,
+            'brand' => $brand,
+            'use_status' => (int) $use_status,
+            'expense' => $expense,
+            'location' => $location,
+            'type' => $type,
+            'running_status' => $running_status,
+            'other_details' => $other_details,
+            'officer_name' => $officer_name,
+            'designation' => $designation,
+            'workplace' => $workplace,
+            'grade' => $grade,
+            'status_designation' => $status_designation,
+            'monthly_fuel_allowance' => $monthly_fuel_allowance,
+            'monthly_fuel_intake' => $monthly_fuel_intake,
+            'other_note' => $other_note,
+            'file_number' => $file_number,
+            'file_no_book_no' => $file_no_book_no,
+            'director_division' => $director_division,
+            'sub_division' => $sub_division
+        );
+
+        $result = $this->VehicleDetailsModel
+                ->updateById($id, $data);
+
+
+        $this->session->set_flashdata('message', '1');
+        redirect('VehicleDetailsCon/showAllRecordsPage');
     }
-    
+
     /**
      * author : Suneth Senanayake. 
      * displayDetails()
