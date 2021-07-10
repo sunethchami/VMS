@@ -1,11 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class ImportCon extends CI_Controller {
+class ImportCon extends MY_Controller {
 
     
     public function __construct() {
         parent::__construct();
+        if (!$this->user()) {
+            redirect(base_url('LoginCon'));
+        }
         $this->load->model('ImportModel');
         $this->load->model('VehicleDetailsModel');
         $this->load->model('ModelTypeModel');

@@ -56,19 +56,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </ul>
 
                 <ul class="nav navbar-right navbar-top-links">                    
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="fa fa-user fa-fw"></i> secondtruth <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                            </li>
-                        </ul>
+                    <li class="divider"></li>
+                            <span class="user_name"><?php if (isset($this_user)) { ?><?php echo $this_user->first_name; ?> <?php echo $this_user->last_name; ?><?php } ?></span>
+                    </li>
+                    <li class="divider"></li>
+                            <li><a href="<?php echo site_url(); ?>LoginCon/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                     </li>
                 </ul>
                 <!-- /.navbar-top-links -->

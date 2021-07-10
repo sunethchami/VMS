@@ -2,10 +2,13 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class AdditionalFuelCon extends CI_Controller {
+class AdditionalFuelCon extends MY_Controller {
 
     public function __construct() {
         parent::__construct();
+        if (!$this->user()) {
+            redirect(base_url('LoginCon'));
+        }
         $this->load->model('AdditionalFuelModel');
         $this->load->helper(array('url'));
         $this->load->library('form_validation');
@@ -20,7 +23,8 @@ class AdditionalFuelCon extends CI_Controller {
     public function showAddNewRecordPage() {
 
         $this->data['message'] = $this->session->flashdata('message');
-        $this->load->view('templates/header');
+        $this->data['this_user'] = $this->user();        
+        $this->load->view('templates/header',$this->data);
         $this->load->view('additional_fuel/add_new_record_page', $this->data);
         $this->load->view('templates/footer');
     }
@@ -113,7 +117,8 @@ class AdditionalFuelCon extends CI_Controller {
         $result = $this->AdditionalFuelModel->getAllRecords();
         $result = $this->getWithFullValue($result);       
         $this->data['result'] = $result;       
-        $this->load->view('templates/header');
+        $this->data['this_user'] = $this->user();        
+        $this->load->view('templates/header',$this->data);
         $this->load->view('additional_fuel/view_all_records_page',$this->data);
         $this->load->view('templates/footer');
         
@@ -164,7 +169,8 @@ class AdditionalFuelCon extends CI_Controller {
         
         $this->data['result'] = $this->AdditionalFuelModel->getRecord($id);
         
-        $this->load->view('templates/header');
+        $this->data['this_user'] = $this->user();        
+        $this->load->view('templates/header',$this->data);
         $this->load->view('additional_fuel/edit_record_page', $this->data);
         $this->load->view('templates/footer');
     }
@@ -249,7 +255,8 @@ class AdditionalFuelCon extends CI_Controller {
         $id= $this->uri->segment(3);
         $result = $this->AdditionalFuelModel->getRecordArray($id); 
         $this->data['result'] = $this->getWithFullValue($result);
-        $this->load->view('templates/header');
+        $this->data['this_user'] = $this->user();        
+        $this->load->view('templates/header',$this->data);
         $this->load->view('additional_fuel/more_details_page', $this->data);
         $this->load->view('templates/footer');
         
