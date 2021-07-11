@@ -17,6 +17,13 @@ class LoginModel extends CI_Model {
         }
         return $this->db->get('users_tb');
     }
+
+    public function get_user_type($where = array()) {
+        if(!empty($where)){
+        $this->db->where($where);
+        }
+        return $this->db->get('user_permission_tb');
+    }
     
     public function get_permission_list($user_id){
         $query = $this->db->select('t1.user_id,t2.permission,t3.user_type')

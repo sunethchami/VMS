@@ -85,9 +85,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <li>
                                 <a href="#"><i class="fa fa-automobile fa-fw"></i> Vehicle Details<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
+                                    <?php if($user_type != 3){ ?>
                                     <li>
                                         <a href="<?php echo site_url(); ?>VehicleDetailsCon/showAddNewRecordPage">Add New Record</a>
                                     </li>
+                                    <?php } ?>
                                     <li>
                                         <a href="<?php echo site_url(); ?>VehicleDetailsCon/showAllRecordsPage">View All Records</a>
                                     </li>
@@ -97,15 +99,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <li>
                                 <a href="#"><i class="fa fa-tint fa-fw"></i> Additional Fuel<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
+                                    <?php if($user_type != 3){ ?>
                                     <li>
                                         <a href="<?php echo site_url(); ?>AdditionalFuelCon/showAddNewRecordPage">Add New Record</a>
                                     </li>
+                                    <?php } ?>
                                     <li>
                                         <a href="<?php echo site_url(); ?>AdditionalFuelCon/showAllRecordsPage">View All Records</a>
                                     </li>
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>
+                            <?php if($user_type == 1){ ?>
+                            <li>
+                                <a href="#"><i class="fa fa-user fa-fw"></i> Users<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="<?php echo site_url(); ?>UserCon/showAddNewRecordPage">Add New Record</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo site_url(); ?>UserCon/showAllRecordsPage">View All Records</a>
+                                    </li>
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>                            
                             <li>
                                 <a href="#"><i class="fa fa-upload fa-fw"></i> Import<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
@@ -121,6 +138,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>
+                            <?php } ?>
                         </ul>
                     </div>
                 </div>

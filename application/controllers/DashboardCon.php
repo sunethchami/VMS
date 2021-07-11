@@ -19,11 +19,12 @@ class DashboardCon extends MY_Controller {
     
     public function index(){
 	 
-        $this->data['this_user'] = $this->user();
-        
-        $this->load->view('templates/header',$this->data);
-        $this->load->view('dashboard_page'); 
-        $this->load->view('templates/footer');
+//        $this->data['this_user'] = $this->user();
+//        $this->data['user_type'] = $this->user_type()->group_id;
+//        $this->load->view('templates/header',$this->data);
+//        $this->load->view('dashboard_page'); 
+//        $this->load->view('templates/footer');
+        $this->set_view('dashboard_page','');
     }
 }
 

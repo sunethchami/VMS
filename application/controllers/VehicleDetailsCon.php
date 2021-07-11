@@ -38,10 +38,7 @@ class VehicleDetailsCon extends MY_Controller {
             $this->data['message'] = $this->session->flashdata('message');
             $this->data['models'] = $this->ModelTypeModel->getAllTypes();
             $this->data['usages'] = $this->UsageTypeModel->getAllTypes();
-            $this->data['this_user'] = $this->user();
-            $this->load->view('templates/header', $this->data);
-            $this->load->view('vehicle_details/add_new_record_page', $this->data);
-            $this->load->view('templates/footer');
+            $this->set_view('vehicle_details/add_new_record_page',$this->data);
         } else {
             echo "access denied";
         }
@@ -78,10 +75,12 @@ class VehicleDetailsCon extends MY_Controller {
             $designation = trim($this->input->post('designation'));
             $workplace = trim($this->input->post('workplace'));
             $grade = trim($this->input->post('grade'));
-            $status_designation = trim($this->input->post('status_designation'));
+            $status_designation = trim($this->input
+                    ->post('status_designation'));
             $monthly_fuel_allowance = trim($this->input
                             ->post('monthly_fuel_allowance'));
-            $monthly_fuel_intake = trim($this->input->post('monthly_fuel_intake'));
+            $monthly_fuel_intake = trim($this->input
+                    ->post('monthly_fuel_intake'));
             $other_note = trim($this->input->post('other_note'));
             $file_number = trim($this->input->post('file_number'));
             $file_no_book_no = trim($this->input->post('file_no_book_no'));
@@ -89,21 +88,26 @@ class VehicleDetailsCon extends MY_Controller {
             $sub_division = trim($this->input->post('sub_division'));
 
             if ($owner != "" || $vehicle_number != "" || $model != "" ||
-                    $use_status != "" || $expense != "" ||
-                    $location != "" || $type != "Please select vehicle type" ||
-                    $running_status != "1" || $other_details != "" ||
-                    $officer_name != "" || $designation != "" || $workplace != "" ||
-                    $grade != "Please select Officer Grade" ||
-                    $status_designation != "Please select Status of Designation" ||
-                    $monthly_fuel_allowance != "Please select Monthly Fuel Allowance" ||
-                    $monthly_fuel_intake != "" || $other_note != "" ||
-                    $file_number != "" || $file_no_book_no != "" ||
-                    $director_division != "" || $sub_division != "") {
+                $use_status != "" || $expense != "" ||
+                $location != "" || $type != "Please select vehicle type" ||
+                $running_status != "1" || $other_details != "" ||
+                $officer_name != "" || $designation != "" || 
+                $workplace != "" || 
+                $grade != "Please select Officer Grade" ||
+                $status_designation != "Please select Status of Designation" ||
+                $monthly_fuel_allowance != 
+                    "Please select Monthly Fuel Allowance" ||
+                $monthly_fuel_intake != "" || $other_note != "" ||
+                $file_number != "" || $file_no_book_no != "" ||
+                $director_division != "" || $sub_division != "") {
 
-                $this->form_validation->set_rules('vehicle_number', 'Vehicle Number',
+                $this->form_validation->set_rules('vehicle_number', 
+                        'Vehicle Number',
                         'trim|is_unique[vehicle_details_tb.vehicle_number]',
                         array('is_unique' => 'This %s already exist.'));
-
+                if ($this->form_validation->run() == FALSE) {
+                    $this->set_view('vehicle_details/add_new_record_page','');
+                } else {
                 if ($model == '') {
                     $model = 0;
                 } else {
@@ -145,6 +149,7 @@ class VehicleDetailsCon extends MY_Controller {
 
                 $this->session->set_flashdata('message', '1');
                 redirect('VehicleDetailsCon/showAddNewRecordPage');
+                }
             } else {
                 redirect('VehicleDetailsCon/showAddNewRecordPage');
             }
@@ -211,11 +216,9 @@ class VehicleDetailsCon extends MY_Controller {
         $this->data['message'] = $this->session->flashdata('message');      
         $result = $this->VehicleDetailsModel->getAllRecords();
         $result = $this->getVahicleDetailsWithFullValue($result);
-        $this->data['result'] = $result;  
-        $this->data['this_user'] = $this->user();
-        $this->load->view('templates/header',$this->data);
-        $this->load->view('vehicle_details/view_all_records_page',$this->data);
-        $this->load->view('templates/footer');
+        $this->data['result'] = $result;
+        $this->data['user_type'] = $this->user_type()->group_id;
+        $this->set_view('vehicle_details/view_all_records_page',$this->data);
     }
     
     private function getVahicleDetailsWithFullValue($result){
@@ -352,12 +355,8 @@ class VehicleDetailsCon extends MY_Controller {
                 $this->data['result']->use_status = "";
             }
             $this->data['models'] = $this->ModelTypeModel->getAllTypes();
-            $this->data['usages'] = $this->UsageTypeModel->getAllTypes();
-
-            $this->data['this_user'] = $this->user();
-            $this->load->view('templates/header', $this->data);
-            $this->load->view('vehicle_details/edit_record_page', $this->data);
-            $this->load->view('templates/footer');
+            $this->data['usages'] = $this->UsageTypeModel->getAllTypes();           
+            $this->set_view('vehicle_details/edit_record_page',$this->data);
         } else {
             echo "access denied";
         }
@@ -395,9 +394,12 @@ class VehicleDetailsCon extends MY_Controller {
             $designation = trim($this->input->post('designation'));
             $workplace = trim($this->input->post('workplace'));
             $grade = trim($this->input->post('grade'));
-            $status_designation = trim($this->input->post('status_designation'));
-            $monthly_fuel_allowance = trim($this->input->post('monthly_fuel_allowance'));
-            $monthly_fuel_intake = trim($this->input->post('monthly_fuel_intake'));
+            $status_designation = trim($this->input
+                    ->post('status_designation'));
+            $monthly_fuel_allowance = trim($this->input
+                    ->post('monthly_fuel_allowance'));
+            $monthly_fuel_intake = trim($this->input
+                    ->post('monthly_fuel_intake'));
             $other_note = trim($this->input->post('other_note'));
             $file_number = trim($this->input->post('file_number'));
             $file_no_book_no = trim($this->input->post('file_no_book_no'));
@@ -465,10 +467,7 @@ class VehicleDetailsCon extends MY_Controller {
         $id = $this->uri->segment(3);
         $result = $this->VehicleDetailsModel->getRecordArray($id); 
         $this->data['result'] = $this->getVahicleDetailsWithFullValue($result);
-        $this->data['this_user'] = $this->user();
-        $this->load->view('templates/header',$this->data);
-        $this->load->view('vehicle_details/more_details_page', $this->data);
-        $this->load->view('templates/footer');
+        $this->set_view('vehicle_details/more_details_page',$this->data);
         
     }
     

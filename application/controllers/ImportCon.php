@@ -20,60 +20,82 @@ class ImportCon extends MY_Controller {
     }
     
     public function showImportVehicleDetailsPage() {
-        $this->load->view('templates/header');
-        $this->load->view('import/vehicle_details_page');
-        $this->load->view('templates/footer');
+        $permissions = $this->permission();
+        $access = FALSE;
+        foreach ($permissions as $per) {
+            if ($per->permission == 'import-vd') {
+                $access = TRUE;
+                break;
+            }
+        }
+        if ($access) {
+            $this->set_view('import/vehicle_details_page','');
+        } else {
+            echo "access denied";
+        }
     }
     
     public function importVehicleDetails() {
         
-        if (isset($_FILES["file"]["name"])) {
-            
-            $path = $_FILES["file"]["tmp_name"];
-            $object = PHPExcel_IOFactory::load($path);
-            
-            foreach ($object->getWorksheetIterator() as $worksheet) {
-                
-                $highestRow = $worksheet->getHighestRow();
-                $highestColumn = $worksheet->getHighestColumn();
-                
-                for ($row = 2; $row <= $highestRow; $row++) {
-                    $owner = $worksheet->getCellByColumnAndRow(0, $row)
-                        ->getValue();
-                    $vehicle_number = $worksheet->getCellByColumnAndRow(1, $row)
-                        ->getValue();
-                    $model = $worksheet->getCellByColumnAndRow(2, $row)
-                        ->getValue();                   
-                    $use_status = $worksheet->getCellByColumnAndRow(3, $row)
-                        ->getValue();
-                    $expense = $worksheet->getCellByColumnAndRow(4, $row)
-                        ->getValue();
-                    $type = $worksheet->getCellByColumnAndRow(5, $row)
-                        ->getValue();
-                    $running_status = $worksheet->getCellByColumnAndRow(6, $row)
-                        ->getValue();
-                    $location = $worksheet->getCellByColumnAndRow(7, $row)
-                        ->getValue();
-                    $other_details = $worksheet->getCellByColumnAndRow(8, $row)
-                        ->getValue();       
-       
-                    $data[] = array(
-                        'owner' => trim($owner),
-                        'vehicle_number' => trim($vehicle_number),
-                        'model' => $this->getModel(trim($model)),
-                        'use_status' => $this->getUseStatus(trim($use_status)),
-                        'expense' => trim($expense),
-                        'location' => trim($location),
-                        'type' => $this->getType(trim($type)),
-                        'running_status' => $this->
-                            getRunningStatus(trim($running_status)),
-                        'other_details' => trim($other_details),
-                    );
-                }
+        $permissions = $this->permission();
+        $access = FALSE;
+        foreach ($permissions as $per) {
+            if ($per->permission == 'import-vd') {
+                $access = TRUE;
+                break;
             }
-            
-            $this->ImportModel->setVehicleData($data);
-            echo 'Data Imported successfully';
+        }
+        if ($access) {
+            if (isset($_FILES["file"]["name"])) {
+
+                $path = $_FILES["file"]["tmp_name"];
+                $object = PHPExcel_IOFactory::load($path);
+
+                foreach ($object->getWorksheetIterator() as $worksheet) {
+
+                    $highestRow = $worksheet->getHighestRow();
+                    $highestColumn = $worksheet->getHighestColumn();
+
+                    for ($row = 2; $row <= $highestRow; $row++) {
+                        $owner = $worksheet->getCellByColumnAndRow(0, $row)
+                                ->getValue();
+                        $vehicle_number = $worksheet->getCellByColumnAndRow(1, $row)
+                                ->getValue();
+                        $model = $worksheet->getCellByColumnAndRow(2, $row)
+                                ->getValue();
+                        $use_status = $worksheet->getCellByColumnAndRow(3, $row)
+                                ->getValue();
+                        $expense = $worksheet->getCellByColumnAndRow(4, $row)
+                                ->getValue();
+                        $type = $worksheet->getCellByColumnAndRow(5, $row)
+                                ->getValue();
+                        $running_status = $worksheet->getCellByColumnAndRow(6, $row)
+                                ->getValue();
+                        $location = $worksheet->getCellByColumnAndRow(7, $row)
+                                ->getValue();
+                        $other_details = $worksheet->getCellByColumnAndRow(8, $row)
+                                ->getValue();
+
+                        $data[] = array(
+                            'owner' => trim($owner),
+                            'vehicle_number' => trim($vehicle_number),
+                            'model' => $this->getModel(trim($model)),
+                            'use_status' => $this->getUseStatus(trim($use_status)),
+                            'expense' => trim($expense),
+                            'location' => trim($location),
+                            'type' => $this->getType(trim($type)),
+                            'running_status' => $this->
+                                    getRunningStatus(trim($running_status)),
+                            'other_details' => trim($other_details),
+                        );
+                    }
+                }
+
+                $this->ImportModel->setVehicleData($data);
+                echo 'Data Imported successfully';
+            }
+        } else {
+            echo "access denied";
         }
     }
     
@@ -216,75 +238,97 @@ class ImportCon extends MY_Controller {
     }
     
     public function showImportResevationOfOfficialVehiclePage() {
-        $this->load->view('templates/header');
-        $this->load->view('import/reservation_of_official_vahicle_page');
-        $this->load->view('templates/footer');
+        $permissions = $this->permission();
+        $access = FALSE;
+        foreach ($permissions as $per) {
+            if ($per->permission == 'import-rov') {
+                $access = TRUE;
+                break;
+            }
+        }
+        if ($access) {
+            $this->set_view('import/reservation_of_official_vahicle_page','');
+        } else {
+            echo "access denied";
+        }
     }
     
     public function importReservationOfOfficialVehicles() {
         
-         if (isset($_FILES["file"]["name"])) {
-             
-            $path = $_FILES["file"]["tmp_name"];
-            $object = PHPExcel_IOFactory::load($path);
-            
-            foreach ($object->getWorksheetIterator() as $worksheet) {
-                
-                $highestRow = $worksheet->getHighestRow();
-                $highestColumn = $worksheet->getHighestColumn();
+        $permissions = $this->permission();
+        $access = FALSE;
+        foreach ($permissions as $per) {
+            if ($per->permission == 'import-rov') {
+                $access = TRUE;
+                break;
+            }
+        }
+        if ($access) {
+            if (isset($_FILES["file"]["name"])) {
 
-                for ($row = 2; $row <= $highestRow; $row++) {
-                    
-                    $grade = $worksheet
-                            ->getCellByColumnAndRow(0, $row)->getValue();
-                    $officerDesignation = $worksheet
-                            ->getCellByColumnAndRow(1, $row)->getValue();
-                    $officerWorkPlace = $worksheet
-                            ->getCellByColumnAndRow(2, $row)->getValue();                   
-                    $officerName = $worksheet
-                            ->getCellByColumnAndRow(3, $row)->getValue();
-                    $statusOfDesignation = $worksheet
-                            ->getCellByColumnAndRow(4, $row)->getValue();
-                    $vehicleNumber = $worksheet
-                            ->getCellByColumnAndRow(5, $row)->getValue();
-                    $monthlyFuelAllowance = $worksheet
-                            ->getCellByColumnAndRow(6, $row)->getValue();
-                    $monthlyFuelIntake = $worksheet
-                            ->getCellByColumnAndRow(7, $row)->getValue();
-                    $otherNote = $worksheet
-                            ->getCellByColumnAndRow(8, $row)->getValue();
-                    $fileNumber = $worksheet
-                            ->getCellByColumnAndRow(9, $row)->getValue();  
-                    
-                    $record = $this->VehicleDetailsModel
-                        ->getRecordByVehicleNo($vehicleNumber);
-                    
-                    $data = array(
-                        'vehicle_number' => trim($vehicleNumber),
-                        'officer_name' => $officerName,
-                        'designation' => $officerDesignation,
-                        'workplace' => $officerWorkPlace,
-                        'grade' => $this->getGrade($grade),
-                        'status_designation' => $statusOfDesignation,
-                        'monthly_fuel_allowance' => $this
-                            ->getMonthlyFuelAllowance($monthlyFuelAllowance),
-                        'monthly_fuel_intake' => $monthlyFuelIntake,
-                        'other_note' => $otherNote,
-                        'file_number' => $fileNumber,
-                    );
-                    
-                    if($vehicleNumber == ''){
-                        $this->VehicleDetailsModel->setNewRecords($data);
-                    }else if(empty($record)){
-                        $this->VehicleDetailsModel->setNewRecords($data);
-                    }else{
-                        $this->VehicleDetailsModel
-                            ->updateRecordData($vehicleNumber,$data);
+                $path = $_FILES["file"]["tmp_name"];
+                $object = PHPExcel_IOFactory::load($path);
+
+                foreach ($object->getWorksheetIterator() as $worksheet) {
+
+                    $highestRow = $worksheet->getHighestRow();
+                    $highestColumn = $worksheet->getHighestColumn();
+
+                    for ($row = 2; $row <= $highestRow; $row++) {
+
+                        $grade = $worksheet
+                                        ->getCellByColumnAndRow(0, $row)->getValue();
+                        $officerDesignation = $worksheet
+                                        ->getCellByColumnAndRow(1, $row)->getValue();
+                        $officerWorkPlace = $worksheet
+                                        ->getCellByColumnAndRow(2, $row)->getValue();
+                        $officerName = $worksheet
+                                        ->getCellByColumnAndRow(3, $row)->getValue();
+                        $statusOfDesignation = $worksheet
+                                        ->getCellByColumnAndRow(4, $row)->getValue();
+                        $vehicleNumber = $worksheet
+                                        ->getCellByColumnAndRow(5, $row)->getValue();
+                        $monthlyFuelAllowance = $worksheet
+                                        ->getCellByColumnAndRow(6, $row)->getValue();
+                        $monthlyFuelIntake = $worksheet
+                                        ->getCellByColumnAndRow(7, $row)->getValue();
+                        $otherNote = $worksheet
+                                        ->getCellByColumnAndRow(8, $row)->getValue();
+                        $fileNumber = $worksheet
+                                        ->getCellByColumnAndRow(9, $row)->getValue();
+
+                        $record = $this->VehicleDetailsModel
+                                ->getRecordByVehicleNo($vehicleNumber);
+
+                        $data = array(
+                            'vehicle_number' => trim($vehicleNumber),
+                            'officer_name' => $officerName,
+                            'designation' => $officerDesignation,
+                            'workplace' => $officerWorkPlace,
+                            'grade' => $this->getGrade($grade),
+                            'status_designation' => $statusOfDesignation,
+                            'monthly_fuel_allowance' => $this
+                                    ->getMonthlyFuelAllowance($monthlyFuelAllowance),
+                            'monthly_fuel_intake' => $monthlyFuelIntake,
+                            'other_note' => $otherNote,
+                            'file_number' => $fileNumber,
+                        );
+
+                        if ($vehicleNumber == '') {
+                            $this->VehicleDetailsModel->setNewRecords($data);
+                        } else if (empty($record)) {
+                            $this->VehicleDetailsModel->setNewRecords($data);
+                        } else {
+                            $this->VehicleDetailsModel
+                                    ->updateRecordData($vehicleNumber, $data);
+                        }
                     }
                 }
+
+                echo 'Data Imported successfully';
             }
-            
-            echo 'Data Imported successfully';
+        } else {
+            echo "access denied";
         }
         
     }
@@ -322,63 +366,84 @@ class ImportCon extends MY_Controller {
     }
     
      public function showImportCertificatesOfRegistrationPage() {
-        $this->load->view('templates/header');
-        $this->load->view('import/certificates_of_registration_page');
-        $this->load->view('templates/footer');
+        $permissions = $this->permission();
+        $access = FALSE;
+        foreach ($permissions as $per) {
+            if ($per->permission == 'import-cr') {
+                $access = TRUE;
+                break;
+            }
+        }
+        if ($access) {
+            $this->set_view('import/certificates_of_registration_page','');
+        } else {
+            echo "access denied";
+        }
     }
     
     public function importCertificatesOfRegistration() {
-        
-        if (isset($_FILES["file"]["name"])) {
-            
-            $path = $_FILES["file"]["tmp_name"];
-            $object = PHPExcel_IOFactory::load($path);
-            
-            foreach ($object->getWorksheetIterator() as $worksheet) {
-                
-                $highestRow = $worksheet->getHighestRow();
-                $highestColumn = $worksheet->getHighestColumn();
-                
-                for ($row = 2; $row <= $highestRow; $row++) {
-                    $vehicle_number = $worksheet->getCellByColumnAndRow(0, $row)
-                        ->getValue();
-                    $brand = $worksheet->getCellByColumnAndRow(1, $row)
-                        ->getValue();
-                    $director_division = $worksheet->getCellByColumnAndRow(2, $row)
-                        ->getValue();                   
-                    $sub_division = $worksheet->getCellByColumnAndRow(3, $row)
-                        ->getValue();
-                    $file_no_book_no = $worksheet->getCellByColumnAndRow(4, $row)
-                        ->getValue();      
-       
-                    $data = array(
-                        'vehicle_number' => trim($vehicle_number),
-                        'brand' => trim($brand),
-                        'director_division' => trim($director_division),
-                        'sub_division' => trim($sub_division),
-                        'file_no_book_no' => trim($file_no_book_no)
-                    );
-                    
-                    $record = $this->VehicleDetailsModel
-                        ->getRecordByVehicleNo(trim($vehicle_number));
-                    if($vehicle_number == ''){
-                        $this->VehicleDetailsModel->setNewRecords($data);
-                    }else if(empty($record)){
-                        $this->VehicleDetailsModel->setNewRecords($data);
-                    }else{
+        $permissions = $this->permission();
+        $access = FALSE;
+        foreach ($permissions as $per) {
+            if ($per->permission == 'import-cr') {
+                $access = TRUE;
+                break;
+            }
+        }
+        if ($access) {
+            if (isset($_FILES["file"]["name"])) {
+
+                $path = $_FILES["file"]["tmp_name"];
+                $object = PHPExcel_IOFactory::load($path);
+
+                foreach ($object->getWorksheetIterator() as $worksheet) {
+
+                    $highestRow = $worksheet->getHighestRow();
+                    $highestColumn = $worksheet->getHighestColumn();
+
+                    for ($row = 2; $row <= $highestRow; $row++) {
+                        $vehicle_number = $worksheet->getCellByColumnAndRow(0, $row)
+                                ->getValue();
+                        $brand = $worksheet->getCellByColumnAndRow(1, $row)
+                                ->getValue();
+                        $director_division = $worksheet->getCellByColumnAndRow(2, $row)
+                                ->getValue();
+                        $sub_division = $worksheet->getCellByColumnAndRow(3, $row)
+                                ->getValue();
+                        $file_no_book_no = $worksheet->getCellByColumnAndRow(4, $row)
+                                ->getValue();
+
                         $data = array(
+                            'vehicle_number' => trim($vehicle_number),
                             'brand' => trim($brand),
                             'director_division' => trim($director_division),
                             'sub_division' => trim($sub_division),
                             'file_no_book_no' => trim($file_no_book_no)
                         );
-                        $this->VehicleDetailsModel
-                                ->updateById($record->id,$data);
+
+                        $record = $this->VehicleDetailsModel
+                                ->getRecordByVehicleNo(trim($vehicle_number));
+                        if ($vehicle_number == '') {
+                            $this->VehicleDetailsModel->setNewRecords($data);
+                        } else if (empty($record)) {
+                            $this->VehicleDetailsModel->setNewRecords($data);
+                        } else {
+                            $data = array(
+                                'brand' => trim($brand),
+                                'director_division' => trim($director_division),
+                                'sub_division' => trim($sub_division),
+                                'file_no_book_no' => trim($file_no_book_no)
+                            );
+                            $this->VehicleDetailsModel
+                                    ->updateById($record->id, $data);
+                        }
                     }
                 }
+
+                echo 'Data Imported successfully';
             }
-            
-            echo 'Data Imported successfully';
+        } else {
+            echo "access denied";
         }
     }
 

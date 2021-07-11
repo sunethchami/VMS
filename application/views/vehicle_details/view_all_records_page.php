@@ -53,7 +53,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                          <?php
                                             foreach ($result as $row) {
                                                 echo'<tr>';
-                                                echo'<td class="td-action"><p class="table-button"><a href="' . site_url() . 'VehicleDetailsCon/displayDetails/' . $row['id'] . '"><img src="'. base_url() .'assets/icons/info-circle.svg" width="32" height="32" title="Display Details"></a></p><p class="table-button"><a href="' . site_url() . 'VehicleDetailsCon/editRecord/' . $row['id'] . '"><img src="'. base_url() .'assets/icons/pencil-square.svg" width="32" height="32" title="Edit"></a></p><p class="table-button"><a href="#" data-id="' . $row['id'] . '" data-toggle="modal" class="deleteBtn" data-target="#comfirmModal"><img src="'. base_url() .'assets/icons/trash.svg" width="32" height="32" title ="Delete"></a></p></td>';
+                                                echo'<td class="td-action">';
+                                                echo '<p class="table-button"><a href="' . site_url() . 'VehicleDetailsCon/displayDetails/' . $row['id'] . '"><img src="'. base_url() .'assets/icons/info-circle.svg" width="32" height="32" title="Display Details"></a></p>';
+                                                if($user_type != 3 ){
+                                                    echo '<p class="table-button"><a href="' . site_url() . 'VehicleDetailsCon/editRecord/' . $row['id'] . '"><img src="'. base_url() .'assets/icons/pencil-square.svg" width="32" height="32" title="Edit"></a></p>';                                                
+                                                    echo '<p class="table-button"><a href="#" data-id="' . $row['id'] . '" data-toggle="modal" class="deleteBtn" data-target="#comfirmModal"><img src="'. base_url() .'assets/icons/trash.svg" width="32" height="32" title ="Delete"></a></p></td>';
+                                                }
                                                 echo'<td>' . $row['owner'] . '</td>';
                                                 echo'<td>' . $row['vehicle_number'] . '</td>';
                                                 echo'<td>' . $row['model'] . '</td>';
