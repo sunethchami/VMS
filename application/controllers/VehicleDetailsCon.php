@@ -217,7 +217,6 @@ class VehicleDetailsCon extends MY_Controller {
         $result = $this->VehicleDetailsModel->getAllRecords();
         $result = $this->getVahicleDetailsWithFullValue($result);
         $this->data['result'] = $result;
-        $this->data['user_type'] = $this->user_type()->group_id;
         $this->set_view('vehicle_details/view_all_records_page',$this->data);
     }
     
@@ -340,7 +339,7 @@ class VehicleDetailsCon extends MY_Controller {
             $this->data['result'] = $this->VehicleDetailsModel
                     ->getRecord($id);
 
-            echo "model :" . $model_id = $this->data['result']->model;
+            $model_id = $this->data['result']->model;
             if ($model_id != 0) {
                 $model = $this->ModelTypeModel->getRecordById($model_id);
                 $this->data['result']->model = $model->name;

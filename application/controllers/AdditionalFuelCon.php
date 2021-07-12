@@ -136,7 +136,6 @@ class AdditionalFuelCon extends MY_Controller {
         $result = $this->AdditionalFuelModel->getAllRecords();
         $result = $this->getWithFullValue($result);       
         $this->data['result'] = $result;
-        $this->data['user_type'] = $this->user_type()->group_id;
         $this->set_view('additional_fuel/view_all_records_page',$this->data);
         
     }

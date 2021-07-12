@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">View all Additional Fuel Details</h1>
+                            <h1 class="page-header">View all Users</h1>
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>
@@ -26,39 +26,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                       <table class="display cell-border" id="allTable">
                                         <thead class=" text-primary">
                                           <th class="th-action">Actions</th>
-                                          <th class="th">Index Number</th>
-                                          <th class="th">Vehicle Number</th>
-                                          <th class="th">Month</th>                                          
-                                          <th class="th">Value</th>
-                                          <th class="th">Application Received Date</th>
-                                          <th class="th">Shortcomings</th>
-                                          <th class="th">Revised Application Resend Date</th>
-                                          <th class="th">Date of the application send for approval to A.D.G</th>
-                                          <th class="th">Date of Receiving Approval by A.D.G</th>
-                                          <th class="th">Date of Sending Approval of A.D.G</th>
-                                          <th class="th">Other Details</th>
+                                          <th class="th">First Name</th>
+                                          <th class="th">Last Name</th>
+                                          <th class="th">ID No</th>                                          
+                                          <th class="th">User Role</th>                                          
+                                          <th class="th">Phone No</th>
+                                          <th class="th">email</th>
                                         </thead>
                                         <tbody>
                                          <?php
                                             foreach ($result as $row) {
                                                 echo'<tr>';
                                                 echo'<td class="td-action">';
-                                                echo'<p class="table-button"><a href="' . site_url() . 'AdditionalFuelCon/displayDetails/' . $row['id'] . '"><img src="'. base_url() .'assets/icons/info-circle.svg" width="32" height="32" title="Display Details"></a></p>';
-                                                if($user_type != 3){
-                                                    echo'<p class="table-button"><a href="' . site_url() . 'AdditionalFuelCon/editRecord/' . $row['id'] . '"><img src="'. base_url() .'assets/icons/pencil-square.svg" width="32" height="32" title="Edit"></a></p>';
-                                                    echo'<p class="table-button"><a href="#" data-id="' . $row['id'] . '" data-toggle="modal" class="deleteBtn" data-target="#comfirmModal"><img src="'. base_url() .'assets/icons/trash.svg" width="32" height="32" title ="Delete"></a></p></td>';
-                                                }
-                                                echo'<td>' . $row['index_no'] . '</td>';
-                                                echo'<td>' . $row['vehicle_number'] . '</td>';
-                                                echo'<td>' . $row['month'] . '</td>';
-                                                echo'<td>' . $row['value'] . '</td>'; 
-                                                echo'<td>' . $row['application_received_date'] . '</td>'; 
-                                                echo'<td>' . $row['shortcomings'] . '</td>'; 
-                                                echo'<td>' . $row['revised_application_resend_date'] . '</td>'; 
-                                                echo'<td>' . $row['date_application_send_approval'] . '</td>'; 
-                                                echo'<td>' . $row['date_receiving_approval'] . '</td>'; 
-                                                echo'<td>' . $row['date_sending_approval'] . '</td>';  
-                                                echo'<td>' . $row['other_details'] . '</td>';                                                 
+                                                echo'<p class="table-button"><a href="' . site_url() . 'UserCon/displayDetails/' . $row['id'] . '"><img src="'. base_url() .'assets/icons/info-circle.svg" width="32" height="32" title="Display Details"></a></p>';                                                
+                                                echo'<p class="table-button"><a href="' . site_url() . 'UserCon/editRecord/' . $row['id'] . '"><img src="'. base_url() .'assets/icons/pencil-square.svg" width="32" height="32" title="Edit"></a></p>';
+                                                echo'<p class="table-button"><a href="#" data-id="' . $row['id'] . '" data-toggle="modal" class="deleteBtn" data-target="#comfirmModal"><img src="'. base_url() .'assets/icons/trash.svg" width="32" height="32" title ="Delete"></a></p></td>';                                                
+                                                echo'<td>' . $row['first_name'] . '</td>';
+                                                echo'<td>' . $row['last_name'] . '</td>';
+                                                echo'<td>' . $row['id_no'] . '</td>';
+                                                echo'<td>' . $row['user_role'] . '</td>'; 
+                                                echo'<td>' . $row['phone_no'] . '</td>'; 
+                                                echo'<td>' . $row['email'] . '</td>';                                                  
                                                 echo'</tr>';
                                             }
                                             ?>
