@@ -9,6 +9,9 @@ class UserCon extends MY_Controller {
         $this->load->library('bcrypt');
         $this->load->model('UserModel');
         $this->load->library('form_validation');
+        if (!$this->user()) {
+            redirect(base_url('LoginCon'));
+        }
     }
     
     /**
@@ -218,6 +221,72 @@ class UserCon extends MY_Controller {
                     $permissions_group->id),$id);
 
                 $this->session->set_flashdata('message', '1');
+                redirect('UserCon/showAllRecordsPage');
+            }
+        } else {
+            echo "access denied";
+        }
+    }    
+        
+    /**
+     * author : Suneth Senanayake. 
+     * displayDetails()
+     * View details in a table for selected user.
+     */
+    
+    public function displayDetails() {
+        
+        $permissions = $this->permission();
+        $access = FALSE;
+        foreach ($permissions as $per) {
+            if ($per->permission == 'user-show-details') {
+                $access = TRUE;
+                break;
+            }
+        }
+        if ($access) {
+            $id = $this->uri->segment(3);
+            $user = $this->UserModel->getRecord($id);
+            $permission_group = $this->UserModel->getUserType($user->id);
+            $user->user_role = $permission_group->group_name;
+            $this->data['result'] = $user;
+            $this->set_view('user/more_details_page', $this->data);
+        } else {
+            echo "access denied";
+        }
+    }
+    
+    /**
+     * author : Suneth Senanayake. 
+     * deleteRacord()
+     * Delete record from db for selected user.
+     */
+    
+    public function deleteRecord() {
+
+        $permissions = $this->permission();
+        $access = FALSE;
+        foreach ($permissions as $per) {
+            if ($per->permission == 'user-delete') {
+                $access = TRUE;
+                break;
+            }
+        }
+        if ($access) {
+            
+            $id = $this->uri->segment(3);
+
+            if ($id != $this->user()->id) {
+                $result = $this->UserModel->deleteRecordData($id);
+                $this->UserModel->deleteUserType($id);
+                if ($result == 1) {
+                    $this->session->set_flashdata('message', '2');
+                    redirect('UserCon/showAllRecordsPage');
+                } else {
+                    echo "Database error!";
+                }
+            } else {
+                $this->session->set_flashdata('message', '3');
                 redirect('UserCon/showAllRecordsPage');
             }
         } else {

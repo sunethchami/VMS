@@ -124,7 +124,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 $('#yesBtn').click(function(){
                     var id = $(this).data('id');
-                    window.location = "<?php echo site_url(); ?>AdditionalFuelCon/deleteRecord/"+id;
+                    window.location = "<?php echo site_url(); ?>UserCon/deleteRecord/"+id;
                 });
             });
         </script>
@@ -145,6 +145,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     var color = 'success'; 
                     var icon = 'nc-icon nc-check-2';
                     var msg = 'The record has been deleted successfully.'  
+
+                <?php  }  ?>
+                    
+                <?php if ($message == 3) { ?>
+
+                    var color = 'info'; 
+                    var icon = 'nc-icon nc-check-2';
+                    var msg = 'Can not delete this user!'  
 
                 <?php  }  ?>
 

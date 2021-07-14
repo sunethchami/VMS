@@ -119,6 +119,9 @@ class VehicleDetailsCon extends MY_Controller {
                 } else {
                     $use_status = $this->getUsageId($use_status);
                 }
+                
+                date_default_timezone_set("Asia/Colombo");
+                $create_date = date('Y-m-d H:i:s'); 
 
                 $data = array(
                     'owner' => $owner,
@@ -142,7 +145,9 @@ class VehicleDetailsCon extends MY_Controller {
                     'file_number' => $file_number,
                     'file_no_book_no' => $file_no_book_no,
                     'director_division' => $director_division,
-                    'sub_division' => $sub_division
+                    'sub_division' => $sub_division,
+                    'create_by' => $this->user()->id,
+                    'create_date' => $create_date
                 );
 
                 $result = $this->VehicleDetailsModel->setNewRecords($data);
@@ -418,6 +423,9 @@ class VehicleDetailsCon extends MY_Controller {
             } else {
                 $use_status = $this->getUsageId($use_status);
             }
+            
+            date_default_timezone_set("Asia/Colombo");
+            $update_date = date('Y-m-d H:i:s'); 
 
             $data = array(
                 'owner' => $owner,
@@ -441,7 +449,9 @@ class VehicleDetailsCon extends MY_Controller {
                 'file_number' => $file_number,
                 'file_no_book_no' => $file_no_book_no,
                 'director_division' => $director_division,
-                'sub_division' => $sub_division
+                'sub_division' => $sub_division,
+                'update_by' => $this->user()->id,
+                'update_date' => $update_date
             );
 
             $result = $this->VehicleDetailsModel

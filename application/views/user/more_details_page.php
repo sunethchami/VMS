@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">Display Additional Fuel Details</h1>
+                            <h1 class="page-header">Display User Details</h1>
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>
@@ -30,44 +30,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <tbody>
                                               <?php                       
                                                     echo'<tr>';
-                                                    echo'<td><b>'. "Index Number" . '<b></td>';
-                                                    echo'<td>' . $result[0]['index_no'] . '</td>';
+                                                    echo'<td><b>'. "First Name" . '<b></td>';
+                                                    echo'<td>' . $result->first_name . '</td>';
                                                     echo'</tr>';
                                                     echo'<tr>';
-                                                    echo'<td><b>'. "Vehicle Number" . '<b></td>';
-                                                    echo'<td>' . $result[0]['vehicle_number']. '</td>';
+                                                    echo'<td><b>'. "Last Name" . '<b></td>';
+                                                    echo'<td>' . $result->last_name. '</td>';
                                                     echo'</tr>';
                                                     echo'<tr>';
-                                                    echo'<td><b>'. "Month" . '<b></td>';
-                                                    echo'<td>' . $result[0]['month'] . '</td>';
+                                                    echo'<td><b>'. "ID No" . '<b></td>';
+                                                    echo'<td>' . $result->id_no . '</td>';
                                                     echo'</tr>';
                                                     echo'<tr>';
-                                                    echo'<td><b>'. "Value" . '<b></td>';
-                                                    echo'<td>' . $result[0]['value'] . '</td>';
+                                                    echo'<td><b>'. "User Role" . '<b></td>';
+                                                    echo'<td>' . $result->user_role . '</td>';
                                                     echo'</tr>';
                                                     echo'<tr>';
-                                                    echo'<td><b>'. "Application Received Date" . '<b></td>';
-                                                    echo'<td>' . $result[0]['application_received_date']. '</td>';
+                                                    echo'<td><b>'. "Phone No" . '<b></td>';
+                                                    echo'<td>' . $result->phone_no . '</td>';
                                                     echo'</tr>';
                                                     echo'<tr>';
-                                                    echo'<td><b>'. "Shortcomings" . '<b></td>';
-                                                    echo'<td>' . $result[0]['shortcomings'] . '</td>';
-                                                    echo'</tr>';
-                                                    echo'<tr>';
-                                                    echo'<td><b>'. "Revised Application Resend Date" . '<b></td>';
-                                                    echo'<td>' . $result[0]['revised_application_resend_date'] . '</td>';
-                                                    echo'</tr>';                                                                                                            
-                                                    echo'<td><b>'. "Date of the application send for approval to A.D.G" . '<b></td>';
-                                                    echo'<td>' . $result[0]['date_application_send_approval'] . '</td>';
-                                                    echo'</tr>';                                                                                                            
-                                                    echo'<td><b>'. "Date of Receiving Approval by A.D.G" . '<b></td>';
-                                                    echo'<td>' . $result[0]['date_receiving_approval'] . '</td>';
-                                                    echo'</tr>';                                                                                                            
-                                                    echo'<td><b>'. "Date of Sending Approval of A.D.G" . '<b></td>';
-                                                    echo'<td>' . $result[0]['date_sending_approval'] . '</td>';
-                                                    echo'</tr>';                                                                                                            
-                                                    echo'<td><b>'. "Other Details" . '<b></td>';
-                                                    echo'<td>' . $result[0]['other_details'] . '</td>';
+                                                    echo'<td><b>'. "Email" . '<b></td>';
+                                                    echo'<td>' . $result->email. '</td>';
                                                     echo'</tr>';                                                                                                            
                                                 ?>
                                             </tbody>

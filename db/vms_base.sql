@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 12, 2021 at 04:22 PM
+-- Generation Time: Jul 14, 2021 at 09:39 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 5.6.40
 
@@ -42,8 +42,12 @@ CREATE TABLE IF NOT EXISTS `additional_fuel_tb` (
   `date_receiving_approval` date NOT NULL,
   `date_sending_approval` date NOT NULL,
   `other_details` varchar(225) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `create_by` int(11) DEFAULT NULL,
+  `update_by` int(11) DEFAULT NULL,
+  `create_date` datetime DEFAULT NULL,
+  `update_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -56,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `model_list_tb` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -93,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `permission_tb` (
   `group_id` int(11) NOT NULL,
   `permission` varchar(225) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `permission_tb`
@@ -125,7 +129,8 @@ INSERT INTO `permission_tb` (`id`, `group_id`, `permission`) VALUES
 (23, 1, 'user-edit'),
 (24, 1, 'user-delete'),
 (25, 1, 'vehicle-details-delete-all'),
-(26, 1, 'user-show-all');
+(26, 1, 'user-show-all'),
+(27, 1, 'user-show-details');
 
 -- --------------------------------------------------------
 
@@ -138,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `usage_list_tb` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -156,7 +161,7 @@ CREATE TABLE IF NOT EXISTS `users_tb` (
   `email` varchar(100) DEFAULT NULL,
   `password` varchar(225) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users_tb`
@@ -166,10 +171,7 @@ INSERT INTO `users_tb` (`id`, `first_name`, `last_name`, `id_no`, `phone_no`, `e
 (1, 'Suneth', 'Senanayake', '900020031V', '0711041717', 'suneth.ucsc@gmail.com', '$2a$08$Ftye58Q9ZGnvqm1VaoXGLumCuEkVJQzy3OdgqmmtMqvOs0DCHU0.6'),
 (3, 'Tom', 'Cruise', '920020031V', '0711041713', 'tom@gmail.com', '$2a$08$Ftye58Q9ZGnvqm1VaoXGLumCuEkVJQzy3OdgqmmtMqvOs0DCHU0.6'),
 (2, 'Deepika', 'Dissanayake', '910020031V', '0711041718', 'deepika@gmail.com', '$2a$08$Ftye58Q9ZGnvqm1VaoXGLumCuEkVJQzy3OdgqmmtMqvOs0DCHU0.6'),
-(4, 'Bathiyax', 'Bandarax', '19900020003x', '07193672x', 'bathiya@sexymail.comx', '$2a$08$pNtAl1iuj2Im7CPGicaeS.xAgpiXmENKs1bCVhWvYMh4Niy/PR8La'),
-(5, 'Iresh', 'Rathnayake', '100', '', '', '$2a$08$jzYWkG56HKB/x1M3GG7rjO1kZBHb5F20eJhDN4jlOxfGnFIMCOrN6'),
-(6, 'Thushari', 'Gunasekara', '200', '', '', '$2a$08$90mh1brhhdI9C8fRIzTF/eBLRBQbvjBXW50AAexrPztmRDPwKexfG'),
-(7, 'Wanda', 'Dyer', '300', '', 'cotumyhidy@mailinator.com', '$2a$08$IBXbRen.lr5PsfFUO4vyoeIXN3whXXj7EdeNAymlqI28oaZwMZaT6');
+(4, 'Bathiyax', 'Bandarax', '19900020003x', '07193672x', 'bathiya@sexymail.comx', '$2a$08$pNtAl1iuj2Im7CPGicaeS.xAgpiXmENKs1bCVhWvYMh4Niy/PR8La');
 
 -- --------------------------------------------------------
 
@@ -183,7 +185,7 @@ CREATE TABLE IF NOT EXISTS `user_permission_tb` (
   `user_id` int(11) NOT NULL,
   `group_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_permission_tb`
@@ -229,8 +231,12 @@ CREATE TABLE IF NOT EXISTS `vehicle_details_tb` (
   `brand` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `director_division` varchar(225) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `sub_division` varchar(225) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `create_by` int(11) DEFAULT NULL,
+  `update_by` int(11) DEFAULT NULL,
+  `create_date` datetime DEFAULT NULL,
+  `update_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9997 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=9998 DEFAULT CHARSET=latin1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

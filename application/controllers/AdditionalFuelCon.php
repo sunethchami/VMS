@@ -94,7 +94,10 @@ class AdditionalFuelCon extends MY_Controller {
                 if ($this->form_validation->run() == FALSE) {
                     $this->set_view('additional_fuel/add_new_record_page','');
                 } else {
-
+                    
+                    date_default_timezone_set("Asia/Colombo");
+                    $create_date = date('Y-m-d H:i:s'); 
+                    
                     $data = array(
                         'index_no' => $index_no,
                         'vehicle_number' => $vehicle_number,
@@ -108,7 +111,9 @@ class AdditionalFuelCon extends MY_Controller {
                         $date_application_send_approval,
                         'date_receiving_approval' => $date_receiving_approval,
                         'date_sending_approval' => $date_sending_approval,
-                        'other_details' => $other_details
+                        'other_details' => $other_details,
+                        'create_by' => $this->user()->id,
+                        'create_date' => $create_date
                     );
 
                     $result = $this->AdditionalFuelModel->setNewRecords($data);
@@ -249,6 +254,10 @@ class AdditionalFuelCon extends MY_Controller {
             if ($this->form_validation->run() == FALSE) {
                 $this->set_view('additional_fuel/edit_record_page',$this->data);
             } else {
+                
+                date_default_timezone_set("Asia/Colombo");
+                $update_date = date('Y-m-d H:i:s');
+                    
                 $data = array(
                     'index_no' => $index_no,
                     'vehicle_number' => $vehicle_number,
@@ -262,7 +271,9 @@ class AdditionalFuelCon extends MY_Controller {
                     $date_application_send_approval,
                     'date_receiving_approval' => $date_receiving_approval,
                     'date_sending_approval' => $date_sending_approval,
-                    'other_details' => $other_details
+                    'other_details' => $other_details,
+                    'update_by' => $this->user()->id,
+                    'update_date' => $update_date
                 );
 
                 $result = $this->AdditionalFuelModel
@@ -280,7 +291,7 @@ class AdditionalFuelCon extends MY_Controller {
     /**
      * author : Suneth Senanayake. 
      * displayDetails()
-     * View details in a table for selected vehicle.
+     * View details in a table for selected fuel.
      */
     
     public function displayDetails() {
@@ -295,7 +306,7 @@ class AdditionalFuelCon extends MY_Controller {
     /**
      * author : Suneth Senanayake. 
      * deleteRacord()
-     * Delete record from db for selected vehicle.
+     * Delete record from db for selected fuel.
      */
     
     public function deleteRecord() {

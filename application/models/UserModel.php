@@ -57,17 +57,15 @@ class UserModel extends CI_Model {
         $query = $this->db->get('permission_group_tb');
         return $query->row(); 
     }
-
-     public function getRecordArray($id){
-        $this->db->select('*');
-        $this->db->where('id',$id);
-        $query = $this->db->get('additional_fuel_tb');
-        return $query->result_array(); 
-    }
     
     public function deleteRecordData($id){
         $this->db->where('id', $id);
-        return $query = $this->db->delete('additional_fuel_tb');        
+        return $query = $this->db->delete('users_tb');        
+    }
+    
+    public function deleteUserType($id){
+        $this->db->where('user_id', $id);
+        return $query = $this->db->delete('user_permission_tb');        
     }
 
 }
