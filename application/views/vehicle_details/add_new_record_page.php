@@ -3,17 +3,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
             
-            <div id="page-wrapper">
+            <div class="page-wroper">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-12">
-                            <h2 class="page-header">Add New Vehicle Details</h2>
+                        <div class="col-md-6 col-md-offset-3">
+                            <h2>Add New Vehicle Details</h2>
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>
                     <!-- /.row -->
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-md-6 col-md-offset-3">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     Add New Record
@@ -236,9 +236,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <!-- Metis Menu Plugin JavaScript -->
         <script src="<?php echo base_url() ?>assets/js/metisMenu.min.js"></script>        
-
-        <!-- Custom Theme JavaScript -->
-        <script src="<?php echo base_url() ?>assets/js/startmin.js"></script>
         
         <!--  Notifications Plugin    -->
         <script src="<?php echo base_url() ?>assets/js/bootstrap-notify.js"></script>

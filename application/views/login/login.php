@@ -5,13 +5,30 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/login.css">
 
         <link href='http://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
 
     </head>
     <body>
-        <div class="container">    
+        <div class="container">  
+            
+            <div class="row login-title">
+                <div class="col-md-2"></div>
+                <div class="col-md-1">
+                    <img src="<?php echo base_url(); ?>assets/images/Emblem_of_Sri_Lanka.svg" alt="Emblem of Sri Lanka" width="60" height="auto">
+                </div>
+                <div class="col-md-6">
+                    <h1>Vehicle Management System</h1>
+                    <h3>Department of Agriculture</h3>
+                </div>
+                <div class="col-md-1">
+                    <img class="img-agri" src="<?php echo base_url(); ?>assets/images/logo1.jpg" alt="Emblem of Agricalture Department" width="80" height="auto">
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+            
             <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
                 <div class="panel panel-info" >
                     <div class="panel-heading">
@@ -22,6 +39,7 @@
                     <div style="padding-top:30px" class="panel-body" >
 
                         <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                        
 
                         <form method="post" action="<?php echo site_url(); ?>LoginCon/login" class="form-horizontal" role="form">                           
 

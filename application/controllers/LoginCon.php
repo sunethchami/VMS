@@ -22,7 +22,7 @@ class LoginCon extends MY_Controller {
 	if (!$this->user()) {
             $this->load->view('login/login');
         }else{
-            redirect(base_url('DashboardCon')); 
+            redirect(base_url('HomeCon')); 
         }
         
     }
@@ -47,7 +47,7 @@ class LoginCon extends MY_Controller {
                     if ($user) {
                         if ($this->bcrypt->check_password($password, $user->password)) {
                             $this->session->set_userdata('user_logged', $user->id);
-                            redirect(base_url('DashboardCon'));                           
+                            redirect(base_url('HomeCon'));                           
                         } else {
                             $error['incorrect'] = "Incorrect password.";
                         }

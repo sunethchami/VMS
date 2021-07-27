@@ -5,11 +5,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!-- Data tables -->
         <link href="<?php echo base_url() ?>assets/css/jquery.dataTables.min.css" rel="stylesheet" />
 
-            <div id="page-wrapper">
+            <div class="page-wroper">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">View all Additional Fuel Details</h1>
+                            <h2>Additional Fuel Details</h2>
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>

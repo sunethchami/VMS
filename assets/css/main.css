@@ -28,5 +28,29 @@ and open the template in the editor.
 }
 
 .user_name{
-    color:#999;
+    color:#23527c;
 }
+
+.page-wroper{
+    padding: 0px 10px 35px 10px;
+}
+
+.navbar{
+    margin-bottom: 0px;
+}
+
+.page-header {
+    margin: 20px 0px;
+    text-align: center;
+}
+
+.panel-default>.panel-heading{
+    background-image: linear-gradient(to bottom,#d9edf7 0,#c4e3f3 100%);
+}
+
+h2{
+    color: #5a536d;
+    text-align: center;
+    margin: 20px 0px;
+}
+

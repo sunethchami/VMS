@@ -4,17 +4,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/jquery-ui.css">
 
-            <div id="page-wrapper">
+            <div class="page-wroper">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-12">
-                            <h2 class="page-header">Add User</h2>
+                        <div class="col-md-6 col-md-offset-3">
+                            <h2>Add User</h2>
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>
                     <!-- /.row -->
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-md-6 col-md-offset-3">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     Add New Record

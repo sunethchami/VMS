@@ -2,17 +2,17 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
             
-            <div id="page-wrapper">
+            <div class="page-wroper">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-12">
-                            <h2 class="page-header">Import Certificates of Registration</h2>
+                        <div class="col-md-6 col-md-offset-3">
+                            <h2>Import Certificates of Registration</h2>
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>
                     <!-- /.row -->
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-md-6 col-md-offset-3">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     Certificates of Registration

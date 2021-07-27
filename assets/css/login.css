@@ -1,0 +1,40 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 27, 2021, 9:28:50 AM
+    Author     : Suneth Senanayake
+*/
+
+body{
+    margin: 10px;
+    background-color:#ebf1f5;
+}
+
+h1{
+    text-align: center;
+    /*color: #00bfff;*/
+    color: #2E64FE;
+}
+
+h3{
+    text-align: center; 
+    /*color: #00bfff;*/
+    color: #337ab7;
+}
+
+img{
+    display:block;
+    margin:auto;
+}
+
+.login-title{
+    padding: 67px 77px 15px 77px;
+}
+
+.img-agri{
+    padding-top: 11px;
+}
+

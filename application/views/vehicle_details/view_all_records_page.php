@@ -5,18 +5,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!-- Data tables -->
         <link href="<?php echo base_url() ?>assets/css/jquery.dataTables.min.css" rel="stylesheet" />
 
-            <div id="page-wrapper">
+            <div class="page-wroper">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">View All Vehicle Details</h1>
+                            <h2>Vehicle Details</h2>
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>
                     <!-- /.row -->
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="panel panel-default">
+                                <div class="panel panel-default">
                                 <div class="panel-heading">
                                     View All Records
                                 </div>
@@ -90,7 +90,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <!-- /.table-responsive -->                                    
                                 </div>
                                 <!-- /.panel-body -->
-                            </div>
+                                </div>
+                            <!--</div>-->
                             <!-- /.panel -->
                         </div>
                         <!-- /.col-lg-12 -->

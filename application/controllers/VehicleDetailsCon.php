@@ -351,7 +351,7 @@ class VehicleDetailsCon extends MY_Controller {
             } else {
                 $this->data['result']->model = "";
             }
-            echo "usage :" . $usage_id = $this->data['result']->use_status;
+            $usage_id = $this->data['result']->use_status;
             if ($usage_id != 0) {
                 $usage = $this->UsageTypeModel->getRecordById($usage_id);
                 $this->data['result']->use_status = $usage->name;
