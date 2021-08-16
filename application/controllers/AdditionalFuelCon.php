@@ -77,7 +77,14 @@ class AdditionalFuelCon extends MY_Controller {
                     $date_application_send_approval != "" ||
                     $date_receiving_approval != "" || $date_sending_approval != "" ||
                     $other_details != "") {
+                
+                
 
+                $this->form_validation->set_rules('index_no',
+                        'Index Number', 'numeric');
+                $this->form_validation->set_rules('value',
+                        'Value', 'numeric',array('numeric' => 
+                        'The %s field must contain only price.'));
                 $this->form_validation->set_rules('application_received_date',
                         'Application Received Date', 'datetime[Y-m-d]');
                 $this->form_validation->set_rules('revised_application_resend_date',
@@ -139,10 +146,29 @@ class AdditionalFuelCon extends MY_Controller {
         
         $this->data['message'] = $this->session->flashdata('message');      
         $result = $this->AdditionalFuelModel->getAllRecords();
-        $result = $this->getWithFullValue($result);       
+        $result = $this->getWithFullValue($result);
+        $result = $this->getWithNullValue($result);
         $this->data['result'] = $result;
         $this->set_view('additional_fuel/view_all_records_page',$this->data);
         
+    }
+    
+    private function getWithNullValue($result){
+        
+        foreach ($result as $key => $value) {
+            
+            $result[$key]['application_received_date'] == '0000-00-00' ? 
+                $result[$key]['application_received_date'] = "" : "";
+            $result[$key]['revised_application_resend_date'] == '0000-00-00' ? 
+                $result[$key]['revised_application_resend_date'] = "" : "";
+            $result[$key]['date_application_send_approval'] == '0000-00-00' ? 
+                $result[$key]['date_application_send_approval'] = "" : "";
+            $result[$key]['date_receiving_approval'] == '0000-00-00' ? 
+                $result[$key]['date_receiving_approval'] = "" : "";
+            $result[$key]['date_sending_approval'] == '0000-00-00' ? 
+                $result[$key]['date_sending_approval'] = "" : "";
+        }        
+        return $result;   
     }
     
     private function getWithFullValue($result){
@@ -196,7 +222,31 @@ class AdditionalFuelCon extends MY_Controller {
         }
         if ($access) {
             $id = $this->uri->segment(3);
-            $this->data['result'] = $this->AdditionalFuelModel->getRecord($id);
+            $results = $this->AdditionalFuelModel->getRecord($id);
+            
+            
+            if($results->application_received_date == '0000-00-00'){
+                $results->application_received_date = "";
+            }
+            
+            if($results->revised_application_resend_date == '0000-00-00'){
+                $results->revised_application_resend_date = "";
+            }
+            
+            if($results->date_application_send_approval == '0000-00-00'){
+                $results->date_application_send_approval = "";
+            }
+            
+            if($results->date_receiving_approval == '0000-00-00'){
+                $results->date_receiving_approval = "";
+            }
+            
+            if($results->date_sending_approval == '0000-00-00'){
+                $results->date_sending_approval = "";
+            }
+            
+            $this->data['result'] = $results;
+            
             $this->set_view('additional_fuel/edit_record_page',$this->data);
         } else {
             echo "access denied";
@@ -237,6 +287,13 @@ class AdditionalFuelCon extends MY_Controller {
                             ->post('date_sending_approval'));
             $other_details = trim($this->input->post('other_details'));
             $this->data['id'] = $this->input->post('id');
+            
+            $this->form_validation->set_rules('index_no',
+                        'Index Number', 'numeric');
+            
+            $this->form_validation->set_rules('value',
+                    'Value', 'numeric',array('numeric' => 
+                    'The %s field must contain only price.'));
 
             $this->form_validation->set_rules('application_received_date',
                     'Application Received Date', 'datetime[Y-m-d]');

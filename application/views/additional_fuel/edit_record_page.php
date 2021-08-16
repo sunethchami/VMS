@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     <label>Index Number</label>
                                                     <input name="index_no" class="form-control" value="<?php if(isset($result->index_no)){ echo $result->index_no;}else{ echo set_value('index_no');} ?>">
                                                     <input name="id" type="hidden" value="<?php if(isset($result->id)){ echo $result->id;}else{ echo $id;} ?>"/>
-                                                    <p class="help-block"></p>
+                                                    <p></p><span class="error-msg"><?php echo form_error('index_no'); ?></span>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Vehicle Number</label>
@@ -55,7 +55,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <div class="form-group">
                                                     <label>Value</label>
                                                     <input name="value" class="form-control" value="<?php if(isset($result->value)){ echo $result->value;}else{ echo set_value('value');} ?>">
-                                                    <p class="help-block"></p>
+                                                    <p></p><span class="error-msg"><?php echo form_error('value'); ?></span>
                                                 </div>                                                
                                                 <div class="form-group">
                                                     <label>Application Received Date</label>

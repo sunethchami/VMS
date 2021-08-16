@@ -74,7 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <div class="form-group">
                                                     <label>Expense</label>
                                                     <input name="expense" class="form-control" value="<?php if(isset($result->expense)){ echo $result->expense;}else{ echo set_value('expense');} ?>">
-                                                    <p class="help-block"></p>
+                                                    <p></p><span class="error-msg"><?php echo form_error('expense'); ?></span>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>location</label>
@@ -84,7 +84,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                  <div class="form-group">
                                                     <label>Vehicle Type</label>
                                                     <select name="type" class="form-control">
-                                                        <option>Please select vehicle type</option>
+                                                        <option value="">Please select vehicle type</option>
                                                         <option value="1" <?php if(isset($result->type)){ echo $result->type == '1' ? ' selected="selected"' : '';}else{ echo set_value('type') == '1' ? ' selected="selected"' : '';} ?>>6112101 - Passenger Vehicles</option>
                                                         <option value="2" <?php if(isset($result->type)){ echo $result->type == '2' ? ' selected="selected"' : '';}else{ echo set_value('type') == '2' ? ' selected="selected"' : '';} ?>>6112102 - Tractor Trailer</option>
                                                         <option value="3" <?php if(isset($result->type)){ echo $result->type == '3' ? ' selected="selected"' : '';}else{ echo set_value('type') == '3' ? ' selected="selected"' : '';} ?>>6112102 - Cargo Vehicles</option>
@@ -146,7 +146,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <div class="form-group">
                                                 <label>Officer Grade</label>
                                                 <select name="grade" class="form-control">
-                                                    <option>Please select Officer Grade</option>
+                                                    <option value="">Please select Officer Grade</option>
                                                     <option value="1" <?php if(isset($result->grade)){ echo $result->grade == '1' ? ' selected="selected"' : '';}else{ echo set_value('grade') == '1' ? ' selected="selected"' : '';} ?>>Special</option>
                                                     <option value="2" <?php if(isset($result->grade)){ echo $result->grade == '2' ? ' selected="selected"' : '';}else{ echo set_value('grade') == '2' ? ' selected="selected"' : '';} ?>>Grade 1</option>
                                                 </select>
@@ -154,7 +154,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <div class="form-group">
                                                 <label>Status of Designation</label>
                                                 <select name="status_designation" class="form-control">
-                                                    <option>Please select Status of Designation</option>
+                                                    <option value="">Please select Status of Designation</option>
                                                     <option value="1" <?php if(isset($result->status_designation)){ echo $result->status_designation == '1' ? ' selected="selected"' : '';}else{ echo set_value('status_designation') == '1' ? ' selected="selected"' : '';} ?>>Permanent</option>
                                                     <option value="2" <?php if(isset($result->status_designation)){ echo $result->status_designation == '2' ? ' selected="selected"' : '';}else{ echo set_value('status_designation') == '2' ? ' selected="selected"' : '';} ?>>Acting</option>
                                                     <option value="3" <?php if(isset($result->status_designation)){ echo $result->status_designation == '3' ? ' selected="selected"' : '';}else{ echo set_value('status_designation') == '3' ? ' selected="selected"' : '';} ?>>Performing Duties</option>
@@ -165,7 +165,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <div class="form-group">
                                                 <label>Monthly Fuel Allowance</label>
                                                 <select name="monthly_fuel_allowance" class="form-control">
-                                                    <option >Please select Monthly Fuel Allowance</option>
+                                                    <option value="">Please select Monthly Fuel Allowance</option>
                                                     <option value="1" <?php if(isset($result->monthly_fuel_allowance)){ echo $result->monthly_fuel_allowance == '1' ? ' selected="selected"' : '';}else{ echo set_value('monthly_fuel_allowance') == '1' ? ' selected="selected"' : '';} ?>>Yes</option>
                                                     <option value="2" <?php if(isset($result->monthly_fuel_allowance)){ echo $result->monthly_fuel_allowance == '2' ? ' selected="selected"' : '';}else{ echo set_value('monthly_fuel_allowance') == '2' ? ' selected="selected"' : '';} ?>>No</option>
                                                 </select>
@@ -173,7 +173,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <div class="form-group">
                                                 <label>Monthly Fuel Intake</label>
                                                 <input name="monthly_fuel_intake" class="form-control" value="<?php if(isset($result->monthly_fuel_intake)){ echo $result->monthly_fuel_intake;}else{ echo set_value('monthly_fuel_intake');} ?>">
-                                                <p class="help-block"></p>
+                                                <p></p><span class="error-msg"><?php echo form_error('monthly_fuel_intake'); ?></span>
                                             </div>
                                             <div class="form-group">
                                                 <label>Other Note</label>

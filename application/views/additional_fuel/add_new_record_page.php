@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <div class="form-group">
                                                     <label>Index Number</label>
                                                     <input name="index_no" class="form-control" value="<?php echo set_value('index_no'); ?>">
-                                                    <p class="help-block"></p>
+                                                    <p></p><span class="error-msg"><?php echo form_error('index_no'); ?></span>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Vehicle Number</label>
@@ -54,7 +54,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <div class="form-group">
                                                     <label>Value</label>
                                                     <input name="value" class="form-control" value="<?php echo set_value('value'); ?>">
-                                                    <p class="help-block"></p>
+                                                    <p></p><span class="error-msg"><?php echo form_error('value'); ?></span>
                                                 </div>                                                
                                                 <div class="form-group">
                                                     <label>Application Received Date</label>
